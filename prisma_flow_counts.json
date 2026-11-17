@@ -1,0 +1,49 @@
+{
+ "identified_database_records": 594,
+ "duplicates_removed": 43,
+ "records_screened": 551,
+ "excluded_by_rule_prescreen": 250,
+ "excluded_by_rule_breakdown": {
+  "E7 preprint only (positioning list)": 135,
+  "E1a no ML/AI term in title+abstract (rule)": 63,
+  "E3 document type outside protocol": 23,
+  "E1b no provenance/integrity/verification term (rule)": 29
+ },
+ "screened_title_abstract_manual": 301,
+ "excluded_title_abstract": 154,
+ "excluded_TA_breakdown": {
+  "E1": 98,
+  "E1p": 7,
+  "E2": 20,
+  "E3": 7,
+  "E5": 5,
+  "E1m": 6,
+  "E1b": 11
+ },
+ "included_to_full_text_from_databases": 149,
+ "of_which_unsure": 55,
+ "identified_other_methods": 9,
+ "full_text_assessed": 0,
+ "included_in_review": "pending full-text screening",
+ "rule_prescreen_audit": {
+  "rule_exclusions_reviewed_by_title": 92,
+  "false_exclusions_found": 2,
+  "recoded_without_decision_change": 11
+ },
+ "excluded_total_from_databases": 402,
+ "exclusion_codes_final": {
+  "E7 ": 135,
+  "E1a": 56,
+  "E1b": 40,
+  "E1": 98,
+  "E1p": 7,
+  "E3 ": 23,
+  "E2": 20,
+  "E3": 7,
+  "E5": 5,
+  "E1m": 11
+ },
+ "background_list_size": 17,
+ "contrast_list_E2_size": 20,
+ "positioning_list_preprints": 135
+}

@@ -1,0 +1,573 @@
+[
+ {
+  "pipeline": "filter-only",
+  "goal": "G_auth",
+  "maximal_failing_set": [
+   "AttCap",
+   "AttTrans",
+   "Detector",
+   "WitIn",
+   "WitSrc"
+  ],
+  "cmd": "c596",
+  "GroundSeed": false,
+  "instance": {
+   "delivered": [
+    "Item$1"
+   ],
+   "synth": [],
+   "filtered": [
+    "Item$1"
+   ],
+   "committed": [
+    "Item$1"
+   ],
+   "used": [
+    "Item$0"
+   ],
+   "audSynth": [],
+   "audD": [
+    "Item$1"
+   ],
+   "audF": [
+    "Item$1"
+   ],
+   "bad": [
+    "Item$0"
+   ],
+   "missed": [
+    "Item$0"
+   ],
+   "examined": [
+    "Item$1"
+   ]
+  }
+ },
+ {
+  "pipeline": "filter-only",
+  "goal": "G_auth",
+  "maximal_failing_set": [
+   "AttCap",
+   "BindFix",
+   "BindGrind",
+   "Detector",
+   "WitIn"
+  ],
+  "cmd": "c531",
+  "GroundSeed": false,
+  "instance": {
+   "delivered": [
+    "Item$1"
+   ],
+   "synth": [],
+   "filtered": [
+    "Item$0"
+   ],
+   "committed": [
+    "Item$0"
+   ],
+   "used": [
+    "Item$0"
+   ],
+   "audSynth": [],
+   "audD": [
+    "Item$1"
+   ],
+   "audF": [
+    "Item$0"
+   ],
+   "bad": [
+    "Item$0"
+   ],
+   "missed": [
+    "Item$0"
+   ],
+   "examined": [
+    "Item$0"
+   ]
+  }
+ },
+ {
+  "pipeline": "filter-only",
+  "goal": "G_auth",
+  "maximal_failing_set": [
+   "AttTrans",
+   "BindFix",
+   "BindGrind",
+   "Detector",
+   "WitIn"
+  ],
+  "cmd": "c536",
+  "GroundSeed": false,
+  "instance": {
+   "delivered": [
+    "Item$2"
+   ],
+   "synth": [],
+   "filtered": [
+    "Item$2"
+   ],
+   "committed": [
+    "Item$0",
+    "Item$2"
+   ],
+   "used": [
+    "Item$0",
+    "Item$2"
+   ],
+   "audSynth": [],
+   "audD": [
+    "Item$2"
+   ],
+   "audF": [
+    "Item$2"
+   ],
+   "bad": [
+    "Item$1"
+   ],
+   "missed": [
+    "Item$1"
+   ],
+   "examined": [
+    "Item$0",
+    "Item$2"
+   ]
+  }
+ },
+ {
+  "pipeline": "filter-only",
+  "goal": "G_content",
+  "maximal_failing_set": [
+   "AttCap",
+   "AttTrans",
+   "BindFix",
+   "BindGrind",
+   "WitIn",
+   "WitSrc"
+  ],
+  "cmd": "c603",
+  "GroundSeed": false,
+  "instance": {
+   "delivered": [
+    "Item$0"
+   ],
+   "synth": [],
+   "filtered": [
+    "Item$0"
+   ],
+   "committed": [
+    "Item$0"
+   ],
+   "used": [
+    "Item$0"
+   ],
+   "audSynth": [],
+   "audD": [
+    "Item$0"
+   ],
+   "audF": [
+    "Item$0"
+   ],
+   "bad": [
+    "Item$0"
+   ],
+   "missed": [
+    "Item$0"
+   ],
+   "examined": []
+  }
+ },
+ {
+  "pipeline": "filter-only",
+  "goal": "G_content",
+  "maximal_failing_set": [
+   "AttCap",
+   "AttTrans",
+   "Detector",
+   "WitIn",
+   "WitSrc"
+  ],
+  "cmd": "c598",
+  "GroundSeed": false,
+  "instance": {
+   "delivered": [
+    "Item$1"
+   ],
+   "synth": [],
+   "filtered": [
+    "Item$1"
+   ],
+   "committed": [
+    "Item$1"
+   ],
+   "used": [
+    "Item$0"
+   ],
+   "audSynth": [],
+   "audD": [
+    "Item$1"
+   ],
+   "audF": [
+    "Item$1"
+   ],
+   "bad": [
+    "Item$0",
+    "Item$1"
+   ],
+   "missed": [
+    "Item$1"
+   ],
+   "examined": [
+    "Item$1"
+   ]
+  }
+ },
+ {
+  "pipeline": "filter-only",
+  "goal": "G_noinf",
+  "maximal_failing_set": [
+   "AttCap",
+   "AttTrans",
+   "BindGrind",
+   "Detector",
+   "WitIn",
+   "WitSrc"
+  ],
+  "cmd": "c632",
+  "GroundSeed": true,
+  "instance": {
+   "delivered": [
+    "Item$0"
+   ],
+   "synth": [],
+   "filtered": [
+    "Item$0"
+   ],
+   "committed": [
+    "Item$0"
+   ],
+   "used": [
+    "Item$0"
+   ],
+   "audSynth": [],
+   "audD": [
+    "Item$0"
+   ],
+   "audF": [
+    "Item$0"
+   ],
+   "bad": [
+    "Item$0"
+   ],
+   "missed": [
+    "Item$0"
+   ],
+   "examined": [
+    "Item$0"
+   ]
+  }
+ },
+ {
+  "pipeline": "generative",
+  "goal": "G_auth",
+  "maximal_failing_set": [
+   "AttCap",
+   "AttTrans",
+   "Detector",
+   "WitIn",
+   "WitSrc"
+  ],
+  "cmd": "c1236",
+  "GroundSeed": false,
+  "instance": {
+   "delivered": [
+    "Item$2"
+   ],
+   "synth": [
+    "Item$1"
+   ],
+   "filtered": [
+    "Item$1"
+   ],
+   "committed": [
+    "Item$1"
+   ],
+   "used": [
+    "Item$0"
+   ],
+   "audSynth": [
+    "Item$1"
+   ],
+   "audD": [
+    "Item$2"
+   ],
+   "audF": [
+    "Item$1"
+   ],
+   "bad": [
+    "Item$0",
+    "Item$2"
+   ],
+   "missed": [
+    "Item$0",
+    "Item$2"
+   ],
+   "examined": [
+    "Item$1"
+   ]
+  }
+ },
+ {
+  "pipeline": "generative",
+  "goal": "G_auth",
+  "maximal_failing_set": [
+   "AttCap",
+   "BindFix",
+   "BindGrind",
+   "Detector",
+   "WitIn",
+   "WitSrc"
+  ],
+  "cmd": "c1246",
+  "GroundSeed": false,
+  "instance": {
+   "delivered": [
+    "Item$2"
+   ],
+   "synth": [
+    "Item$1"
+   ],
+   "filtered": [
+    "Item$0",
+    "Item$1"
+   ],
+   "committed": [
+    "Item$0",
+    "Item$1"
+   ],
+   "used": [
+    "Item$0",
+    "Item$1"
+   ],
+   "audSynth": [
+    "Item$0",
+    "Item$1"
+   ],
+   "audD": [
+    "Item$2"
+   ],
+   "audF": [
+    "Item$0",
+    "Item$1"
+   ],
+   "bad": [
+    "Item$1"
+   ],
+   "missed": [
+    "Item$1"
+   ],
+   "examined": [
+    "Item$0",
+    "Item$1"
+   ]
+  }
+ },
+ {
+  "pipeline": "generative",
+  "goal": "G_auth",
+  "maximal_failing_set": [
+   "AttTrans",
+   "BindFix",
+   "BindGrind",
+   "Detector",
+   "WitIn"
+  ],
+  "cmd": "c1176",
+  "GroundSeed": false,
+  "instance": {
+   "delivered": [
+    "Item$2"
+   ],
+   "synth": [
+    "Item$1"
+   ],
+   "filtered": [
+    "Item$2"
+   ],
+   "committed": [
+    "Item$0",
+    "Item$2"
+   ],
+   "used": [
+    "Item$0",
+    "Item$2"
+   ],
+   "audSynth": [
+    "Item$1"
+   ],
+   "audD": [
+    "Item$2"
+   ],
+   "audF": [
+    "Item$2"
+   ],
+   "bad": [
+    "Item$0",
+    "Item$2"
+   ],
+   "missed": [
+    "Item$0",
+    "Item$2"
+   ],
+   "examined": [
+    "Item$0",
+    "Item$2"
+   ]
+  }
+ },
+ {
+  "pipeline": "generative",
+  "goal": "G_content",
+  "maximal_failing_set": [
+   "AttCap",
+   "AttTrans",
+   "BindFix",
+   "BindGrind",
+   "WitIn",
+   "WitSrc"
+  ],
+  "cmd": "c1243",
+  "GroundSeed": false,
+  "instance": {
+   "delivered": [
+    "Item$1"
+   ],
+   "synth": [
+    "Item$0"
+   ],
+   "filtered": [
+    "Item$0"
+   ],
+   "committed": [
+    "Item$0"
+   ],
+   "used": [
+    "Item$0"
+   ],
+   "audSynth": [
+    "Item$0"
+   ],
+   "audD": [
+    "Item$1"
+   ],
+   "audF": [
+    "Item$0"
+   ],
+   "bad": [
+    "Item$0"
+   ],
+   "missed": [
+    "Item$0"
+   ],
+   "examined": []
+  }
+ },
+ {
+  "pipeline": "generative",
+  "goal": "G_content",
+  "maximal_failing_set": [
+   "AttCap",
+   "AttTrans",
+   "Detector",
+   "WitIn",
+   "WitSrc"
+  ],
+  "cmd": "c1238",
+  "GroundSeed": false,
+  "instance": {
+   "delivered": [
+    "Item$1"
+   ],
+   "synth": [
+    "Item$0"
+   ],
+   "filtered": [
+    "Item$0"
+   ],
+   "committed": [
+    "Item$0"
+   ],
+   "used": [
+    "Item$1"
+   ],
+   "audSynth": [
+    "Item$0"
+   ],
+   "audD": [
+    "Item$1"
+   ],
+   "audF": [
+    "Item$0"
+   ],
+   "bad": [
+    "Item$0",
+    "Item$1"
+   ],
+   "missed": [
+    "Item$0"
+   ],
+   "examined": [
+    "Item$0"
+   ]
+  }
+ },
+ {
+  "pipeline": "generative",
+  "goal": "G_noinf",
+  "maximal_failing_set": [
+   "AttCap",
+   "AttTrans",
+   "BindGrind",
+   "Detector",
+   "WitIn",
+   "WitSrc"
+  ],
+  "cmd": "c1272",
+  "GroundSeed": true,
+  "instance": {
+   "delivered": [
+    "Item$1"
+   ],
+   "synth": [
+    "Item$0"
+   ],
+   "filtered": [
+    "Item$0"
+   ],
+   "committed": [
+    "Item$0"
+   ],
+   "used": [
+    "Item$0"
+   ],
+   "audSynth": [
+    "Item$0"
+   ],
+   "audD": [
+    "Item$1"
+   ],
+   "audF": [
+    "Item$0"
+   ],
+   "bad": [
+    "Item$0"
+   ],
+   "missed": [
+    "Item$0"
+   ],
+   "examined": [
+    "Item$0"
+   ]
+  }
+ }
+]

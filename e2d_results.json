@@ -1,0 +1,362 @@
+[
+ {
+  "poison": 0,
+  "seed": 1,
+  "committed": 1500,
+  "attack_success": 0.23,
+  "spectral": {
+   "flagged": 113,
+   "tp": 0,
+   "fp": 113,
+   "recall": null,
+   "fpr": 0.07533333333333334,
+   "precision": 0.0
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": null,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 113,
+   "tp": 0,
+   "fp": 113,
+   "recall": null,
+   "fpr": 0.07533333333333334,
+   "precision": 0.0
+  }
+ },
+ {
+  "poison": 0,
+  "seed": 2,
+  "committed": 1500,
+  "attack_success": 0.32,
+  "spectral": {
+   "flagged": 113,
+   "tp": 0,
+   "fp": 113,
+   "recall": null,
+   "fpr": 0.07533333333333334,
+   "precision": 0.0
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": null,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 113,
+   "tp": 0,
+   "fp": 113,
+   "recall": null,
+   "fpr": 0.07533333333333334,
+   "precision": 0.0
+  }
+ },
+ {
+  "poison": 0,
+  "seed": 3,
+  "committed": 1500,
+  "attack_success": 0.23,
+  "spectral": {
+   "flagged": 113,
+   "tp": 0,
+   "fp": 113,
+   "recall": null,
+   "fpr": 0.07533333333333334,
+   "precision": 0.0
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": null,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 113,
+   "tp": 0,
+   "fp": 113,
+   "recall": null,
+   "fpr": 0.07533333333333334,
+   "precision": 0.0
+  }
+ },
+ {
+  "poison": 8,
+  "seed": 1,
+  "committed": 1508,
+  "attack_success": 0.38,
+  "spectral": {
+   "flagged": 114,
+   "tp": 0,
+   "fp": 114,
+   "recall": 0.0,
+   "fpr": 0.076,
+   "precision": 0.0
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": 0.0,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 114,
+   "tp": 5,
+   "fp": 109,
+   "recall": 0.625,
+   "fpr": 0.07266666666666667,
+   "precision": 0.043859649122807015
+  }
+ },
+ {
+  "poison": 8,
+  "seed": 2,
+  "committed": 1508,
+  "attack_success": 0.27,
+  "spectral": {
+   "flagged": 114,
+   "tp": 0,
+   "fp": 114,
+   "recall": 0.0,
+   "fpr": 0.076,
+   "precision": 0.0
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": 0.0,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 114,
+   "tp": 4,
+   "fp": 110,
+   "recall": 0.5,
+   "fpr": 0.07333333333333333,
+   "precision": 0.03508771929824561
+  }
+ },
+ {
+  "poison": 8,
+  "seed": 3,
+  "committed": 1508,
+  "attack_success": 0.32,
+  "spectral": {
+   "flagged": 114,
+   "tp": 2,
+   "fp": 112,
+   "recall": 0.25,
+   "fpr": 0.07466666666666667,
+   "precision": 0.017543859649122806
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": 0.0,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 114,
+   "tp": 6,
+   "fp": 108,
+   "recall": 0.75,
+   "fpr": 0.072,
+   "precision": 0.05263157894736842
+  }
+ },
+ {
+  "poison": 30,
+  "seed": 1,
+  "committed": 1530,
+  "attack_success": 0.43,
+  "spectral": {
+   "flagged": 115,
+   "tp": 1,
+   "fp": 114,
+   "recall": 0.03333333333333333,
+   "fpr": 0.076,
+   "precision": 0.008695652173913044
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": 0.0,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 115,
+   "tp": 7,
+   "fp": 108,
+   "recall": 0.23333333333333334,
+   "fpr": 0.072,
+   "precision": 0.06086956521739131
+  }
+ },
+ {
+  "poison": 30,
+  "seed": 2,
+  "committed": 1530,
+  "attack_success": 0.45,
+  "spectral": {
+   "flagged": 115,
+   "tp": 0,
+   "fp": 115,
+   "recall": 0.0,
+   "fpr": 0.07666666666666666,
+   "precision": 0.0
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": 0.0,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 115,
+   "tp": 10,
+   "fp": 105,
+   "recall": 0.3333333333333333,
+   "fpr": 0.07,
+   "precision": 0.08695652173913043
+  }
+ },
+ {
+  "poison": 30,
+  "seed": 3,
+  "committed": 1530,
+  "attack_success": 0.48,
+  "spectral": {
+   "flagged": 115,
+   "tp": 1,
+   "fp": 114,
+   "recall": 0.03333333333333333,
+   "fpr": 0.076,
+   "precision": 0.008695652173913044
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": 0.0,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 115,
+   "tp": 12,
+   "fp": 103,
+   "recall": 0.4,
+   "fpr": 0.06866666666666667,
+   "precision": 0.10434782608695652
+  }
+ },
+ {
+  "poison": 100,
+  "seed": 1,
+  "committed": 1600,
+  "attack_success": 0.52,
+  "spectral": {
+   "flagged": 121,
+   "tp": 3,
+   "fp": 118,
+   "recall": 0.03,
+   "fpr": 0.07866666666666666,
+   "precision": 0.024793388429752067
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": 0.0,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 121,
+   "tp": 23,
+   "fp": 98,
+   "recall": 0.23,
+   "fpr": 0.06533333333333333,
+   "precision": 0.19008264462809918
+  }
+ },
+ {
+  "poison": 100,
+  "seed": 2,
+  "committed": 1600,
+  "attack_success": 0.56,
+  "spectral": {
+   "flagged": 121,
+   "tp": 3,
+   "fp": 118,
+   "recall": 0.03,
+   "fpr": 0.07866666666666666,
+   "precision": 0.024793388429752067
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": 0.0,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 121,
+   "tp": 13,
+   "fp": 108,
+   "recall": 0.13,
+   "fpr": 0.072,
+   "precision": 0.10743801652892562
+  }
+ },
+ {
+  "poison": 100,
+  "seed": 3,
+  "committed": 1600,
+  "attack_success": 0.53,
+  "spectral": {
+   "flagged": 121,
+   "tp": 5,
+   "fp": 116,
+   "recall": 0.05,
+   "fpr": 0.07733333333333334,
+   "precision": 0.04132231404958678
+  },
+  "act_clust": {
+   "flagged": 0,
+   "tp": 0,
+   "fp": 0,
+   "recall": 0.0,
+   "fpr": 0.0,
+   "precision": null
+  },
+  "loss": {
+   "flagged": 121,
+   "tp": 12,
+   "fp": 109,
+   "recall": 0.12,
+   "fpr": 0.07266666666666667,
+   "precision": 0.09917355371900827
+  }
+ }
+]

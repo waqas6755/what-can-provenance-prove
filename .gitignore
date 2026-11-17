@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.aux
+*.log
+*.out
+*.blg
+*.synctex.gz
+data/mr/
+nltk_data/
+gpu_kit/results_gpu/
+gpu_kit/results_gpu.zip
+.venv/

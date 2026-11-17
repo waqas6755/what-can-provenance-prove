@@ -1,0 +1,41 @@
+% ---------------------------------------------------------------
+\section{Literature Search Method}\label{sec:lit}
+% ---------------------------------------------------------------
+
+The systematisation in Section~\ref{sec:sok} rests on a structured search. We report it
+in PRISMA~2020 terms~\cite{page2021prisma} and state plainly which stages are incomplete.
+
+\paragraph{Search}
+On 25~October~2026 we ran 12 query strings against OpenAlex. The strings cover provenance
+and lineage capture, ledgers, transparency logs, trusted execution, proofs of learning,
+zero-knowledge training proofs, data-use auditing and poisoning defences. We retrieved
+the first 25--100 results per string (24 result pages in total, depth by string as
+recorded in the artefact). This produced 594 records. A version-aware deduplication kept
+the peer-reviewed version of each work and recorded all its DOIs, which removed 43
+duplicates.
+
+\paragraph{Eligibility}
+Inclusion required (I1) an ML or AI training pipeline, (I2) a mechanism for provenance,
+integrity or verification of training data or training computation, and (I3) peer review.
+Exclusion codes covered: no ML context (E1); inference-output provenance only (E2);
+document types outside the protocol (E3); poisoning work without a provenance or
+verification component (E5); and preprint-only works (E7). E7 works were kept in a
+separate positioning list and are not cited as evidence.
+
+\paragraph{Screening}
+A rule-based pre-screen excluded 248 of 551 records: 135 preprint-only, 90 without ML or
+provenance terms, and 23 by document type. An audit of 92 rule exclusions by title found
+2 false exclusions, which were restored. Title-and-abstract screening of the remaining 303
+records was carried out by an AI assistant (Claude) applying the written protocol. Every
+decision is logged with a reason code and labelled as an AI decision requiring human
+verification. It excluded 154 records and passed 149 (55 marked \emph{unsure}). Nine further
+records came from citation chasing. That leaves 158 records for full-text assessment.
+
+\paragraph{Status and limits}
+\pending{Full-text screening of the 158 records, a human second screener with reported
+agreement ($\kappa$) on at least a 20\% sample, and searches of Scopus, Web of Science,
+IEEE~Xplore and the ACM Digital Library are not yet complete. Until they are, the search
+is a structured mapping, not a systematic review.} A known-item check found 8 of 17 seed
+papers that the authors had identified beforehand. The misses include Atlas and Sigstore,
+which is why the database searches above are required before submission. The screening log,
+queries and raw result pages are part of the artefact.

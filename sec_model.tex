@@ -1,0 +1,218 @@
+% ---------------------------------------------------------------
+\section{An Assurance Model for Training-Data Pipelines}\label{sec:model}
+% ---------------------------------------------------------------
+
+This section turns the informal question ``what does a provenance record prove?''
+into a decision problem. We fix a pipeline shape, an adversary, a set of mechanisms and
+an auditor's acceptance rule, and ask for which combinations an \emph{accepted}
+execution is guaranteed to satisfy a goal.
+
+\subsection{Pipeline and ground truth}
+
+A training run passes data through five stages (Fig.~\ref{fig:pipeline}):
+\emph{authorised sources} deliver items; an optional \emph{generator} produces synthetic
+items; a \emph{transform} (filtering, deduplication, mixing) produces the training input;
+a \emph{capture} stage commits a record of that input; and an \emph{executor} trains and
+releases a model. Items are atomic and content-identified: two different contents are two
+different items.
+
+Let $\mathcal{I}$ be a finite universe of items. An execution fixes eleven subsets of
+$\mathcal{I}$, which describe what actually happened (ground truth) and what the auditor
+is told (reports):
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+$D$ & items delivered by authorised sources\\
+$S$ & items produced by the declared generator\\
+$F$ & transform output = items delivered to the executor\\
+$C$ & items committed in the record\\
+$U$ & items that determine the released model\\
+$B$ & poisoned items\\
+$M\subseteq B$ & poisoned items a detector would miss\\
+$X$ & items an attested detector examined\\
+$\hat S$ & synthetic set as reported to the auditor\\
+$\hat D$ & deliveries as reported by source witnesses\\
+$\hat F$ & training inputs as reported by an input witness\\
+\bottomrule
+\end{tabular}
+\end{center}
+Two global Booleans complete an execution: $\mathit{gen}$ (a generative stage is declared)
+and $\mathit{gs}$ (the training seed was chosen by the prover after seeing the data).
+
+\subsection{Adversary}
+
+The adversary is a set $\alpha$ of capabilities, one per point of trust:
+\textsf{AdvSource} (an authorised source delivers poisoned data),
+\textsf{AdvGen} (the generator emits poisoned data),
+\textsf{AdvTrans} (the transform operator is corrupt),
+\textsf{AdvCap} (the capture operator is corrupt),
+\textsf{AdvExec} (the training executor is corrupt),
+\textsf{AdvWit} (witnesses collude) and
+\textsf{AdvTEE} (attestation keys are extracted or the enclave is broken).
+We study six profiles (Table~\ref{tab:profiles}). The \emph{full} adversary controls every
+pipeline stage but not the trust base; \emph{full+wit} and \emph{full+tee} additionally break
+one trust anchor each; the three single-stage profiles model deployments in which only one
+operator is untrusted. Every profile includes \textsf{AdvSource}: an authorised source can
+always be wrong, because authorisation is a statement about \emph{who} supplied data, not
+about \emph{what} the data contains.
+
+The six profiles are \emph{illustrative}, chosen to match common deployments. They are not
+exhaustive. Section~\ref{sec:results} therefore also decides the model for all $2^7=128$
+subsets of capabilities. A subset that combines capabilities models \emph{correlated
+compromise}. For example, \textsf{AdvWit} together with \textsf{AdvTEE} is a single
+administrator who controls both the witness service and the attestation keys. The model
+does not separate failures \emph{within} a mechanism class: \textsf{AdvWit} corrupts source
+and input witnesses together, and \textsf{AdvTEE} breaks every enclave. Finer correlation
+structures, such as one compromised enclave among several, are outside the model.
+
+\paragraph{Trusted parties}
+The auditor, its verification code, the public randomness beacon used by
+\textsf{BindFix}, and the cryptographic primitives are trusted. The record store is assumed
+to provide integrity and non-equivocation ($P_1$, $P_2$; Proposition~\ref{prop:ledger}).
+Everything else may be corrupted according to $\alpha$.
+
+\begin{table}[t]
+\centering\small
+\caption{Adversary profiles.}\label{tab:profiles}
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+Profile & Src & Gen & Trans & Cap & Exec & Wit & TEE\\
+\midrule
+full        & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & & \\
+full+wit    & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \\
+full+tee    & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & & \checkmark\\
+cap-only    & \checkmark & & & \checkmark & & & \\
+exec-only   & \checkmark & & & & \checkmark & & \\
+trans-only  & \checkmark & \checkmark & \checkmark & & & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Mechanisms}
+
+The mechanism set $\mu$ is a subset of seven primitives, each an abstraction of a family
+of deployed techniques (Section~\ref{sec:sok}):
+\begin{itemize}
+\item \textsf{BindFix}, \textsf{BindGrind}: \emph{computation binding}, i.e.\ the auditor
+  can confirm that the released model was produced from the committed record (re-execution,
+  proof of learning, zero-knowledge proof of training). \textsf{BindFix} fixes the
+  randomness independently of the prover (e.g.\ from a public beacon released after
+  commitment); \textsf{BindGrind} accepts a prover-chosen seed.
+\item \textsf{WitSrc}: \emph{source witnessing}, i.e.\ authorised sources sign
+  content-addressed delivery receipts, and the auditor rejects committed items covered
+  neither by a receipt nor by the synthetic report.
+\item \textsf{WitIn}: \emph{input witnessing}, i.e.\ an independent observer under complete
+  mediation reports the items delivered to the executor, and the auditor rejects a record
+  that omits one.
+\item \textsf{AttCap}, \textsf{AttTrans}: \emph{attested capture} and \emph{attested
+  transform}, i.e.\ the stage runs in a trusted execution environment whose signed
+  attestation binds its input to its output.
+\item \textsf{Detector}: an attested content detector is run over the committed record.
+\end{itemize}
+Write $\beta\equiv \textsf{BindFix}\in\mu\vee\textsf{BindGrind}\in\mu$ and
+$\tau\equiv\textsf{AdvTEE}\notin\alpha$.
+
+\subsection{Semantics}
+
+An execution is \emph{admissible} for $(\alpha,\mu,\mathit{gen})$ if it satisfies the
+constraints $\Phi$ below. Each constraint states what a stage does when it is honest, or
+when a mechanism forces it to behave honestly.
+{\small
+\begin{align*}
+&(\Phi_1)\ D\cap S=\emptyset;\quad \neg\mathit{gen}\Rightarrow S=\hat S=\emptyset;\quad M\subseteq B\\
+&(\Phi_2)\ \textsf{AdvSource}\notin\alpha\Rightarrow B\cap D=\emptyset\\
+&\phantom{(\Phi_2)}\ \textsf{AdvGen}\notin\alpha\Rightarrow B\cap S=\emptyset\\
+&(\Phi_3)\ \textsf{AdvTrans}\notin\alpha \vee (\textsf{AttTrans}\in\mu\wedge\tau)\Rightarrow F\subseteq D\cup S\\
+&(\Phi_4)\ (\textsf{AttTrans}\in\mu\wedge\tau)\vee(\textsf{AdvTrans},\textsf{AdvCap}\notin\alpha)\\
+&\phantom{(\Phi_4)}\ \Rightarrow \hat S=S\\
+&(\Phi_5)\ \textsf{AdvCap}\notin\alpha\vee(\textsf{AttCap}\in\mu\wedge\tau)\Rightarrow C=F\\
+&(\Phi_6)\ \textsf{AdvExec}\notin\alpha\Rightarrow U=F\\
+&\phantom{(\Phi_6)}\ \mathit{gs}\Rightarrow\textsf{AdvExec}\in\alpha\wedge\textsf{BindFix}\notin\mu\\
+&(\Phi_7)\ \textsf{AdvWit}\notin\alpha\Rightarrow\hat D=D\wedge \hat F=F\\
+&(\Phi_8)\ \textsf{Detector}\in\mu\wedge\tau\Rightarrow X=C;\ \text{otherwise } X=\emptyset
+\end{align*}}
+The second clause of $\Phi_1$ encodes \emph{declared stage types}: if no generator is
+declared, nothing can be reported as synthetic. Section~\ref{sec:results} shows that this is
+a necessary design requirement, not a modelling convenience.
+
+The auditor \emph{accepts} an execution if
+{\small
+\begin{align*}
+&(\mathrm{A}_1)\ \beta\Rightarrow U=C\\
+&(\mathrm{A}_2)\ \textsf{WitSrc}\in\mu\Rightarrow C\subseteq \hat D\cup\hat S\\
+&(\mathrm{A}_3)\ \textsf{WitIn}\in\mu\Rightarrow \hat F\subseteq C\\
+&(\mathrm{A}_4)\ \textsf{Detector}\in\mu\wedge\tau\Rightarrow C\cap B\subseteq M
+\end{align*}}
+$(\mathrm{A}_4)$ says that a detected poisoned item causes rejection; $M$ is the set the
+detector fails to flag, so an imperfect detector is any $M\neq\emptyset$.
+
+\subsection{Assurance goals}
+
+\begin{center}\small
+\begin{tabular}{@{}llp{3.3cm}@{}}
+\toprule
+Goal & Condition & Reading\\
+\midrule
+$G_{\mathrm{bind}}$ & $U=C$ & the record explains the model's inputs\\
+$G_{\mathrm{auth}}$ & $U\subseteq D\cup S$ & no unauthorised lineage\\
+$G_{\mathrm{noinf}}$ & $U=C\wedge\neg\mathit{gs}$ & nothing outside the record shaped the model\\
+$G_{\mathrm{content}}$ & $U\cap B\subseteq M\cap X$ & residual poison was examined and missed\\
+$G_{\mathrm{zero}}$ & $U\cap B=\emptyset$ & no poison was used\\
+$G_{\mathrm{compl}}$ & $F\subseteq C$ & the record omits no training input\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{definition}[Assurance]
+Mechanism set $\mu$ \emph{achieves} goal $G$ against $\alpha$ for pipeline type
+$\mathit{gen}$, written $\mu\models_{\alpha,\mathit{gen}}G$, if every admissible and accepted
+execution, over every finite universe $\mathcal{I}$, satisfies $G$.
+\end{definition}
+
+The definition quantifies over all universes, so it is not a bounded statement. The next
+section shows that it can nevertheless be decided exactly.
+
+\subsection{Scope of the abstraction}\label{sec:scope}
+
+The model treats items as atomic, content-identified units. Each mechanism either is present
+and enforced, or absent. A single training run is modelled. These choices make the results
+exact, and they also bound what is proved. Table~\ref{tab:scope} states how common LLM
+training practices relate to the abstraction.
+
+\begin{table}[t]
+\centering\scriptsize
+\caption{How LLM training practices relate to the model's abstraction.}\label{tab:scope}
+\begin{tabular}{@{}p{2.2cm}p{5.8cm}@{}}
+\toprule
+Practice & Status in the model\\
+\midrule
+Tokenisation, document segmentation, sequence packing & Covered if the \emph{item} is the
+unit that is committed and receipted (e.g.\ a document or a packed sequence). The results apply
+at that granularity. Claims at finer granularity need receipts and commitments at that
+granularity.\\
+Partial inclusion (truncation, sampling) & A transform. Covered when the truncated or sampled
+item is itself the committed item; the original is then a different item.\\
+Data mixing, deduplication, filtering & The transform stage ($F$).\\
+Synthetic data generation & The generator stage ($S$), with \textsf{AdvGen} and declared stage
+types.\\
+Distributed or data-parallel training & One executor stage. Binding must cover all workers;
+partial binding of some workers is not modelled.\\
+Checkpoint selection & A prover choice among accepted outputs, i.e.\ grinding
+(Theorem~\ref{thm:grind}) unless the selection rule is fixed in advance.\\
+Successive fine-tuning, distillation, model merging & Outside the single-run model. A chain
+of runs is covered only if each run is modelled separately and the previous model is
+treated as an input item (see the remark below).\\
+Intermediate representations, gradients & Not modelled.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Remark (multi-stage composition, argued)}
+Consider a chain of runs in which run $j$ trains on record $C_j$ and the released model
+$M_{j-1}$ of run $j-1$. Treat $M_{j-1}$ as one item of $C_j$, authorised only if run $j-1$
+achieved the same goal. Then a goal holds for the final model if it holds for every run.
+For $G_{\mathrm{bind}}$, $G_{\mathrm{auth}}$ and $G_{\mathrm{noinf}}$ this is immediate by
+induction. For $G_{\mathrm{content}}$ it is not: a detector applied to $C_j$ does not
+examine the data that shaped $M_{j-1}$. So content claims do not compose without a detector
+at every stage. We state this composition as an argued remark, not as a theorem. Model
+merging and distillation from several parents fall outside it.

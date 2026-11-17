@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this artefact, please cite it as below."
+type: software
+title: "What Can Provenance Prove? A Systematisation of Assurance for Adversarially Exposed LLM Training Pipelines — Research Artefact"
+version: "1.0"
+date-released: "2026-11-17"
+doi: "10.5281/zenodo.24317967"
+url: "https://doi.org/10.5281/zenodo.24317967"
+license: CC-BY-4.0
+authors:
+  - family-names: Ahmed
+    given-names: Waqas
+    affiliation: "Murdoch University"
+    orcid: "https://orcid.org/0009-0000-9744-414X"
+  - family-names: Hassan
+    given-names: Ammar
+    affiliation: "National University of Sciences and Technology"
+  - family-names: Ahmed
+    given-names: Attiq
+    affiliation: "National University of Sciences and Technology"
+keywords:
+  - provenance
+  - LLM training data
+  - data poisoning
+  - backdoor
+  - proof of training
+  - formal methods
+  - Alloy
+  - reproducibility

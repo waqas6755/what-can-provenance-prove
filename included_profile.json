@@ -1,0 +1,601 @@
+{
+ "summary": {
+  "n_included_to_full_text": 158,
+  "family_counts_keyword_tagged": {
+   "F4 ledger / blockchain": 76,
+   "Federated learning setting": 72,
+   "F1 provenance / lineage capture": 52,
+   "F6 zero-knowledge / proof of training": 33,
+   "Statistical data-use audit (membership / dataset inference)": 19,
+   "F5 TEE / attestation": 17
+  },
+  "by_year": {
+   "2019": 3,
+   "2020": 3,
+   "2021": 11,
+   "2022": 11,
+   "2023": 17,
+   "2024": 20,
+   "2025": 35,
+   "2026": 49,
+   "seed": 9
+  },
+  "mention_poisoning_or_backdoor": 42,
+  "note": "abstract-level keyword tags; families overlap; not a coding of guarantees"
+ },
+ "per_record_tags": {
+  "R0001": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0002": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0004": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0005": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0006": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0007": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture",
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0008": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0009": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0011": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0015": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "R0018": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0019": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0020": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0021": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0022": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0024": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture"
+  ],
+  "R0025": [
+   "F6 zero-knowledge / proof of training",
+   "Federated learning setting"
+  ],
+  "R0026": [
+   "F1 provenance / lineage capture",
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0028": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "R0029": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "R0030": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0033": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0034": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "Federated learning setting"
+  ],
+  "R0035": [
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0036": [
+   "F6 zero-knowledge / proof of training",
+   "Federated learning setting"
+  ],
+  "R0038": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "R0043": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0045": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0046": [
+   "F4 ledger / blockchain",
+   "F5 TEE / attestation",
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0047": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0052": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0053": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0064": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0075": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0076": [
+   "Federated learning setting"
+  ],
+  "R0077": [
+   "F4 ledger / blockchain"
+  ],
+  "R0078": [
+   "F5 TEE / attestation",
+   "Federated learning setting"
+  ],
+  "R0081": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "R0093": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0096": [
+   "F4 ledger / blockchain"
+  ],
+  "R0107": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture"
+  ],
+  "R0108": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0117": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0118": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0120": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0121": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0125": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "Federated learning setting"
+  ],
+  "R0135": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0136": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0139": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture"
+  ],
+  "R0141": [
+   "F4 ledger / blockchain"
+  ],
+  "R0142": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture"
+  ],
+  "R0146": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "Federated learning setting"
+  ],
+  "R0147": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture",
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0149": [
+   "F4 ledger / blockchain"
+  ],
+  "R0151": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture"
+  ],
+  "R0152": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0153": [
+   "F4 ledger / blockchain"
+  ],
+  "R0155": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture"
+  ],
+  "R0157": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture",
+   "Statistical data-use audit (membership / dataset inference)",
+   "Federated learning setting"
+  ],
+  "R0159": [
+   "F4 ledger / blockchain",
+   "F5 TEE / attestation",
+   "Federated learning setting"
+  ],
+  "R0160": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0161": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0164": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0165": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture"
+  ],
+  "R0167": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0169": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0172": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0173": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0175": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0178": [
+   "F4 ledger / blockchain",
+   "F5 TEE / attestation",
+   "F1 provenance / lineage capture"
+  ],
+  "R0181": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0187": [
+   "Federated learning setting"
+  ],
+  "R0188": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0191": [
+   "Federated learning setting"
+  ],
+  "R0194": [],
+  "R0196": [
+   "F5 TEE / attestation"
+  ],
+  "R0205": [
+   "F5 TEE / attestation"
+  ],
+  "R0206": [
+   "F1 provenance / lineage capture",
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0209": [
+   "Federated learning setting"
+  ],
+  "R0212": [],
+  "R0217": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0219": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0220": [
+   "F4 ledger / blockchain"
+  ],
+  "R0223": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0232": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0255": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "Federated learning setting"
+  ],
+  "R0258": [
+   "F4 ledger / blockchain"
+  ],
+  "R0262": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "R0269": [
+   "F4 ledger / blockchain",
+   "F5 TEE / attestation",
+   "Federated learning setting"
+  ],
+  "R0271": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture"
+  ],
+  "R0275": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "R0286": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0288": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0294": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0296": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "R0297": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0305": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0310": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0319": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0322": [
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0323": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0324": [],
+  "R0327": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "Federated learning setting"
+  ],
+  "R0329": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture"
+  ],
+  "R0340": [
+   "F5 TEE / attestation",
+   "F1 provenance / lineage capture"
+  ],
+  "R0342": [
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0343": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0345": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0354": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0369": [
+   "F5 TEE / attestation",
+   "Federated learning setting"
+  ],
+  "R0370": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0385": [
+   "F6 zero-knowledge / proof of training",
+   "F5 TEE / attestation",
+   "Statistical data-use audit (membership / dataset inference)",
+   "Federated learning setting"
+  ],
+  "R0396": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0417": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0435": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0444": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training"
+  ],
+  "R0447": [
+   "F5 TEE / attestation"
+  ],
+  "R0448": [
+   "F6 zero-knowledge / proof of training",
+   "F5 TEE / attestation",
+   "Federated learning setting"
+  ],
+  "R0450": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0452": [
+   "F4 ledger / blockchain",
+   "F5 TEE / attestation"
+  ],
+  "R0453": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0455": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "Federated learning setting"
+  ],
+  "R0469": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0470": [],
+  "R0473": [],
+  "R0475": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0478": [
+   "F6 zero-knowledge / proof of training",
+   "Federated learning setting"
+  ],
+  "R0480": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0484": [
+   "F6 zero-knowledge / proof of training",
+   "F1 provenance / lineage capture"
+  ],
+  "R0487": [
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0494": [
+   "F4 ledger / blockchain",
+   "Federated learning setting"
+  ],
+  "R0495": [
+   "F5 TEE / attestation",
+   "Federated learning setting"
+  ],
+  "R0497": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0498": [
+   "F5 TEE / attestation"
+  ],
+  "R0500": [
+   "F6 zero-knowledge / proof of training",
+   "Federated learning setting"
+  ],
+  "R0501": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture"
+  ],
+  "R0503": [
+   "F4 ledger / blockchain",
+   "F1 provenance / lineage capture",
+   "Federated learning setting"
+  ],
+  "R0512": [
+   "F1 provenance / lineage capture",
+   "Statistical data-use audit (membership / dataset inference)"
+  ],
+  "R0514": [
+   "Federated learning setting"
+  ],
+  "R0515": [
+   "F6 zero-knowledge / proof of training",
+   "Federated learning setting"
+  ],
+  "R0516": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "R0522": [
+   "Federated learning setting"
+  ],
+  "R0524": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0527": [
+   "F1 provenance / lineage capture"
+  ],
+  "R0541": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "R0543": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "F5 TEE / attestation",
+   "F1 provenance / lineage capture"
+  ],
+  "R0547": [
+   "F4 ledger / blockchain",
+   "F6 zero-knowledge / proof of training",
+   "F5 TEE / attestation",
+   "Federated learning setting"
+  ],
+  "R0551": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "O001": [
+   "F6 zero-knowledge / proof of training"
+  ],
+  "O002": [],
+  "O003": [],
+  "O004": [],
+  "O005": [],
+  "O006": [
+   "F1 provenance / lineage capture"
+  ],
+  "O007": [],
+  "O008": [],
+  "O009": []
+ }
+}

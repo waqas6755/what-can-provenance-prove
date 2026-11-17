@@ -1,0 +1,1780 @@
+[
+ {
+  "adv": "cap-only",
+  "gen": false,
+  "goal": "G_auth",
+  "holds_in": 128,
+  "of": 128,
+  "minimal_sufficient": [
+   []
+  ],
+  "maximal_failing": [],
+  "upward_closed": true
+ },
+ {
+  "adv": "cap-only",
+  "gen": false,
+  "goal": "G_bind",
+  "holds_in": 112,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap"
+   ],
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "cap-only",
+  "gen": false,
+  "goal": "G_complete",
+  "holds_in": 120,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap"
+   ],
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ],
+   [
+    "WitIn"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttTrans",
+    "Detector",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "cap-only",
+  "gen": false,
+  "goal": "G_content",
+  "holds_in": 60,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap",
+    "Detector"
+   ],
+   [
+    "BindFix",
+    "Detector"
+   ],
+   [
+    "BindGrind",
+    "Detector"
+   ],
+   [
+    "Detector",
+    "WitIn"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttTrans",
+    "Detector",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "cap-only",
+  "gen": false,
+  "goal": "G_noinf",
+  "holds_in": 112,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap"
+   ],
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "cap-only",
+  "gen": false,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "cap-only",
+  "gen": true,
+  "goal": "G_auth",
+  "holds_in": 128,
+  "of": 128,
+  "minimal_sufficient": [
+   []
+  ],
+  "maximal_failing": [],
+  "upward_closed": true
+ },
+ {
+  "adv": "cap-only",
+  "gen": true,
+  "goal": "G_bind",
+  "holds_in": 112,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap"
+   ],
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "cap-only",
+  "gen": true,
+  "goal": "G_complete",
+  "holds_in": 120,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap"
+   ],
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ],
+   [
+    "WitIn"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttTrans",
+    "Detector",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "cap-only",
+  "gen": true,
+  "goal": "G_content",
+  "holds_in": 60,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap",
+    "Detector"
+   ],
+   [
+    "BindFix",
+    "Detector"
+   ],
+   [
+    "BindGrind",
+    "Detector"
+   ],
+   [
+    "Detector",
+    "WitIn"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttTrans",
+    "Detector",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "cap-only",
+  "gen": true,
+  "goal": "G_noinf",
+  "holds_in": 112,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap"
+   ],
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "cap-only",
+  "gen": true,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": false,
+  "goal": "G_auth",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": false,
+  "goal": "G_bind",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": false,
+  "goal": "G_complete",
+  "holds_in": 128,
+  "of": 128,
+  "minimal_sufficient": [
+   []
+  ],
+  "maximal_failing": [],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": false,
+  "goal": "G_content",
+  "holds_in": 48,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix",
+    "Detector"
+   ],
+   [
+    "BindGrind",
+    "Detector"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": false,
+  "goal": "G_noinf",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": false,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": true,
+  "goal": "G_auth",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": true,
+  "goal": "G_bind",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": true,
+  "goal": "G_complete",
+  "holds_in": 128,
+  "of": 128,
+  "minimal_sufficient": [
+   []
+  ],
+  "maximal_failing": [],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": true,
+  "goal": "G_content",
+  "holds_in": 48,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix",
+    "Detector"
+   ],
+   [
+    "BindGrind",
+    "Detector"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": true,
+  "goal": "G_noinf",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "exec-only",
+  "gen": true,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": false,
+  "goal": "G_auth",
+  "holds_in": 60,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix"
+   ],
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind"
+   ],
+   [
+    "BindFix",
+    "WitSrc"
+   ],
+   [
+    "BindGrind",
+    "WitSrc"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttCap",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn"
+   ],
+   [
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": false,
+  "goal": "G_bind",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": false,
+  "goal": "G_complete",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap"
+   ],
+   [
+    "WitIn"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": false,
+  "goal": "G_content",
+  "holds_in": 48,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix",
+    "Detector"
+   ],
+   [
+    "BindGrind",
+    "Detector"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": false,
+  "goal": "G_noinf",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": false,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": true,
+  "goal": "G_auth",
+  "holds_in": 36,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix"
+   ],
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind"
+   ],
+   [
+    "AttTrans",
+    "BindFix",
+    "WitSrc"
+   ],
+   [
+    "AttTrans",
+    "BindGrind",
+    "WitSrc"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttCap",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": true,
+  "goal": "G_bind",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": true,
+  "goal": "G_complete",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap"
+   ],
+   [
+    "WitIn"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": true,
+  "goal": "G_content",
+  "holds_in": 48,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix",
+    "Detector"
+   ],
+   [
+    "BindGrind",
+    "Detector"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": true,
+  "goal": "G_noinf",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full",
+  "gen": true,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": false,
+  "goal": "G_auth",
+  "holds_in": 48,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix",
+    "WitSrc"
+   ],
+   [
+    "BindGrind",
+    "WitSrc"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn"
+   ],
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": false,
+  "goal": "G_bind",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": false,
+  "goal": "G_complete",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "WitIn"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": false,
+  "goal": "G_content",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": false,
+  "goal": "G_noinf",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": false,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": true,
+  "goal": "G_auth",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": true,
+  "goal": "G_bind",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": true,
+  "goal": "G_complete",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "WitIn"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": true,
+  "goal": "G_content",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": true,
+  "goal": "G_noinf",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+tee",
+  "gen": true,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": false,
+  "goal": "G_auth",
+  "holds_in": 24,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix"
+   ],
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttCap",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": false,
+  "goal": "G_bind",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": false,
+  "goal": "G_complete",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": false,
+  "goal": "G_content",
+  "holds_in": 48,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix",
+    "Detector"
+   ],
+   [
+    "BindGrind",
+    "Detector"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": false,
+  "goal": "G_noinf",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": false,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": true,
+  "goal": "G_auth",
+  "holds_in": 24,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix"
+   ],
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttCap",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": true,
+  "goal": "G_bind",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ],
+   [
+    "BindGrind"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": true,
+  "goal": "G_complete",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttCap"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": true,
+  "goal": "G_content",
+  "holds_in": 48,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix",
+    "Detector"
+   ],
+   [
+    "BindGrind",
+    "Detector"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "WitIn",
+    "WitSrc"
+   ],
+   [
+    "AttCap",
+    "AttTrans",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": true,
+  "goal": "G_noinf",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "BindFix"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "full+wit",
+  "gen": true,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": false,
+  "goal": "G_auth",
+  "holds_in": 96,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttTrans"
+   ],
+   [
+    "WitSrc"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": false,
+  "goal": "G_bind",
+  "holds_in": 128,
+  "of": 128,
+  "minimal_sufficient": [
+   []
+  ],
+  "maximal_failing": [],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": false,
+  "goal": "G_complete",
+  "holds_in": 128,
+  "of": 128,
+  "minimal_sufficient": [
+   []
+  ],
+  "maximal_failing": [],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": false,
+  "goal": "G_content",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "Detector"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": false,
+  "goal": "G_noinf",
+  "holds_in": 128,
+  "of": 128,
+  "minimal_sufficient": [
+   []
+  ],
+  "maximal_failing": [],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": false,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": true,
+  "goal": "G_auth",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "AttTrans"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": true,
+  "goal": "G_bind",
+  "holds_in": 128,
+  "of": 128,
+  "minimal_sufficient": [
+   []
+  ],
+  "maximal_failing": [],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": true,
+  "goal": "G_complete",
+  "holds_in": 128,
+  "of": 128,
+  "minimal_sufficient": [
+   []
+  ],
+  "maximal_failing": [],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": true,
+  "goal": "G_content",
+  "holds_in": 64,
+  "of": 128,
+  "minimal_sufficient": [
+   [
+    "Detector"
+   ]
+  ],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": true,
+  "goal": "G_noinf",
+  "holds_in": 128,
+  "of": 128,
+  "minimal_sufficient": [
+   []
+  ],
+  "maximal_failing": [],
+  "upward_closed": true
+ },
+ {
+  "adv": "trans-only",
+  "gen": true,
+  "goal": "G_zero",
+  "holds_in": 0,
+  "of": 128,
+  "minimal_sufficient": [],
+  "maximal_failing": [
+   [
+    "AttCap",
+    "AttTrans",
+    "BindFix",
+    "BindGrind",
+    "Detector",
+    "WitIn",
+    "WitSrc"
+   ]
+  ],
+  "upward_closed": true
+ }
+]

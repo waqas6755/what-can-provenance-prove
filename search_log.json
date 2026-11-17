@@ -1,0 +1,218 @@
+[
+ {
+  "query": "blockchain federated learning model update provenance auditability poisoning",
+  "page": 1,
+  "returned": 25,
+  "total_estimate": 913,
+  "source": "openalex",
+  "file": "blockchain_federated_learning_model_update_provenance_audita_p1.json",
+  "tool_output": "toolu_016TxK5n9Lv5cYVoY8SV4TPq.json"
+ },
+ {
+  "query": "blockchain federated learning model update provenance auditability poisoning",
+  "page": 2,
+  "returned": 25,
+  "total_estimate": 913,
+  "source": "openalex",
+  "file": "blockchain_federated_learning_model_update_provenance_audita_p2.json",
+  "tool_output": "toolu_0138Ce3cvytN9fJsEk8mt4nc.json"
+ },
+ {
+  "query": "blockchain provenance machine learning training data integrity",
+  "page": 1,
+  "returned": 25,
+  "total_estimate": 5596,
+  "source": "openalex",
+  "file": "blockchain_provenance_machine_learning_training_data_integri_p1.json",
+  "tool_output": "toolu_01WcismHoUBBGtrfyyyFeGZD.json"
+ },
+ {
+  "query": "blockchain provenance machine learning training data integrity",
+  "page": 2,
+  "returned": 25,
+  "total_estimate": 5596,
+  "source": "openalex",
+  "file": "blockchain_provenance_machine_learning_training_data_integri_p2.json",
+  "tool_output": "toolu_01FUJW722Vy8MzxaLeQpNjm7.json"
+ },
+ {
+  "query": "blockchain provenance machine learning training data integrity",
+  "page": 3,
+  "returned": 24,
+  "total_estimate": 5596,
+  "source": "openalex",
+  "file": "blockchain_provenance_machine_learning_training_data_integri_p3.json",
+  "tool_output": "toolu_0183WPqMyvaiqJ1trqqgSYCn.json"
+ },
+ {
+  "query": "blockchain provenance machine learning training data integrity",
+  "page": 4,
+  "returned": 25,
+  "total_estimate": 5596,
+  "source": "openalex",
+  "file": "blockchain_provenance_machine_learning_training_data_integri_p4.json",
+  "tool_output": "toolu_01Wp4Xb5x5ZdDYWzUdzcdMVC.json"
+ },
+ {
+  "query": "data forging attack verifiable training audit",
+  "page": 1,
+  "returned": 25,
+  "total_estimate": 399,
+  "source": "openalex",
+  "file": "data_forging_attack_verifiable_training_audit_p1.json",
+  "tool_output": "toolu_01NUtXyEaqPRc5VGyY9DhDGK.json"
+ },
+ {
+  "query": "data poisoning defense training provenance auditing",
+  "page": 1,
+  "returned": 25,
+  "total_estimate": 1944,
+  "source": "openalex",
+  "file": "data_poisoning_defense_training_provenance_auditing_p1.json",
+  "tool_output": "toolu_01CzA39WmX7FBkVobfXmsXEm.json"
+ },
+ {
+  "query": "data poisoning defense training provenance auditing",
+  "page": 2,
+  "returned": 25,
+  "total_estimate": 1944,
+  "source": "openalex",
+  "file": "data_poisoning_defense_training_provenance_auditing_p2.json",
+  "tool_output": "toolu_01PYHAZpynCr66RP6wTgog3U.json"
+ },
+ {
+  "query": "dataset inference training data membership audit large language model",
+  "page": 1,
+  "returned": 24,
+  "total_estimate": 6574,
+  "source": "openalex",
+  "file": "dataset_inference_training_data_membership_audit_large_langu_p1.json",
+  "tool_output": "toolu_01BgWunp29HwaoX9J8Pc1Vai.json"
+ },
+ {
+  "query": "dataset inference training data membership audit large language model",
+  "page": 2,
+  "returned": 25,
+  "total_estimate": 6574,
+  "source": "openalex",
+  "file": "dataset_inference_training_data_membership_audit_large_langu_p2.json",
+  "tool_output": "toolu_01JZ7doFyTAjEWJR5xSer2M3.json"
+ },
+ {
+  "query": "distributed ledger large language model training data provenance trust",
+  "page": 1,
+  "returned": 25,
+  "total_estimate": 2751,
+  "source": "openalex",
+  "file": "distributed_ledger_large_language_model_training_data_proven_p1.json",
+  "tool_output": "toolu_01MmrNSz8XwWz83ejdNkYi3K.json"
+ },
+ {
+  "query": "distributed ledger large language model training data provenance trust",
+  "page": 2,
+  "returned": 24,
+  "total_estimate": 2751,
+  "source": "openalex",
+  "file": "distributed_ledger_large_language_model_training_data_proven_p2.json",
+  "tool_output": "toolu_01SRoywiG3b3djYEP4eSh7A1.json"
+ },
+ {
+  "query": "end-to-end provenance capture machine learning pipeline lineage tracking",
+  "page": 1,
+  "returned": 24,
+  "total_estimate": 2558,
+  "source": "openalex",
+  "file": "end_to_end_provenance_capture_machine_learning_pipeline_line_p1.json",
+  "tool_output": "toolu_01Hpa8EDM23c9YTW1oLbT6eZ.json"
+ },
+ {
+  "query": "end-to-end provenance capture machine learning pipeline lineage tracking",
+  "page": 2,
+  "returned": 25,
+  "total_estimate": 2558,
+  "source": "openalex",
+  "file": "end_to_end_provenance_capture_machine_learning_pipeline_line_p2.json",
+  "tool_output": "toolu_01Xsmwb7t5BtDYWMBha2htLg.json"
+ },
+ {
+  "query": "proof learning training data verification model weights spoofing",
+  "page": 1,
+  "returned": 25,
+  "total_estimate": 2512,
+  "source": "openalex",
+  "file": "proof_learning_training_data_verification_model_weights_spoo_p1.json",
+  "tool_output": "toolu_01TawiYvk73UyExcoiiYtz5p.json"
+ },
+ {
+  "query": "proof learning training data verification model weights spoofing",
+  "page": 2,
+  "returned": 24,
+  "total_estimate": 2512,
+  "source": "openalex",
+  "file": "proof_learning_training_data_verification_model_weights_spoo_p2.json",
+  "tool_output": "toolu_011eZHPDqzMXocj6WNF8sdqb.json"
+ },
+ {
+  "query": "proof-of-learning robustness verification training computation",
+  "page": 1,
+  "returned": 24,
+  "total_estimate": 86099,
+  "source": "openalex",
+  "file": "proof_of_learning_robustness_verification_training_computati_p1.json",
+  "tool_output": "toolu_01A9mbERgeVxECiuwXVBP7vp.json"
+ },
+ {
+  "query": "transparency log model signing machine learning supply chain integrity",
+  "page": 1,
+  "returned": 25,
+  "total_estimate": 7277,
+  "source": "openalex",
+  "file": "transparency_log_model_signing_machine_learning_supply_chain_p1.json",
+  "tool_output": "toolu_01VbStayb56G248vAcPNpvnj.json"
+ },
+ {
+  "query": "transparency log model signing machine learning supply chain integrity",
+  "page": 2,
+  "returned": 25,
+  "total_estimate": 7277,
+  "source": "openalex",
+  "file": "transparency_log_model_signing_machine_learning_supply_chain_p2.json",
+  "tool_output": "toolu_01K6Qj2DocxdkD3Q9WZuCJyX.json"
+ },
+ {
+  "query": "trusted execution environment remote attestation machine learning training integrity",
+  "page": 1,
+  "returned": 25,
+  "total_estimate": 1389,
+  "source": "openalex",
+  "file": "trusted_execution_environment_remote_attestation_machine_lea_p1.json",
+  "tool_output": "toolu_01BrDvDsPcX4Nn9TSkyzELcg.json"
+ },
+ {
+  "query": "trusted execution environment remote attestation machine learning training integrity",
+  "page": 2,
+  "returned": 25,
+  "total_estimate": 1389,
+  "source": "openalex",
+  "file": "trusted_execution_environment_remote_attestation_machine_lea_p2.json",
+  "tool_output": "toolu_01LPqLQ9gPyU2BH2e7ypkrtF.json"
+ },
+ {
+  "query": "zero-knowledge proof training deep neural network verifiable",
+  "page": 1,
+  "returned": 25,
+  "total_estimate": 6991,
+  "source": "openalex",
+  "file": "zero_knowledge_proof_training_deep_neural_network_verifiable_p1.json",
+  "tool_output": "toolu_01UbMZWu3ZkcgeviDKT1VdyH.json"
+ },
+ {
+  "query": "zero-knowledge proof training deep neural network verifiable",
+  "page": 2,
+  "returned": 25,
+  "total_estimate": 6991,
+  "source": "openalex",
+  "file": "zero_knowledge_proof_training_deep_neural_network_verifiable_p2.json",
+  "tool_output": "toolu_01A3mM6N5jPaMvrV92iEknKq.json"
+ }
+]

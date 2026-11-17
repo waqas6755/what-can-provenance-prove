@@ -1,0 +1,234 @@
+% ---------------------------------------------------------------
+\section{Proofs}\label{app:proofs}
+% ---------------------------------------------------------------
+
+Throughout, an execution is written $E=(\mathcal I,\{v_i\}_{i\in\mathcal I},g)$. Here
+$v_i\in\{0,1\}^{11}$ records the membership of item $i$ in
+$D,S,F,C,U,\hat S,\hat D,\hat F,B,M,X$, and $g$ collects the global Booleans: $\alpha$,
+$\mu$, $\mathit{gen}$, $\mathit{gs}$, and whether the detector is perfect. We write
+$i\in D$ for $v_i[D]=1$. A \emph{counterexample} to $\mu\models_{\alpha,\mathit{gen}}G$ is an
+admissible, accepted execution that violates $G$. In every construction below, $X$ is set
+equal to $C$ whenever $\textsf{Detector}\in\mu$ and $\tau$ hold, as $\Phi_8$ requires, and
+the listed items are not in $B$ unless stated. We leave $X$ out of the listed vectors.
+
+\subsection*{Proof of Lemma~\ref{lem:sep} (Separability)}
+
+\emph{Form of the constraints.}
+Each set equation or inclusion between sets in $\Phi$, $\mathrm A$ and the goals is a
+universally quantified per-item statement. For example, $C\subseteq\hat D\cup\hat S$ is
+$\forall i.\ i\in C\Rightarrow(i\in\hat D\vee i\in\hat S)$, and $U=C$ is
+$\forall i.\ i\in U\Leftrightarrow i\in C$. Emptiness ($S=\emptyset$) and disjointness
+($D\cap S=\emptyset$) are also per-item. Each premise of an implication in $\Phi$ or
+$\mathrm A$ (``$\textsf{AdvTrans}\notin\alpha$'', ``$\beta$'', ``$\mathit{gen}$'') mentions
+only global Booleans. Hence each constraint has the form
+$\psi(g)\Rightarrow\forall i.\ \varphi(v_i,g)$, which equals
+$\forall i.\ (\psi(g)\Rightarrow\varphi(v_i,g))$ whenever $\mathcal I\neq\emptyset$.
+Two constraints mention only $g$:
+$\mathit{gs}\Rightarrow(\textsf{AdvExec}\in\alpha\wedge\textsf{BindFix}\notin\mu)$ in
+$\Phi_6$, and the conjunct $\neg\mathit{gs}$ of $G_{\mathrm{noinf}}$. Write the admissible,
+accepted executions as those satisfying
+$\chi_\Phi(g)\wedge\forall i.\ \varphi_\Phi(v_i,g)$, and each goal as
+$\chi_G(g)\wedge\forall i.\ \varphi_G(v_i,g)$.
+
+\emph{The zero vector.}
+Let $\mathbf 0$ be the vector with every membership $0$. Every per-item constraint holds
+at $\mathbf 0$. Every inclusion $P\subseteq Q$ holds because $i\notin P$. Every equation
+$P=Q$ holds because both sides are false. Every emptiness and disjointness condition holds
+trivially. Each $\varphi_G$ holds at $\mathbf 0$ for the same reasons. (This side condition
+is also asserted mechanically by our independent checker.)
+
+\emph{Reduction.}
+($\Leftarrow$) Let $E$ be a counterexample over $\mathcal I$. Then $\chi_\Phi(g)$ holds,
+$\varphi_\Phi(v_i,g)$ holds for every $i$, and either $\chi_G(g)$ fails or
+$\varphi_G(v_{i_0},g)$ fails for some $i_0$. In the first case, the one-item execution
+$(\{j\},v_j{=}\mathbf 0,g)$ is admissible, accepted and violates $\chi_G$. In the second,
+the restriction $(\{i_0\},v_{i_0},g)$ is admissible and accepted (its only item satisfied
+every per-item constraint in $E$), and it violates $\varphi_G$. Either way there is a
+one-item counterexample.
+($\Rightarrow$) Given a one-item counterexample $(\{i_0\},v_{i_0},g)$ and any universe
+$\mathcal I\ni i_0$, assign $\mathbf 0$ to every other item. The new items satisfy every
+per-item constraint and goal, so the extended execution is admissible, accepted and still
+violating. Hence a counterexample exists over some universe iff one exists over a single
+item. \qed
+
+\emph{The empty universe.} If $\mathcal I=\emptyset$, only the global conditions $\chi$
+remain. Any counterexample there violates some $\chi_G$. It is then reproduced by the
+one-item execution with the zero vector, which is admissible and accepted. So restricting
+the check to one item loses nothing.
+
+\emph{When the lemma fails.} The lemma uses two facts: every constraint is a per-item
+universal statement or a global condition, and the zero vector satisfies every per-item
+constraint. A constraint that relates different items breaks the first fact. Examples are a
+cardinality bound (``at most $n$ items are flagged'', a detector \emph{budget}), a ratio (``at
+most $\varepsilon$ of $C$ is poisoned''), or a relation between runs (``$C_j$ contains
+$M_{j-1}$''). Extensions with such constraints need bounded model checking, or a new argument.
+This is why detector budgets and poison rates appear in our experiments and not in the
+model.
+
+\subsection*{Proof of Proposition~\ref{prop:mono} (Monotonicity)}
+
+Let $\mu\subseteq\mu'$, and let $E'$ be a counterexample for $\mu'$. We build a
+counterexample for $\mu$. Adding a mechanism has three effects. It adds acceptance
+conditions ($\mathrm A_1$--$\mathrm A_4$). It strengthens admissibility constraints
+($\Phi_3$--$\Phi_5$ only gain premises that make them apply). And it can enlarge $X$ from
+$\emptyset$ to $C$ ($\Phi_8$). Take $E$ equal to $E'$ except that $X$ is recomputed by
+$\Phi_8$ for $\mu$, and $\mathit{gs}$ is unchanged. Every constraint that applies under
+$\mu$ also applies under $\mu'$, so $E$ is admissible and accepted. The one exception is
+$\Phi_6$'s $\mathit{gs}$ clause, which is weaker under $\mu$ because $\mu$ has no more
+\textsf{BindFix} than $\mu'$. $X$ occurs in the goals only on the right of an inclusion
+($G_{\mathrm{content}}$), and $X_E\subseteq X_{E'}$. So any goal violated by $E'$ is
+violated by $E$. \qed
+
+\subsection*{Proof of Theorem~\ref{thm:bind} (Binding)}
+
+\emph{Sufficiency.} $\beta$ with $(\mathrm A_1)$ gives $U=C$. If
+$\textsf{AdvExec}\notin\alpha$, then $U=F$ by $\Phi_6$. Then $\textsf{AdvCap}\notin\alpha$
+or $(\textsf{AttCap}\in\mu\wedge\tau)$ gives $C=F=U$ by $\Phi_5$.
+
+\emph{Necessity.} Let $\textsf{AdvExec}\in\alpha$ and $\neg\beta$. Take one item with
+$v=\{U\}$ (only $U$ set). No constraint of $\Phi$ mentions $U$ except $\Phi_6$, whose
+premise fails. $(\mathrm A_1)$ is vacuous; $(\mathrm A_2)$ and $(\mathrm A_4)$ concern
+$C=\emptyset$; $(\mathrm A_3)$ holds because $\hat F=F=\emptyset$. So the execution is
+accepted, and $U\neq C$. Now let $\textsf{AdvExec}\notin\alpha$, $\textsf{AdvCap}\in\alpha$,
+$\neg\beta$, and $\textsf{AttCap}\notin\mu$ or $\neg\tau$. Take $v=\{D,\hat D,C\}$. The item
+is delivered and witnessed, but filtered out by an honest transform and re-added by a
+corrupt capture. $F=U=\emptyset$, $C=\{i\}$; $(\mathrm A_2)$ holds because $i\in\hat D$, and
+$(\mathrm A_3)$ holds because $\hat F=\emptyset$. Hence $U\neq C$. \qed
+
+\subsection*{Proof of Theorem~\ref{thm:auth} (Lineage)}
+
+Fix the full adversary, so $\tau$ holds, $\textsf{AdvWit}\notin\alpha$ and
+$\hat D=D,\hat F=F$.
+
+\emph{Sufficiency.} By $(\mathrm A_1)$, $U=C$.
+(a) $\textsf{WitSrc}$, $\neg\mathit{gen}$: $(\mathrm A_2)$ gives $C\subseteq D\cup\hat S$,
+and $\hat S=\emptyset$ by $\Phi_1$. Hence $U\subseteq D$.
+(b) $\textsf{WitSrc}\wedge\textsf{AttTrans}$: $\hat S=S$ by $\Phi_4$, so
+$U=C\subseteq D\cup S$.
+(c) $\textsf{AttCap}\wedge\textsf{AttTrans}$: $C=F$ by $\Phi_5$ and $F\subseteq D\cup S$ by
+$\Phi_3$, so $U\subseteq D\cup S$.
+
+\emph{Necessity.} By monotonicity it suffices to refute the maximal mechanism sets outside
+the stated condition. Each counterexample below has one item $x$ with $x\notin D\cup S$.
+\begin{itemize}
+\item $\neg\beta$ (all other mechanisms present): $v=\{U\}$, as in Theorem~\ref{thm:bind}.
+\item $\beta$, no \textsf{WitSrc}, no \textsf{AttTrans}: $v=\{F,C,U,\hat F\}$. $\Phi_3$ does not
+  apply ($\textsf{AdvTrans}$, no attestation), so $F$ is unconstrained.
+  \textsf{AttCap} gives $C=F$, and $(\mathrm A_3)$ holds because $\hat F=F\subseteq C$.
+\item $\beta$, no \textsf{WitSrc}, no \textsf{AttCap}: $v=\{C,U\}$. $\Phi_5$ does not apply,
+  so $C$ is unconstrained. $F=\emptyset$ satisfies $\Phi_3$, and $(\mathrm A_3)$ is vacuous.
+\item $\mathit{gen}$, $\beta$, \textsf{WitSrc}, no \textsf{AttTrans} (\textsf{AttCap},
+  \textsf{WitIn}, \textsf{Detector} present): $v=\{F,C,U,\hat F,\hat S\}$. $\Phi_4$ does not
+  apply, so $\hat S$ is unconstrained (the transform \emph{launders} $x$ as synthetic).
+  $(\mathrm A_2)$ holds because $x\in\hat S$.
+\end{itemize}
+In every case $x\notin B$, so $(\mathrm A_4)$ holds, and $U\not\subseteq D\cup S$.
+
+\emph{Colluding witnesses (full+wit).} $\Phi_7$ no longer applies, so $\hat D$ and
+$\hat F$ are unconstrained. Every mechanism set without both \textsf{AttCap} and
+\textsf{AttTrans} then fails. Without \textsf{AttTrans}, use $v=\{F,C,U,\hat D\}$.
+Without \textsf{AttCap}, use $v=\{C,U,\hat D\}$. Proof (c) does not use witnesses, so the
+attestation route still holds.
+
+\emph{Broken attestation (full+tee).} $\tau$ fails, so $\Phi_3$--$\Phi_5$ never apply
+through attestation, and $\hat S$ is unconstrained whenever $\mathit{gen}$ holds. For
+filter-only pipelines, (a) still applies. For generative ones, the laundering instance
+refutes every mechanism set. \qed
+
+\subsection*{Proof of Corollary~\ref{cor:launder}}
+
+Drop $\neg\mathit{gen}\Rightarrow\hat S=\emptyset$. Then the laundering instance of the last
+bullet above is admissible for filter-only pipelines too. So
+$\{\textsf{BindFix},\textsf{BindGrind},\textsf{WitSrc},\textsf{WitIn},\textsf{AttCap},\textsf{Detector}\}$
+fails $G_{\mathrm{auth}}$. \qed
+
+\subsection*{Proof of Theorem~\ref{thm:noinf} (Influence)}
+
+If $\textsf{BindFix}\in\mu$, then $\Phi_6$ forces $\neg\mathit{gs}$, and $\beta$ gives
+$U=C$. If $\textsf{BindFix}\notin\mu$, the execution with every item $\mathbf 0$ and
+$\mathit{gs}$ true is admissible ($\textsf{AdvExec}\in\alpha$) and accepted, and it
+violates $G_{\mathrm{noinf}}$. \qed
+
+\subsection*{Proof of Theorem~\ref{thm:grind} (Grinding bound)}
+
+Write the candidates as $\Sigma=\{M_1,\dots,M_T\}\subseteq\mathcal A_C$. By assumption
+they are generated independently of $K$, so $(C,\Sigma)$ is independent of $K$. Given
+$(C,\Sigma)$, the released $M$ is a function of the index $j^\ast$ with $M=M_{j^\ast}$.
+Hence $H(M\mid C,\Sigma)\le H(j^\ast)\le\log_2T$. Since $I(K;M\mid C,\Sigma)\le
+H(M\mid C,\Sigma)$, this gives $I(K;M\mid C,\Sigma)\le\log_2T$.
+
+For the second claim, let $\pi(M)\in\{0,1\}^k$ be the behaviour pattern the adversary
+targets. Given $(C,\Sigma)$, $\pi(M)$ takes values in the set
+$P_{C,\Sigma}=\{\pi(M_j)\}_j$, which has at most $T$ elements. For $K$ uniform and
+independent of $(C,\Sigma)$,
+\[
+\Pr[\pi(M)=K]\le\Pr[K\in P_{C,\Sigma}]=\mathbb E\,|P_{C,\Sigma}|/2^k\le T/2^k.
+\]
+The same bound holds if the prover evaluates the candidates one at a time and stops at the
+first match. The patterns it can reach are still those of at most $T$ candidates drawn
+independently of $K$. Success probability at least $1/2$ therefore requires $T\ge2^{k-1}$.
+
+Under \textsf{BindFix}, the verifier recomputes the seed from the committed record and a
+beacon released after commitment, and replays exactly. Then
+$\mathcal A_C=\{\mathrm{Train}(C,s_{\mathrm{fix}})\}$, so $T=1$.
+
+\emph{Scope of the proof.} The bound depends only on $|\Sigma|$. It does not assume that
+candidates are distinct seeds, that training is deterministic, or that $\mathcal A_C$ is
+small. Nondeterminism and tolerance enter only through the size of $\mathcal A_C$, and so
+through how large a $T$ the prover can obtain. \qed
+
+\subsection*{Proof of Theorem~\ref{thm:content} (Content)}
+
+\emph{Part 1.} For any $\mu$, take one item with $v=\{D,\hat D,F,C,U,B,M\}$ and, if
+\textsf{Detector} is present and $\tau$ holds, also $X$. This is a poisoned item from an
+authorised source, missed by the detector. Admissibility: $B\cap D\neq\emptyset$ is
+allowed by \textsf{AdvSource}; $F\subseteq D$, $C=F$, $U=F$; $\hat S=S=\emptyset$. Acceptance:
+$U=C$; $C\subseteq\hat D$; $\hat F\subseteq C$; $C\cap B\subseteq M$. The execution violates
+$G_{\mathrm{zero}}$. With a perfect detector $M=\emptyset$, $(\mathrm A_4)$ gives
+$C\cap B=\emptyset$, and $\beta$ gives $U\cap B=C\cap B=\emptyset$.
+
+\emph{Part 2.} Sufficiency: $\beta$ gives $U=C$. \textsf{Detector} with $\tau$ gives $X=C$
+and $C\cap B\subseteq M$. Hence $U\cap B=C\cap B\subseteq M\cap C=M\cap X$. Necessity:
+without $\beta$, take $v=\{D,\hat D,U,B\}$. The item is poisoned and delivered; the transform
+dropped it, the record does not contain it, and the corrupt executor trains on it anyway.
+$C=\emptyset$, so $X=\emptyset$.
+Without \textsf{Detector}, take the Part~1 item without $X$; then $X=\emptyset$, so
+$U\cap B\not\subseteq X$.
+
+\emph{Part 3.} With $\textsf{AdvExec}\notin\alpha$, $U=F$. Sufficiency: if
+$\mu\models G_{\mathrm{compl}}$, then $F\subseteq C$. With \textsf{Detector} and $\tau$,
+$U\cap B=F\cap B\subseteq C\cap B\subseteq M$, and $\subseteq C=X$. Necessity: without
+\textsf{Detector}, $X=\emptyset$ and the Part~1 item refutes. If
+$\mu\not\models G_{\mathrm{compl}}$, take a one-item counterexample to $G_{\mathrm{compl}}$
+($i\in F$, $i\notin C$). By Theorem~\ref{thm:compl}'s necessity construction it can be
+chosen with $i\in D\cap\hat D$, and setting $i\in B$ affects no constraint. Since
+$i\notin C=X$, $U\cap B\not\subseteq X$.
+
+\emph{Broken attestation.} If $\tau$ fails, $X=\emptyset$ by $\Phi_8$, and the Part~1 item
+violates $G_{\mathrm{content}}$ for every $\mu$. \qed
+
+\subsection*{Proof of Theorem~\ref{thm:compl} (Completeness)}
+
+\emph{Sufficiency.} $\textsf{AttCap}\wedge\tau$: $C=F$. $\textsf{WitIn}$ with
+$\textsf{AdvWit}\notin\alpha$: $\hat F=F$ and $(\mathrm A_3)$ give $F\subseteq C$.
+$\beta$ with $\textsf{AdvExec}\notin\alpha$: $C=U=F$.
+
+\emph{Necessity.} Suppose none of the three holds. Take $v=\{D,\hat D,F\}$. Add $U$ unless $\beta$ holds, and add
+$\hat F$ unless $\textsf{AdvWit}\in\alpha$. The item was delivered and passed the filter,
+but the corrupt capture left it out of the record. $\Phi_5$ does not apply, so
+$C=\emptyset$ is admissible. If $\beta$ holds, then $\textsf{AdvExec}\in\alpha$ (otherwise
+the third disjunct would hold), so $U=\emptyset=C$ is admissible and $(\mathrm A_1)$
+holds. If $\neg\beta$ and $\textsf{AdvExec}\notin\alpha$, then $U=F$ as $\Phi_6$ requires.
+$(\mathrm A_3)$ is either absent, or vacuous because the colluding witness reports
+$\hat F=\emptyset$. In every case $F\not\subseteq C$. \qed
+
+\subsection*{On Proposition~\ref{prop:ledger}}
+
+The six goals refer to the record $C$ and the reports $\hat S,\hat D,\hat F$ that the
+auditor actually reads. If the store gives every auditor the same, unaltered record
+($P_1,P_2$), the analysis above applies verbatim. $P_8$ concerns entries that never reach
+the store. Their absence causes non-acceptance or non-publication, which is a loss of
+availability, not an accepted execution violating a goal. That a witnessed transparency
+log provides $P_1$ and $P_2$, and a replicated ledger additionally $P_8$, under their
+respective trust assumptions, is standard~\cite{rfc6962}. We argue this proposition rather
+than model-check it.

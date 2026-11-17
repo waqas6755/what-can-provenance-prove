@@ -1,0 +1,3 @@
+trans-only 1536 sound 1056 UNSOUND 0 tight 480 not_realised 0 21s
+exec-only 1536 sound 864 UNSOUND 0 tight 672 not_realised 0 39s
+cap-only 1536 sound 1064 UNSOUND 0 tight 472 not_realised 0 64s

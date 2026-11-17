@@ -1,0 +1,116 @@
+% ---------------------------------------------------------------
+\section{Discussion}\label{sec:discussion}
+% ---------------------------------------------------------------
+
+\subsection{What an auditor may conclude}
+
+Table~\ref{tab:minimal} can be read as a checklist. Before accepting a claim about a
+released model, an auditor should establish three things:
+\begin{enumerate}
+\item Who is trusted: which profile applies.
+\item Which mechanisms were actually deployed and verified.
+\item Which goal the claim corresponds to.
+\end{enumerate}
+Two examples show how this works.
+
+A cloud provider's attested data pipeline without binding (\textsf{AttCap}, \textsf{AttTrans}
+under the full adversary) supports no claim about the released model. It does support the
+record-level claim $G_{\mathrm{compl}}$.
+
+A signed-manifest scheme with a trusted training infrastructure (the trans-only or cap-only
+profiles) does support lineage for filter-only pipelines, but not the absence of poison.
+
+\subsection{Answers to five design questions}
+
+\paragraph{Binding}
+Binding is required whenever the trainer is not trusted, and no amount of witnessing or
+attestation of earlier stages substitutes for it (Theorem~\ref{thm:bind}). If binding is
+used, its randomness must be fixed after commitment (Theorems~\ref{thm:noinf}
+and~\ref{thm:grind}). Exact re-execution is a valid binding only where training is
+bit-reproducible. Section~\ref{sec:eval} measures when it is.
+
+\paragraph{Witnessing}
+Source receipts must be content-addressed (split view, Section~\ref{sec:eval}). Source
+witnessing and input witnessing answer different questions, lineage and completeness. Each
+fails under collusion, so witnesses should be organisationally independent of the operator
+they observe.
+
+\paragraph{Synthetic data}
+Generative stages need an attested transform even on the witness route, and stage types
+must be declared and authenticated (Corollary~\ref{cor:launder}). Lineage of synthetic data
+is recursive: the generator is itself a model whose provenance matters. Our model treats it
+as an authorised but possibly poisoned source (\textsf{AdvGen}).
+
+\paragraph{Blockchain versus transparency logs}
+For every goal we study, a witnessed transparency log is sufficient as the record store.
+A ledger adds inclusion liveness (Proposition~\ref{prop:ledger}). We find no support for
+the claim that a blockchain makes training records complete or truthful. Those properties
+are decided upstream of the store.
+
+\paragraph{Poisoning}
+Provenance cannot certify that a model is poison-free (Theorem~\ref{thm:content}). It can
+make a detector's verdict \emph{transfer} to the released model, which is what binding and
+completeness contribute. The resulting claim is only as strong as the detector's recall.
+In our experiments, recall was weakest exactly where the poison worked. The prototype's detector flagged at most a quarter of the planted items. On DistilBERT, recall fell from 68--83\% at the lower, ineffective poison rates to 25\% at the 2\% rate where the backdoor took hold (Section~\ref{sec:eval}). Any
+certification scheme that reports provenance without detector recall overstates its
+assurance.
+
+\subsection{Open problems}
+
+\begin{enumerate}
+\item \emph{Binding at pre-training scale.} Zero-knowledge binding now reaches LoRA
+  fine-tuning~\cite{liao2026verilora}, but not full pre-training. Exact re-execution
+  doubles the cost and requires determinism. Spot-check proofs of learning admit spoofing
+  under tolerance~\cite{fang2023pol}.
+\item \emph{Tolerance as a grinding channel.} Theorem~\ref{thm:grind} bounds influence by the
+  number of accepted trajectories. For tolerance-based verifiers that number is not
+  characterised. Optimum vicinity~\cite{tan2025zkpot} closes the channel for convex
+  objectives; for non-convex LLM training it remains open.
+\item \emph{Attested accelerators.} The attestation routes assume that the relevant stages run
+  in TEEs. Atlas notes that GPUs lack equivalent protection~\cite{spoczynski2025atlas}.
+\item \emph{Detector guarantees.} $G_{\mathrm{content}}$ is parameterised by recall. Certified
+  recall bounds for poisoning detectors at LLM scale are lacking.
+\item \emph{Confidential verifiability ($P_7$).} All our mechanisms reveal the record to the
+  auditor. Combining them with confidentiality of training data is open.
+\item \emph{Composition across model generations.} Fine-tuning chains and synthetic data make
+  provenance recursive. The model covers one training run.
+\end{enumerate}
+
+\subsection{Limitations}
+
+\paragraph{Model}
+The model has five abstractions:
+\begin{itemize}
+\item Items are atomic and content-identified.
+\item Each mechanism is all-or-nothing.
+\item A single training run is modelled.
+\item Detectors are abstracted to an examined set and a miss set, with no budget or base
+  rate.
+\item Correlated compromise is captured \emph{across} trust anchors (any subset of
+  capabilities), but not \emph{within} a mechanism class, such as one corrupt witness among
+  several.
+\end{itemize}
+Table~\ref{tab:scope} lists which training practices fall inside the abstraction. The
+model's results are exact for the model only. Their relevance to real systems rests on the
+validation in Section~\ref{sec:eval}.
+
+\paragraph{Prototype}
+The prototype trains a small bag-of-words network on 2,000 reviews. It simulates trusted
+execution with key isolation rather than real enclaves, so it validates the logic of
+attestation-based checks, not any hardware. It compares three detectors on one small model. Poisoning at GPU scale was
+measured on one model (DistilBERT), one detector, one dirty-label trigger and three seeds per
+condition, so it is reported descriptively. The GPU
+experiments cover fine-tuning, not pre-training. They use one machine and one software
+stack, so they do not show bit-exact replay across different hardware or library versions.
+Their seed counts (160 and 48) limit the largest $T$ we could test to 128 and 32.
+
+\paragraph{Literature}
+The literature search used one database, title-and-abstract screening was performed by an
+AI assistant, and full-text assessment is pending (Section~\ref{sec:lit}). The case-study
+mapping relies partly on abstracts.
+
+\paragraph{Proofs}
+The proofs are by hand. They are backed by two independent exhaustive decision procedures
+for the six profiles, and by a third, vectorised checker over all 128 adversary subsets. They
+are not mechanised in a proof assistant. Proposition~\ref{prop:ledger} and the composition
+remark of Section~\ref{sec:scope} are argued, not proved.
