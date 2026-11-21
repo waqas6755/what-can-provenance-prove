@@ -11,4 +11,4 @@ This repository contains code, research outputs and manuscript text. They are li
 
 Datasets and models used in the experiments (polarity dataset v2.0, SST-2, DistilBERT, Qwen2.5-0.5B) are not redistributed here. See `data/README.md`.
 
-**Please cite** the artefact when you reuse it: https://doi.org/10.5281/zenodo.24317967 (see `CITATION.cff`).
+**Please cite** the artefact when you reuse it: https://doi.org/10.5281/zenodo.24420107 (version 1.1; all versions: https://doi.org/10.5281/zenodo.24317966; see `CITATION.cff`).

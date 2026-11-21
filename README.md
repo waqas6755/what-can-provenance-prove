@@ -1,13 +1,15 @@
 # What Can Provenance Prove? — Research Artefact
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24317967.svg)](https://doi.org/10.5281/zenodo.24317967)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24317966.svg)](https://doi.org/10.5281/zenodo.24317966)
 
 Artefact for the manuscript *"What Can Provenance Prove? A Systematisation of Assurance for
 Adversarially Exposed LLM Training Pipelines"* by Waqas Ahmed, Ammar Hassan, Attiq Ahmed and Waseem Iqbal
 (under preparation for submission; not yet peer reviewed).
 
-Archived on Zenodo: https://doi.org/10.5281/zenodo.24317967 (version 1.0). This repository holds
-version 1.1, which adds the G5 experiment, the revised manuscript sources (v12) and two guides.
+Archived on Zenodo. All versions: https://doi.org/10.5281/zenodo.24317966 (always resolves to the
+latest). Version 1.1, which matches this repository and adds the G5 experiment, the revised
+manuscript sources (v12), two guides and explicit licences: https://doi.org/10.5281/zenodo.24420107.
+Version 1.0: https://doi.org/10.5281/zenodo.24317967.
 
 ## Contents
 
@@ -62,7 +64,7 @@ cd lattice && python3 adversary_lattice.py && python3 check_theorems_on_lattice.
 
 Ahmed, W., Hassan, A., Ahmed, A., and Iqbal, W. (2026). *What Can Provenance Prove? A
 Systematisation of Assurance for Adversarially Exposed LLM Training Pipelines — Research
-Artefact*. Zenodo. https://doi.org/10.5281/zenodo.24317967
+Artefact* (v1.1). Zenodo. https://doi.org/10.5281/zenodo.24420107
 
 A machine-readable version is in `CITATION.cff` (GitHub shows it under "Cite this repository").
 
