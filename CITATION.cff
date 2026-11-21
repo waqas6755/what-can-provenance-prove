@@ -7,7 +7,9 @@ date-released: "2026-11-21"
 doi: "10.5281/zenodo.24317967"
 url: "https://doi.org/10.5281/zenodo.24317967"
 repository-code: "https://github.com/waqas6755/what-can-provenance-prove"
-license: CC-BY-4.0
+license:
+  - MIT
+  - CC-BY-4.0
 authors:
   - family-names: Ahmed
     given-names: Waqas

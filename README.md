@@ -68,4 +68,6 @@ A machine-readable version is in `CITATION.cff` (GitHub shows it under "Cite thi
 
 ## Licence
 
-See `LICENSE`. The Zenodo record is published under CC BY 4.0.
+Code is under the MIT licence (`LICENSE`). Results, data, figures and documentation are under
+CC BY 4.0 (`LICENSE-CC-BY-4.0.txt`). The manuscript text is © the authors until publication.
+Details, including third-party files: [`LICENSES.md`](LICENSES.md).
