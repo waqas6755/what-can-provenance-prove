@@ -1,0 +1,441 @@
+% ---------------------------------------------------------------
+\section{Does the Model Match Real Executions?}\label{sec:eval}
+% ---------------------------------------------------------------
+
+The theorems are exact for the model. This section asks whether the model is
+\emph{faithful}: whether real implementations of the mechanisms, attacked by an adaptive
+adversary, behave as the model predicts. It also measures the two quantities the model
+leaves free, grinding influence and detector recall, and the cost of the record-level
+mechanisms.
+
+\subsection{Prototype}
+
+We implemented the five-stage pipeline in Python with real cryptography and real training:
+\begin{itemize}
+\item \emph{Sources} are four authorised suppliers, each with an Ed25519 key, delivering
+  1,500 reviews from the polarity dataset v2.0~\cite{pang2004sentimental}. Each delivery
+  carries a signed, content-addressed receipt (the signature is over
+  $\mathrm{SHA\text{-}256}$ of the item).
+\item The \emph{generator} produces 150 synthetic reviews by recombining delivered ones.
+\item The \emph{transform} drops reviews shorter than 150 tokens and duplicates.
+\item \emph{Capture} commits the training set as a Merkle root~\cite{merkle1988signature} over sorted item hashes, and
+  appends it to a transparency log with signed tree heads and co-signing witnesses that
+  check prefix consistency.
+\item The \emph{executor} trains a bag-of-words network (4,096 hashed features, one hidden
+  layer) with fully deterministic PyTorch on CPU. Item order is canonicalised before a
+  seeded shuffle, so the trained weights depend only on the item set and the seed.
+\end{itemize}
+The mechanisms are implemented as follows:
+\begin{itemize}
+\item \emph{Binding}: the auditor re-executes training on the committed set and compares
+  SHA-256 hashes of the weights. \textsf{BindFix} derives the seed from the committed root
+  and a beacon value published after commitment.
+\item \textsf{WitSrc}: the auditor verifies a receipt signature for every committed item not
+  covered by the synthetic report.
+\item \textsf{WitIn}: an observer logs the items handed to the executor.
+\item \textsf{AttTrans} and \textsf{AttCap}: these stages run in a \emph{simulated} enclave: a code path whose signing key the operator cannot use. No trusted hardware or hardware attestation is involved, so the prototype tests the \emph{logic} of attestation-based checks, not the security of any real TEE.
+  The enclave holds a signing key that the operator cannot use, unless the adversary has
+  \textsf{AdvTEE}, in which case the key is extracted.
+\item \textsf{Detector}: spectral signatures~\cite{tran2018spectral} on hidden activations.
+  Flagged items go to a reviewer who recognises true poison, and the auditor rejects if any
+  committed poison is flagged.
+\end{itemize}
+Poisoned items are dirty-label backdoors~\cite{gu2019badnets}: a negative review with a
+two-token trigger inserted, relabelled positive.
+
+The adversary has an action for each capability. Each action is realisable in a deployed
+pipeline:
+\begin{itemize}
+\item an authorised source delivers poison with genuine receipts;
+\item the generator emits poison;
+\item the transform injects items;
+\item a corrupt transform or capture operator reports injected items as synthetic
+  (\emph{laundering});
+\item capture adds, omits, reinstates filtered-out items, or hides poisoned inputs from the
+  record;
+\item the executor trains on the record instead of its inputs, adds or omits items, or
+  grinds its seed over four candidates;
+\item colluding witnesses vouch for anything;
+\item with \textsf{AdvTEE}, enclave keys sign whatever the adversary wants.
+\end{itemize}
+For every profile, pipeline type and mechanism set, the adversary runs \emph{every subset}
+of its available actions, with poisoning budgets of 1 and 8 items. The auditor's checks are
+then applied, and the six goals are evaluated on the recorded ground-truth sets. A goal is
+\emph{empirically violated} if some accepted execution violates it.
+
+\subsection{Soundness and tightness (E2)}
+
+\begin{table}[t]
+\centering\scriptsize
+\caption{Prototype versus model. ``Holds'': model guarantees the goal; ``viol.'': accepted
+executions that violated a guaranteed goal (soundness failures); ``fails'': model predicts a
+counterexample; ``realised'': an accepted violating execution was found.}\label{tab:e2}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Profile & inst. & holds & viol. & fails & realised & executions\\
+\midrule
+\csname @@input\endcsname gen/tab_e2_rows.tex 
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:e2} compares the prototype with the model on all
+\Etwoinst{} (profile, pipeline, mechanism set, goal) instances. We ran \Etworuns{} executions, of
+which \Etwoacc{} were accepted. There were \Etwounsound{} soundness failures: no accepted
+execution violated a goal that the model guarantees. Of the
+\Etwofails{} instances where the model predicts a failure, \Etworeal{} were realised by a
+concrete accepted attack. Honest executions were accepted in every configuration.
+
+The first sweep was not tight. With only injection and omission at capture, 20 predicted
+failures in the cap-only profile went unrealised. The model's counterexamples showed what
+was missing. One gap was a capture operator that reinstates an item the filter removed:
+the item carries a genuine receipt, so source witnessing passes, and the input witness only
+checks for omissions. The other was a capture operator that hides poisoned inputs from the
+record, so that the detector never examines them. Adding these two realistic attacks closed
+every gap. In this sense the model worked as a design tool: it predicted two attacks we had
+not implemented.
+
+\paragraph{Record-level attacks (E2b)}
+\emph{Split view.} A source signs a receipt for a clean review, then serves a poisoned
+version under the same name. Name-only receipts accepted \SVname{} of \SVtrials{} such
+deliveries; content-addressed receipts accepted \SVcontent{}.
+
+\emph{Equivocation.} A log operator signed two tree heads of equal size with different roots.
+The witness co-signed the first and refused the second, and the two signed heads together
+are publicly verifiable evidence of equivocation.
+
+\emph{Censorship.} A log operator silently dropped one entry. The witness co-signed all
+\CENcos{} of \CENheads{} heads, because every head was consistent. Witnessing does not
+reveal censorship, which matches the role we assign to a ledger
+(Proposition~\ref{prop:ledger}).
+
+\paragraph{Detector recall (E2c)}
+Table~\ref{tab:e2c} varies the number of authorised-source poisoned items. Every item
+carries a valid receipt, so every provenance check passes. The backdoor's success rate
+rises with the poison count, while the detector flags few or none of the poisoned items. This
+is the residual risk that Theorem~\ref{thm:content} leaves to detector recall, shown here
+for one detector on one small model. It is not a general claim about spectral signatures.
+
+\begin{table}[t]
+\centering\scriptsize
+\caption{Authorised-source poison in the prototype (means over 3 seeds). Attack success:
+fraction of held-out negative reviews classified positive once the trigger is inserted
+(the clean-model baseline is about 25\%), over $n=100$ triggered reviews per run; clean
+accuracy over $n=300$ held-out reviews. Per-run values with Wilson intervals are in the
+supplement.}\label{tab:e2c}
+\begin{tabular}{@{}rrcrrl@{}}
+\toprule
+Poisoned & rate & receipts valid & attack succ. & clean acc. & detector recall\\
+\midrule
+\csname @@input\endcsname gen/tab_e2c_rows.tex 
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Three detectors and a clean-data baseline (E2d)}
+We added this experiment in revision, separately from E2c. It uses the same corpus, model,
+trigger and seeds, so its attack-success values reproduce E2c's. We compare three detectors,
+each applied to a reference model trained on the committed set:
+\begin{itemize}
+\item spectral signatures, as in E2c;
+\item activation clustering~\cite{chen2019activation}: per class, PCA to 10 dimensions and
+  2-means; the smaller cluster is flagged if it holds under 35\% of the class;
+\item a training-loss score: the items with the highest loss under the reference model, with
+  the same flag budget as spectral signatures.
+\end{itemize}
+Including 0 poisoned items gives the clean-data false-positive baseline (Table~\ref{tab:e2d}).
+
+The budget-based detectors flag about 7.5\% of clean data by construction, poisoned or not.
+Activation clustering never found a sufficiently small cluster and flagged nothing at any
+poison level. The loss score was the best of the three here: it caught 15 of 24 poisoned
+items at 8 per run, but only 48 of 300 at 100 per run, as attack success rose from 26\% to
+54\%. All three detectors are therefore weakest where the poison is strongest. This repeats
+the pattern of G3 with different detectors, on a small model.
+
+\begin{table}[t]
+\centering\scriptsize
+\caption{E2d: three detectors on the prototype, authorised-source poison (3 seeds per row).
+Recall as poisoned items flagged out of all poisoned items over the 3 runs; FP: clean items
+flagged, mean per run (rate over 1,500 clean items). Attack success: mean, $n=100$ triggered
+reviews per run.}\label{tab:e2d}
+\resizebox{\columnwidth}{!}{\begin{tabular}{@{}rrrrrrrr@{}}
+\toprule
+& & \multicolumn{2}{c}{spectral} & \multicolumn{2}{c}{act.\ clustering} & \multicolumn{2}{c}{loss}\\
+$n$ & attack & recall & FP & recall & FP & recall & FP\\
+\midrule
+\csname @@input\endcsname gen/tab_e2d_rows.tex
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\subsection{Grinding (E3)}
+
+We trained the prototype model \EthreeN{} times on one fixed committed set, varying only the
+seed. Re-executing a seed reproduced the weights bit for bit (checked for the first eight
+seeds: \EthreeReplay{}). Held-out accuracy was $\EthreeAcc\%\pm\EthreeAccSd$. Yet
+\EthreeSens\% of held-out reviews changed predicted label across seeds.
+
+The adversary's target is a uniformly random $k$-bit pattern of predictions on the $k$ most
+seed-sensitive reviews. These probes are chosen on \EthreeSel{} selection seeds, disjoint from
+the \EthreeEval{} evaluation seeds. For each $(k,T)$ we compute the success probability
+\emph{exactly}: with $c_t$ evaluation seeds realising pattern $t$, a random $T$-subset of $N$
+evaluation seeds realises $t$ with probability $1-\binom{N-c_t}{T}/\binom{N}{T}$, and we average
+over all $2^k$ targets. (An earlier Monte-Carlo estimate over 64 sampled targets could exceed
+the bound by sampling noise; the exact computation cannot.)
+
+Fig.~\ref{fig:e3} shows the result. Success never exceeds the bound $T/2^k$ of
+Theorem~\ref{thm:grind}. For every $T\ge2$, the number of bits set with probability at least
+$1/2$ is exactly $\log_2T$, one below the bound's $\log_2T+1$. At $T=\EthreeTMax$ it reaches
+\EthreeBitsMax{} bits. At $T=1$, one bit is set with probability exactly $1/2$, which is chance.
+
+The ground models are not distinguishable by quality. For $k=8$, $T=256$, the released models
+averaged \EthreeChosenAcc\% accuracy, against \EthreeAllAcc\% for all models. A
+\textsf{BindGrind} verifier therefore accepts a model whose behaviour on chosen inputs was set
+by the prover, at a cost of $T$ training runs. \textsf{BindFix} removes the channel.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{fig/e3_grinding.pdf}
+\caption{Seed grinding through a seed-accepting binding check. Left: prototype
+(\EthreeN{} runs), exact probability of realising a random $k$-bit target (solid) and the
+bound $T/2^k$ of Theorem~\ref{thm:grind} (dotted). Right: bits set with probability $\ge1/2$
+for the prototype, DistilBERT (G1, \GOneN{} runs) and Qwen2.5-0.5B~+~LoRA (G4, \GFourN{}
+runs); the three curves coincide where they overlap.}\label{fig:e3}
+\end{figure*}
+
+\subsection{Language-model scale (GPU)}
+
+The prototype model is small. To check that binding by replay, grinding and detector
+recall behave the same way for language models, we ran four experiments (G1--G4) on one consumer
+GPU (NVIDIA \GPUname, 8\,GB; PyTorch \GPUtorch, CUDA \GPUcuda, Transformers \GPUtf) using
+SST-2~\cite{socher2013sst}. The models were DistilBERT (\texttt{distilbert-base-uncased},
+full fine-tuning) and Qwen2.5-0.5B with LoRA~\cite{hu2022lora} (rank 8 on the query and
+value projections, sequence-classification head). Training ran in bf16 autocast, one
+epoch, maximum length 64. A fifth experiment (G5) ran on a second machine, described below.
+
+\paragraph{G2: exact replay}
+Each configuration was trained three times from the same seed on 1,000 examples, both with
+PyTorch's deterministic-algorithms mode and with default kernels (Table~\ref{tab:g2}). In
+all four configurations the three runs produced bit-identical weights. Re-execution is
+therefore a valid \textsf{BindFix}/\textsf{BindGrind} realisation for fine-tuning at this
+scale on fixed hardware and software. Across machines it is not: G5 below re-executed nine
+G3 runs on a second GPU with newer software, and none reproduced.
+
+\begin{table}[t]
+\centering\scriptsize
+\caption{G2: replay of fine-tuning on one GPU (3 runs per row, same seed and data).}\label{tab:g2}
+\resizebox{\columnwidth}{!}{\begin{tabular}{@{}llrcrr@{}}
+\toprule
+Model & kernels & trainable params & distinct hashes & max $|\Delta w|$ & train s\\
+\midrule
+\csname @@input\endcsname gen/tab_g2_rows.tex
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\paragraph{G3: authorised-source poison at LLM scale}
+An authorised source contributes $n$ dirty-label backdoor examples (negative sentences with
+the trigger ``cf'' inserted, relabelled positive) to an 8,000-example committed set. Every
+example carries a valid content-addressed Ed25519 receipt, so every provenance check
+passes. We then measure the backdoor's attack success on triggered negative validation
+sentences, and the recall of spectral signatures on DistilBERT's final-layer
+\texttt{[CLS]} representation, flagging $1.5\varepsilon n_c$ items per class with
+$\varepsilon=0.05$ (Table~\ref{tab:g3}).
+
+\paragraph{Statistical treatment}
+The replication unit is the training run (seed). Validation sentences within one run are not
+independent replications of the model, so we report run-level values. For each run we give a
+Wilson 95\% interval for its proportions, over $n=428$ triggered negative validation sentences
+(attack success) and $n$ poisoned items (recall). We also give the attack success minus that of
+the clean model with the same seed (\emph{baseline-adjusted}). With three seeds per condition
+we report descriptive statistics only. A significance test over three runs would carry little
+information (Table~\ref{tab:g3stats}).
+
+The two curves cross. At 0.25--1\% poison, the detector finds 68--83\% of poisoned items on
+average, but the backdoor has not taken hold after one epoch: mean baseline-adjusted attack
+success stays between $-1$ and $+4$ points, with one run reaching $+9$ points at 1\%. At 2\%, the backdoor is effective in all three
+runs, but unequally: baseline-adjusted attack success is $+\GthreeAdjHigh$ points on average,
+ranging from $+\GthreeAdjHighMin$ to $+\GthreeAdjHighMax$. Mean recall falls to 25\%, with
+wide per-run intervals.
+
+Precision is the practical problem. The flag budget ($1.5\varepsilon n_c$ per class) sends
+about \GthreeFPHigh{} clean examples per run to review at 2\% poison
+(\GthreeFPRHigh\% of clean items). Only \GthreePrecHigh\% of flagged items are poisoned at 2\%,
+and \GthreePrecLow\% at 0.25\%. A reviewer who inspects every flag therefore reads hundreds of
+clean sentences per run, and still misses most of the poison where it matters. These are
+results for one detector, one model and one trigger. They do not characterise poisoning
+detection in general.
+
+An auditor who holds a valid provenance record for this model holds no evidence about the
+backdoor. This is Theorem~\ref{thm:content} measured on a pretrained transformer.
+G5 below adds two detectors, a clean-data baseline and a higher poison level at GPU scale.
+
+\begin{table}[t]
+\centering\scriptsize
+\caption{G3 summary: authorised-source backdoor poison, DistilBERT on SST-2 (3 seeds; mean
+and range). Attack success over $n=428$ triggered negative sentences per run; clean accuracy
+over $n=872$.}\label{tab:g3}
+\resizebox{\columnwidth}{!}{\begin{tabular}{@{}rrclllr@{}}
+\toprule
+$n$ & rate & receipts & attack succ. & clean acc. & recall\phantom{x} & flagged\\
+\midrule
+\csname @@input\endcsname gen/tab_g3_rows.tex
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table*}[t]
+\centering\scriptsize
+\caption{G3 per run (seeds 1, 2, 3). Attack success and recall in \% with Wilson 95\%
+intervals; attack success over $n=428$ triggered negative sentences, recall over the $n$ poisoned
+items. ``Adj.'': mean attack success minus the clean model's with the same seed, in percentage
+points. FP: clean items flagged, mean over runs (rate over 8,000 clean items).}\label{tab:g3stats}
+\begin{tabular}{@{}rp{6.2cm}rp{5.2cm}r@{}}
+\toprule
+$n$ & attack success per run [95\% CI] & adj. & recall per run [95\% CI] & FP (rate)\\
+\midrule
+\csname @@input\endcsname gen/tab_g3_stats_rows.tex
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\paragraph{G5: three detectors and a second machine}
+We added G5 in revision. It repeats the G3 protocol unchanged (same code, data, trigger,
+seeds and training settings) at 0, 80, 160 and 320 poisoned items (0--3.8\%), and scores every
+committed item with the three detectors of E2d, using the E2d flagging rules fixed before
+the run. Unlike E2d, the detectors are applied to the trained model itself, as in G3. Because
+the RTX~3070 machine was not available, G5 ran on a second machine: an NVIDIA \GFiveGPU{}
+(\GFiveMem\,GB; PyTorch \GFiveTorch, CUDA \GFiveCuda, Python \GFivePy, Transformers \GFiveTf),
+with deterministic kernels throughout, \GFiveTrainS\,s of training per run and at most
+\GFivePeakGB\,GB of GPU memory. All \GFiveRuns{} runs completed, and \GFiveChecksOK{} of
+\GFiveChecks{} automatic validity checks passed. The two that failed are the expected device
+and the exact replay of G3, discussed next. Table~\ref{tab:g5} gives pooled recall and the
+threshold-free AUROC within the target class, computed from the saved per-item scores.
+
+\emph{Replay across machines.} Nine G5 runs (0, 80 and 160 poisoned items, seeds 1--3) are
+exact re-executions of G3 runs. None reproduced G3's attack success, and \GFiveReplayAccEq{}
+of \GFiveReplayN{} reproduced its clean accuracy. Below 2\% poison, attack success differed
+by at most \GFiveReplayLowMaxDiff{} points; at 2\% it differed by up to \GFiveReplayMaxDiff{}
+points for the same seed. GPU architecture and library versions changed together, so we
+cannot attribute the difference to either. The practical consequence is clear: an auditor who
+re-executes on a different stack does not obtain the trainer's model, so re-execution binding
+needs a pinned hardware and software stack or a tolerance, and a tolerance enlarges
+$\mathcal A_C$ (Theorem~\ref{thm:grind}).
+
+\emph{Detection.} The qualitative results of G3 recur on the second machine. At 1\% poison
+the backdoor has not taken hold, and the poison is easy to separate: AUROC
+\GFiveSpecAucLow{} (spectral) and \GFiveLossAucLow{} (loss), with \GFiveSpecRecLow\% and
+\GFiveLossRecLow\% recall within the flag budget, but only \GFiveSpecPrecLow\% precision. At
+3.8\% the backdoor succeeds in every run (attack success at least \GFiveAsrHighMin\%), and
+both detectors flag \GFiveRecHighTP{} of \GFiveHighN{} poisoned items; their AUROC
+(\GFiveSpecAucHigh{} and \GFiveLossAucHigh) is at or below chance, so the poison looks
+\emph{more} typical than clean data. Over the nine poisoned runs, recall falls as attack
+success rises (Spearman $\rho=\GFiveRhoSpec$ for both; descriptive, since poison level drives
+both; Fig.~\ref{fig:g5}). Activation clustering flagged a cluster in every run, including all three clean runs,
+where it flagged \GFiveACCleanMin--\GFiveACCleanMax\% of clean items; its precision never
+exceeded \GFiveACPrecMax\%. With this configuration it is not a usable detector here. These
+results extend G3 to more detectors, a clean baseline and a higher poison rate; they use the
+same model, data and trigger, so they say nothing about other models or attacks.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig/g5_detection.pdf}
+\caption{G5: separability of poisoned from clean items (AUROC within the target class) against
+the backdoor's attack success, one point per run. Detection is good only while the attack
+fails; once the backdoor works in every run (3.8\% poison), both detectors are at or below
+chance.}\label{fig:g5}
+\end{figure}
+
+\begin{table*}[t]
+\centering\scriptsize
+\caption{G5: three detectors on DistilBERT/SST-2 with authorised-source poison, run on a
+second machine (\GFiveGPU; 3 seeds per row). Attack success: mean (range) over $n=428$
+triggered negative sentences per run; clean accuracy over $n=872$. Recall: poisoned items
+flagged out of all poisoned items over the 3 runs, flag budget $1.5\varepsilon n_c$ per class
+($\varepsilon=0.05$, about 7.5\% of clean items by construction). AUROC: within the target
+class, mean (range) over runs. Activation clustering: mean share of clean items flagged
+(runs that flagged anything).}\label{tab:g5}
+\begin{tabular}{@{}rrllllllr@{}}
+\toprule
+& & & & \multicolumn{2}{c}{spectral signatures} & \multicolumn{2}{c}{training loss} & act.\ clustering\\
+$n$ & rate & attack succ.\ \% & clean acc.\ \% & recall & AUROC & recall & AUROC & clean FP\\
+\midrule
+\csname @@input\endcsname gen/tab_g5_rows.tex
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\paragraph{G1 and G4: grinding at LLM scale}
+We repeated E3 with \GOneN{} DistilBERT fine-tuning runs on a fixed 8,000-example committed set
+(G1; \GOneTrainS\,s each; held-out accuracy $\GOneAcc\%\pm\GOneAccSd$; all \GOneDistinct{}
+weight hashes distinct), and with \GFourN{} Qwen2.5-0.5B~+~LoRA runs on 2,000 examples
+(G4; \GFourTrainS\,s each; accuracy $\GFourAcc\%\pm\GFourAccSd$). The probes, the disjoint
+selection and evaluation seeds, and the exact analysis are the same as in E3. On the
+selection seeds, \GOneSens\% (DistilBERT) and \GFourSens\% (Qwen~+~LoRA) of the 872 SST-2
+validation sentences changed label across seeds.
+
+The bits set with probability at least $1/2$ were exactly $\log_2T$ at every
+$T\ge2$ for both models: \GOneBits{} bits at $T=\GOneTmax$ for DistilBERT and \GFourBits{}
+bits at $T=\GFourTmax$ for Qwen~+~LoRA (Fig.~\ref{fig:e3}, right). This is the same curve as the
+small prototype. In this setting, the channel's capacity is set by the number of training runs
+the prover can afford, not by the model. Again the ground models were of ordinary quality:
+\GOneChosenAcc\% against \GOneAllAcc\% for DistilBERT ($k=\GOneStK$, $T=\GOneStT$), and
+\GFourChosenAcc\% against \GFourAllAcc\% for Qwen~+~LoRA ($k=\GFourStK$, $T=\GFourStT$).
+At the measured training times, setting 7 chosen bits of a DistilBERT fine-tune takes under an hour
+on a laptop GPU.
+
+\subsection{Cost of record-level mechanisms (E4)}
+
+\begin{table}[t]
+\centering\scriptsize
+\caption{Cost of record-level mechanisms on one CPU core (1\,KiB items). Per-item costs in
+$\mu$s. Merkle root over all items in ms.}\label{tab:e4}
+\setlength{\tabcolsep}{4.5pt}\begin{tabular}{@{}rrrrrrr@{}}
+\toprule
+items & hash & sign rcpt & verify rcpt & root (ms) & proof len & receipts (MB)\\
+\midrule
+\csname @@input\endcsname gen/tab_e4_rows.tex 
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:e4} shows that hashing, receipts and commitments cost microseconds per item
+and scale linearly. At the measured rate, verifying receipts for a corpus of $10^9$ documents would take about
+\EfourVerifyHours{} core-hours, and the work is trivially parallel. The dominant cost of any
+configuration that includes binding is binding itself. Exact re-execution doubles training,
+and proof systems cost much more~\cite{abbaszadeh2024zkpot,liao2026verilora}.
+
+\subsection{Published systems through the model (E1)}
+
+Table~\ref{tab:e1} maps published systems to the model and reads off the goals they support.
+The mapping uses each paper's own description of its mechanisms and trust assumptions. For
+Atlas and VAMP we read the threat-model sections. For the others the mapping is from the
+abstract and is marked as such.
+
+\begin{table*}[t]
+\centering\scriptsize
+\caption{Published systems mapped to the model. ``Profile'' is the closest adversary profile
+implied by the paper's threat model. Mechanisms marked $\tau$ are realised by trusted
+hardware and are lost under \textsf{AdvTEE}.}\label{tab:e1}
+\begin{tabular}{@{}p{2.3cm}p{3.6cm}p{2.1cm}p{4.6cm}p{3.6cm}@{}}
+\toprule
+System & Mechanisms (as described) & Profile & Goals supported per the model & Remark\\
+\midrule
+Atlas~\cite{spoczynski2025atlas} (threat model read) & TEE attestation of every transformation and its inputs; transparency log & MLaaS provider, hubs, producers untrusted $\approx$ full & With CPU-only TEEs and GPU training outside them (the paper's own limitation): $G_{\mathrm{compl}}$ only. With attested training (Bind under $\tau$): $G_{\mathrm{bind}}$, $G_{\mathrm{auth}}$ via AC+AT+$\beta$ & Dataset benignity out of scope, consistent with Thm.~\ref{thm:content}\\
+Laminator~\cite{duddu2025laminator} (abstract) & Hardware-attested property cards for data, training, inference & full & Attested claims only under $\tau$; under full+tee none remain & No content claim beyond attested properties\\
+VAMP~\cite{stokes2021prevent} (threat model read) & Signed manifests over datasets, software, models (WitSrc) & Infrastructure trusted $\approx$ trans-only & $G_{\mathrm{auth}}$ for filter-only pipelines; no $G_{\mathrm{zero}}$ & Title claims poisoning \emph{prevention}; holds for unauthorised modification only (Thm.~\ref{thm:content}.1)\\
+PoL~\cite{jia2021pol} & Spot-check re-execution with tolerance, prover-chosen randomness & exec-only & $G_{\mathrm{bind}}$ up to spoofing~\cite{fang2023pol}; not $G_{\mathrm{noinf}}$ (BindGrind) & Tolerance enlarges the grinding set (Thm.~\ref{thm:grind})\\
+VeriLoRA~\cite{liao2026verilora} (protocol sections read) & ZK proof of every LoRA step (forward, backward, update); initial weights committed as part of the witness & exec-only & $G_{\mathrm{bind}}$ as \textsf{BindGrind}: the paper does not fix mini-batch sampling or initialisation randomness by the verifier, so not $G_{\mathrm{noinf}}$; no dataset commitment is described, so binding to a record needs one; no lineage without WitSrc or attestation & Combine with a beacon-derived seed and data commitment to obtain \textsf{BindFix}\\
+Kaizen zkPoT~\cite{abbaszadeh2024zkpot} (protocol sections read) & ZK proof of every training iteration over a Merkle-committed dataset; prover commits the initial weights; batch order from a public pseudorandom permutation key & exec-only & $G_{\mathrm{bind}}$ as \textsf{BindGrind}: the prover commits its own initial weights, the protocol does not require the permutation key to be fixed by the verifier after the data commitment, and the number of proved iterations need not be fixed in advance, so not $G_{\mathrm{noinf}}$; no lineage without WitSrc or attestation & Seed rejection sampling against zkPoTs demonstrated by~\cite{tan2025zkpot}\\
+Optimum-vicinity zkPoT~\cite{tan2025zkpot} (full text read) & ZK proof that the released model is within $\epsilon$ of the optimum of an $L_2$-regularised convex loss on the committed data & exec-only & $G_{\mathrm{bind}}$ with $\mathcal A_C$ an $\epsilon$-ball, independent of training randomness; influence bounded geometrically rather than by $T$ & Logistic regression and SVMs; no lineage or content claim\\
+AuditableLLM~\cite{li2025auditablellm} (abstract) & Hash-chained audit trail of updates & exec-only & Store integrity ($P_1$) only; no pipeline goal & ``Verifiable integrity'' is of the log, not of the training\\
+Mehammed et al.~\cite{mehammed2025fl} (abstract) & Permissioned ledger, update audit, zk-SNARK of client summaries & full (clients untrusted) & $P_1,P_2,P_8$; no binding of client training, so no pipeline goal & Ledger contributes $P_8$ (Prop.~\ref{prop:ledger})\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The pattern is consistent. Systems that state a narrow threat model (Atlas and VAMP, which
+trust the verification or training infrastructure) make claims that the model supports
+within that model. The model's value is that it says what changes when the trust assumption
+does not hold. Claims phrased as preventing poisoning, or as verifiable integrity of
+training, hold only for the narrower properties the model identifies.

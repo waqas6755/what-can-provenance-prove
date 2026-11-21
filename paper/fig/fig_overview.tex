@@ -1,0 +1,17 @@
+% Fig.: method overview (intro), full width
+\begin{tikzpicture}[font=\sffamily\scriptsize, >={Stealth[length=1.8mm]},
+  bx/.style={draw=black!50, rounded corners=3pt, fill=black!4, text width=28mm, align=flush left,
+               minimum height=19mm, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}, inner sep=2.2pt, anchor=north},
+  num/.style={circle, fill=mechblue, text=white, font=\sffamily\tiny\bfseries, inner sep=0.8pt, minimum size=3.6mm},
+  fl/.style={->, black!65, line width=0.8pt}]
+\def\gap{32.5mm}
+\node[bx] (s1) at (0,0) {{\bfseries Systematise}\\[1pt] 594 search records; published mechanisms reduced to \textbf{7 mechanism primitives} (Sec.~II, VI)};
+\node[bx] (s2) at (\gap,0) {{\bfseries Model}\\[1pt] pipeline, \textbf{7 adversary capabilities}, \textbf{6 assurance goals}; separability lemma (Sec.~III)};
+\node[bx] (s3) at (2*\gap,0) {{\bfseries Decide}\\[1pt] Alloy + independent checker: \textbf{9,216 instances}; all \textbf{128 adversary subsets} (Sec.~IV)};
+\node[bx, fill=mechblue!8, draw=mechblue] (s4) at (3*\gap,0) {{\bfseries Prove}\\[1pt] \textbf{6 theorems}: binding, lineage, stage types, grinding ($\log_2T$), content, completeness};
+\node[bx] (s5) at (4*\gap,0) {{\bfseries Validate}\\[1pt] prototype (E2--E4, 3.5\,M runs); GPU fine-tuning (G1--G5); published systems mapped (E1) (Sec.~V)};
+\node[bx, fill=okgreen!8, draw=okgreen] (s6) at (5*\gap,0) {{\bfseries Advise}\\[1pt] auditor checklist, design rules, open problems (Sec.~VII)};
+\foreach \i [count=\j from 2] in {1,...,5} \draw[fl] (s\i.east) -- (s\j.west);
+\foreach \i in {1,...,6} \node[num] at (s\i.north west) {\i};
+\draw[fl, dashed, mechblue] (s5.south) to[out=-160,in=-20, looseness=0.45] node[below, font=\sffamily\tiny, text=mechblue!80!black]{counterexamples and mismatches refine the model} (s2.south);
+\end{tikzpicture}

@@ -1,0 +1,411 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261121032520
+Username: DESKTOP-RHO39QL\HP
+RunAs User: DESKTOP-RHO39QL\HP
+Configuration Name: 
+Machine: DESKTOP-RHO39QL (Microsoft Windows NT 10.0.26200.0)
+Host Application: powershell -NoProfile -ExecutionPolicy Bypass -File C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1
+Process ID: 10312
+PSVersion: 5.1.26100.9818
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9818
+BuildVersion: 10.0.26100.9818
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:14 char:15
++         try { & py "-$v" -c "import sys" 2>$null; if ($LASTEXITCODE - ...
++               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.12) not installed, use -0 for available pythons
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:14 char:15
++         try { & py "-$v" -c "import sys" 2>$null; if ($LASTEXITCODE - ...
++               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.11) not installed, use -0 for available pythons
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:14 char:15
++         try { & py "-$v" -c "import sys" 2>$null; if ($LASTEXITCODE - ...
++               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.13) not installed, use -0 for available pythons
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:14 char:15
++         try { & py "-$v" -c "import sys" 2>$null; if ($LASTEXITCODE - ...
++               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.10) not installed, use -0 for available pythons
+python.exe : Traceback (most recent call last):
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:16 char:11
++     try { & python -c "import sys; assert (3,10) <= sys.version_info[ ...
++           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+  File "<string>", line 1, in <module>
+    import sys; assert (3,10) <= sys.version_info[:2] <= (3,13)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+Using Python: Python 3.12 not found!   -3.9-64  -3.14-64  -2.7-32 Python 3.11 not found!   -3.9-64  -3.14-64  -2.7-32 Python 3.13 not found!   -3.9-64  -3.14-64  -2.7-32 Python 3.10 not found!   -3.9-64  -3.14-64  -2.7-32
+& : The term 'Python 3.12 not found!' is not recognized as the name of a cmdlet, function, script file, or operable 
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:28 char:31
++     if ($py.Length -gt 1) { & $py[0] $py[1] -m venv .venv } else { &  ...
++                               ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Python 3.12 not found!:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'Python 3.12 not found!' is not recognized as the name of a cmdlet, function, script file, or operable
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:28 char:31
++     if ($py.Length -gt 1) { & $py[0] $py[1] -m venv .venv } else { &  ...
++                               ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Python 3.12 not found!:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:31 char:3
++ & $vpy -m pip install --upgrade pip
++   ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:31 char:3
++ & $vpy -m pip install --upgrade pip
++   ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Installing PyTorch (torch==2.6.0, cu124)...
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Installing PyTorch (torch, cu128)...
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Installing PyTorch (torch, cu126)...
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Installing PyTorch (torch, cu124)...
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PyTorch could not see the GPU. Update the NVIDIA driver (GeForce Experience or nvidia.com), reboot, and rerun.
+**********************
+Windows PowerShell transcript end
+End time: 20261121032522
+**********************
+**********************
+Windows PowerShell transcript start
+Start time: 20261121032641
+Username: DESKTOP-RHO39QL\HP
+RunAs User: DESKTOP-RHO39QL\HP
+Configuration Name: 
+Machine: DESKTOP-RHO39QL (Microsoft Windows NT 10.0.26200.0)
+Host Application: powershell -NoProfile -ExecutionPolicy Bypass -File C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1
+Process ID: 11220
+PSVersion: 5.1.26100.9818
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9818
+BuildVersion: 10.0.26100.9818
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:14 char:15
++         try { & py "-$v" -c "import sys" 2>$null; if ($LASTEXITCODE - ...
++               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.12) not installed, use -0 for available pythons
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:14 char:15
++         try { & py "-$v" -c "import sys" 2>$null; if ($LASTEXITCODE - ...
++               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.11) not installed, use -0 for available pythons
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:14 char:15
++         try { & py "-$v" -c "import sys" 2>$null; if ($LASTEXITCODE - ...
++               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.13) not installed, use -0 for available pythons
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:14 char:15
++         try { & py "-$v" -c "import sys" 2>$null; if ($LASTEXITCODE - ...
++               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.10) not installed, use -0 for available pythons
+python.exe : Traceback (most recent call last):
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:16 char:11
++     try { & python -c "import sys; assert (3,10) <= sys.version_info[ ...
++           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+  File "<string>", line 1, in <module>
+    import sys; assert (3,10) <= sys.version_info[:2] <= (3,13)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+Using Python: Python 3.12 not found!   -3.9-64  -3.14-64  -2.7-32 Python 3.11 not found!   -3.9-64  -3.14-64  -2.7-32 Python 3.13 not found!   -3.9-64  -3.14-64  -2.7-32 Python 3.10 not found!   -3.9-64  -3.14-64  -2.7-32
+& : The term 'Python 3.12 not found!' is not recognized as the name of a cmdlet, function, script file, or operable 
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:28 char:31
++     if ($py.Length -gt 1) { & $py[0] $py[1] -m venv .venv } else { &  ...
++                               ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Python 3.12 not found!:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'Python 3.12 not found!' is not recognized as the name of a cmdlet, function, script file, or operable
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:28 char:31
++     if ($py.Length -gt 1) { & $py[0] $py[1] -m venv .venv } else { &  ...
++                               ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Python 3.12 not found!:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:31 char:3
++ & $vpy -m pip install --upgrade pip
++   ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:31 char:3
++ & $vpy -m pip install --upgrade pip
++   ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Installing PyTorch (torch==2.6.0, cu124)...
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Installing PyTorch (torch, cu128)...
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Installing PyTorch (torch, cu126)...
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Installing PyTorch (torch, cu124)...
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a 
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+& : The term 'C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe' is not recognized as the name of a
+cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify
+that the path is correct and try again.
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:39 char:7
++     & $vpy -m pip install $spec[0] --index-url "https://download.pyto ...
++       ~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\HP\Des...ipts\python.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PyTorch could not see the GPU. Update the NVIDIA driver (GeForce Experience or nvidia.com), reboot, and rerun.
+**********************
+Windows PowerShell transcript end
+End time: 20261121032642
+**********************
+**********************
+Windows PowerShell transcript start
+Start time: 20261121032953
+Username: DESKTOP-RHO39QL\HP
+RunAs User: DESKTOP-RHO39QL\HP
+Configuration Name: 
+Machine: DESKTOP-RHO39QL (Microsoft Windows NT 10.0.26200.0)
+Host Application: powershell -NoProfile -ExecutionPolicy Bypass -File C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1
+Process ID: 15868
+PSVersion: 5.1.26100.9818
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9818
+BuildVersion: 10.0.26100.9818
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:17 char:9
++         & $exe @rest -c "import sys; sys.exit(0 if (3,10) <= sys.vers ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.11) not installed, use -0 for available pythons
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:17 char:9
++         & $exe @rest -c "import sys; sys.exit(0 if (3,10) <= sys.vers ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.12) not installed, use -0 for available pythons
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:17 char:9
++         & $exe @rest -c "import sys; sys.exit(0 if (3,10) <= sys.vers ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.13) not installed, use -0 for available pythons
+py.exe : Installed Pythons found by C:\WINDOWS\py.exe Launcher for Windows *
+At C:\Users\HP\Desktop\PAPER 3\Paper3_G5\setup_g5_env.ps1:17 char:9
++         & $exe @rest -c "import sys; sys.exit(0 if (3,10) <= sys.vers ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed Pytho...r for Windows *:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Requested Python version (3.10) not installed, use -0 for available pythons
+Using Python: C:\Users\HP\miniforge3\python.exe
+Python 3.14.10
+
+    Found existing installation: pip 26.2.2
+    Uninstalling pip-26.2.2:
+      Successfully uninstalled pip-26.2.2
+Successfully installed pip-26.3
+Installing PyTorch (torch==2.6.0, cu124)...
+
+Installing PyTorch (torch, cu128)...
+
+
+
+
+Self-test (tiny models, about 1 minute)...
+
+Environment ready. Now double-click run_g5.bat
+**********************
+Windows PowerShell transcript end
+End time: 20261121035201
+**********************

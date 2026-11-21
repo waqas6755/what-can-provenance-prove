@@ -1,0 +1,18 @@
+{
+ "python": "3.14.10 | packaged by conda-forge | (main, Oct 26 2026, 11:40:34) [MSC v.1944 64 bit (AMD64)]",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "torch": "2.11.0+cu128",
+ "cuda": "12.8",
+ "cuda_available": true,
+ "device": "NVIDIA GeForce GTX 1650",
+ "gpu_total_mem_mb": 4095,
+ "smoke": false,
+ "started": "2026-11-21 03:52:15",
+ "script_sha256": {
+  "p3gpu_g5.py": "0cd1e7ccc2be06296ba88c194cb0aa8167e8623be1aab6c3eb223d59cd5b35e1",
+  "p3gpu.py": "b8409d360e7c5344af3d676df89e77cacb5c8619dab8ddab309bbfa401f19688",
+  "prov.py": "b2bb58067a2b3658dcf2e943c6c446494abeb3b716b50307b7ed7bb29d6c9ec8"
+ },
+ "transformers": "5.22.1",
+ "peft": "0.21.2"
+}

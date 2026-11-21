@@ -1,0 +1,78 @@
+{
+ "distilbert_deterministic": {
+  "runs": 3,
+  "identical_hashes": true,
+  "distinct_hashes": 1,
+  "max_abs_param_diff_vs_run0": [
+   0.0,
+   0.0
+  ],
+  "pred_disagreement_vs_run0": [
+   0.0,
+   0.0
+  ],
+  "train_s": [
+   3.495089530944824,
+   3.0902583599090576,
+   3.3059632778167725
+  ],
+  "trainable_params": 66955010
+ },
+ "distilbert_default": {
+  "runs": 3,
+  "identical_hashes": true,
+  "distinct_hashes": 1,
+  "max_abs_param_diff_vs_run0": [
+   0.0,
+   0.0
+  ],
+  "pred_disagreement_vs_run0": [
+   0.0,
+   0.0
+  ],
+  "train_s": [
+   2.7741518020629883,
+   2.753431797027588,
+   2.6804099082946777
+  ],
+  "trainable_params": 66955010
+ },
+ "qwen_deterministic": {
+  "runs": 3,
+  "identical_hashes": true,
+  "distinct_hashes": 1,
+  "max_abs_param_diff_vs_run0": [
+   0.0,
+   0.0
+  ],
+  "pred_disagreement_vs_run0": [
+   0.0,
+   0.0
+  ],
+  "train_s": [
+   13.637324094772339,
+   13.36616063117981,
+   13.575957775115967
+  ],
+  "trainable_params": 542464
+ },
+ "qwen_default": {
+  "runs": 3,
+  "identical_hashes": true,
+  "distinct_hashes": 1,
+  "max_abs_param_diff_vs_run0": [
+   0.0,
+   0.0
+  ],
+  "pred_disagreement_vs_run0": [
+   0.0,
+   0.0
+  ],
+  "train_s": [
+   11.577612400054932,
+   13.470249891281128,
+   11.631506443023682
+  ],
+  "trainable_params": 542464
+ }
+}

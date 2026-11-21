@@ -1,0 +1,47 @@
+[
+ {
+  "n": 1000,
+  "hash_s": 0.00164754500019626,
+  "sign_receipts_s": 0.04950627699963661,
+  "verify_receipts_s": 0.15466378800010716,
+  "all_valid": true,
+  "merkle_root_s": 0.0018907240000771708,
+  "inclusion_proof_s": 0.001509480000095209,
+  "inclusion_proof_len": 10,
+  "inclusion_verify_s": 2.410300021438161e-05,
+  "inclusion_ok": true,
+  "log_head_s": 0.00015433299995493144,
+  "receipt_bytes_total": 64000,
+  "root_bytes": 32
+ },
+ {
+  "n": 10000,
+  "hash_s": 0.0176291690004291,
+  "sign_receipts_s": 0.5269386970003325,
+  "verify_receipts_s": 1.2557915569996112,
+  "all_valid": true,
+  "merkle_root_s": 0.00990037600058713,
+  "inclusion_proof_s": 0.007165281000197865,
+  "inclusion_proof_len": 14,
+  "inclusion_verify_s": 1.0247999853163492e-05,
+  "inclusion_ok": true,
+  "log_head_s": 8.056800015765475e-05,
+  "receipt_bytes_total": 640000,
+  "root_bytes": 32
+ },
+ {
+  "n": 100000,
+  "hash_s": 0.13798900000074354,
+  "sign_receipts_s": 3.9226037230000657,
+  "verify_receipts_s": 11.612151423999421,
+  "all_valid": true,
+  "merkle_root_s": 0.18836232800003927,
+  "inclusion_proof_s": 0.14034170300055848,
+  "inclusion_proof_len": 17,
+  "inclusion_verify_s": 1.603599957888946e-05,
+  "inclusion_ok": true,
+  "log_head_s": 0.00012125400007789722,
+  "receipt_bytes_total": 6400000,
+  "root_bytes": 32
+ }
+]

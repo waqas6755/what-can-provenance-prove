@@ -1,0 +1,45 @@
+% Fig. 1: pipeline stages (grey), mechanism primitives (blue, above), adversary capabilities (orange, below)
+\begin{tikzpicture}[font=\sffamily\scriptsize, >={Stealth[length=1.7mm]},
+  st/.style={draw=black!55, rounded corners=2pt, fill=black!5, minimum width=15mm,
+             minimum height=8.5mm, align=center, inner sep=1pt, font=\sffamily\footnotesize},
+  outb/.style={st, fill=white},
+  mech/.style={draw=mechblue, fill=mechblue!9, text=mechblue!75!black, rounded corners=2.5pt, minimum height=3.6mm,
+               inner sep=1.4pt, font=\sffamily\scriptsize\bfseries},
+  adv/.style={draw=advorange, fill=advorange!9, text=advorange!80!black, rounded corners=1pt, minimum height=3.6mm,
+              inner sep=1.4pt, font=\sffamily\scriptsize},
+  fl/.style={->, black!70, line width=0.65pt}, tie/.style={black!35, line width=0.4pt}]
+% stages
+\node[st, minimum height=7mm] (src) at (0, 0.55) {Sources \ \textit{D}};
+\node[st, minimum height=7mm] (gen) at (0,-0.55) {Generator \ \textit{S}};
+\node[st] (tr)  at (2.35,0) {Transform\\\textit{F}};
+\node[st] (cap) at (4.45,0) {Capture\\\textit{C}};
+\node[st] (ex)  at (6.55,0) {Executor\\\textit{U}};
+\node[outb, minimum width=12mm] (mdl) at (8.45,0) {Released\\model};
+\node[outb, minimum width=22mm] (store) at (4.45,-2.15) {Record store\\\tiny (log or ledger)};
+\node[outb, minimum width=15mm] (aud) at (7.5,-2.15) {Auditor};
+% data flow
+\draw[fl] (src.east) -- ++(0.3,0) |- (tr.west);
+\draw[fl] (gen.east) -- ++(0.3,0) |- (tr.west);
+\draw[fl] (tr) -- (cap); \draw[fl] (cap) -- (ex); \draw[fl] (ex) -- (mdl);
+\draw[fl, dashed] (cap) -- node[right, font=\sffamily\tiny, text=black!60, pos=0.62]{record} (store);
+\draw[fl, dashed] (store) -- (aud);
+\draw[fl, dashed] (mdl.south) |- (aud.east);
+% mechanisms
+\node[mech] (m1) at (0,1.45) {WitSrc};          \draw[tie] (m1) -- (src);
+\node[mech] (m2) at (2.35,1.05) {AttTrans};     \draw[tie] (m2) -- (tr);
+\node[mech] (m3) at (4.45,1.05) {AttCap};       \draw[tie] (m3) -- (cap);
+\node[mech, align=center] (m4) at (6.55,1.1) {BindFix /\\BindGrind}; \draw[tie] (m4) -- (ex);
+\draw[mechblue, dashed, ->, line width=0.55pt] (m2.north) to[out=35,in=145] node[mech, solid, pos=0.5, fill=white] {WitIn} (m4.north);
+\node[mech] (m5) at (2.35,-2.15) {Detector};    \draw[tie, ->] (m5) -- (store);
+% adversary
+\node[adv] (a1) at (0,-1.45) {AdvSource, AdvGen}; \draw[tie] (a1) -- (gen);
+\node[adv] (a2) at (2.35,-1.0) {AdvTrans}; \draw[tie] (a2) -- (tr);
+\node[adv] (a3) at (3.85,-1.0) {AdvCap};   \draw[tie] (a3) -- (cap);
+\node[adv] (a4) at (6.55,-1.0) {AdvExec};  \draw[tie] (a4) -- (ex);
+\node[adv] (a5) at (6.1,-2.95) {AdvWit, AdvTEE: trust base broken};
+% legend
+\node[mech, minimum width=3mm] (l1) at (-0.35,-2.95) {};
+\node[right=0.4mm of l1, font=\sffamily\scriptsize] (t1) {mechanism};
+\node[adv, minimum width=3mm, right=1.5mm of t1] (l2) {};
+\node[right=0.4mm of l2, font=\sffamily\scriptsize] {adversary};
+\end{tikzpicture}

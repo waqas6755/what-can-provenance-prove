@@ -1,0 +1,152 @@
+[
+ {
+  "poison": 0,
+  "seed": 1,
+  "receipts_valid": true,
+  "attack_success": 0.23,
+  "clean_acc": 0.7733333110809326,
+  "flagged": 113,
+  "poison_flagged": 0,
+  "recall": null
+ },
+ {
+  "poison": 0,
+  "seed": 2,
+  "receipts_valid": true,
+  "attack_success": 0.32,
+  "clean_acc": 0.7933333516120911,
+  "flagged": 113,
+  "poison_flagged": 0,
+  "recall": null
+ },
+ {
+  "poison": 0,
+  "seed": 3,
+  "receipts_valid": true,
+  "attack_success": 0.23,
+  "clean_acc": 0.7766666412353516,
+  "flagged": 113,
+  "poison_flagged": 0,
+  "recall": null
+ },
+ {
+  "poison": 1,
+  "seed": 1,
+  "receipts_valid": true,
+  "attack_success": 0.25,
+  "clean_acc": 0.7766666412353516,
+  "flagged": 113,
+  "poison_flagged": 0,
+  "recall": 0.0
+ },
+ {
+  "poison": 1,
+  "seed": 2,
+  "receipts_valid": true,
+  "attack_success": 0.28,
+  "clean_acc": 0.7933333516120911,
+  "flagged": 113,
+  "poison_flagged": 0,
+  "recall": 0.0
+ },
+ {
+  "poison": 1,
+  "seed": 3,
+  "receipts_valid": true,
+  "attack_success": 0.25,
+  "clean_acc": 0.7833333611488342,
+  "flagged": 113,
+  "poison_flagged": 0,
+  "recall": 0.0
+ },
+ {
+  "poison": 8,
+  "seed": 1,
+  "receipts_valid": true,
+  "attack_success": 0.38,
+  "clean_acc": 0.7766666412353516,
+  "flagged": 114,
+  "poison_flagged": 0,
+  "recall": 0.0
+ },
+ {
+  "poison": 8,
+  "seed": 2,
+  "receipts_valid": true,
+  "attack_success": 0.27,
+  "clean_acc": 0.7799999713897705,
+  "flagged": 114,
+  "poison_flagged": 0,
+  "recall": 0.0
+ },
+ {
+  "poison": 8,
+  "seed": 3,
+  "receipts_valid": true,
+  "attack_success": 0.32,
+  "clean_acc": 0.753333330154419,
+  "flagged": 114,
+  "poison_flagged": 2,
+  "recall": 0.25
+ },
+ {
+  "poison": 30,
+  "seed": 1,
+  "receipts_valid": true,
+  "attack_success": 0.43,
+  "clean_acc": 0.7300000190734863,
+  "flagged": 115,
+  "poison_flagged": 1,
+  "recall": 0.03333333333333333
+ },
+ {
+  "poison": 30,
+  "seed": 2,
+  "receipts_valid": true,
+  "attack_success": 0.45,
+  "clean_acc": 0.7233333587646484,
+  "flagged": 115,
+  "poison_flagged": 0,
+  "recall": 0.0
+ },
+ {
+  "poison": 30,
+  "seed": 3,
+  "receipts_valid": true,
+  "attack_success": 0.48,
+  "clean_acc": 0.7099999785423279,
+  "flagged": 115,
+  "poison_flagged": 1,
+  "recall": 0.03333333333333333
+ },
+ {
+  "poison": 100,
+  "seed": 1,
+  "receipts_valid": true,
+  "attack_success": 0.52,
+  "clean_acc": 0.5533333420753479,
+  "flagged": 121,
+  "poison_flagged": 3,
+  "recall": 0.03
+ },
+ {
+  "poison": 100,
+  "seed": 2,
+  "receipts_valid": true,
+  "attack_success": 0.56,
+  "clean_acc": 0.54666668176651,
+  "flagged": 121,
+  "poison_flagged": 3,
+  "recall": 0.03
+ },
+ {
+  "poison": 100,
+  "seed": 3,
+  "receipts_valid": true,
+  "attack_success": 0.53,
+  "clean_acc": 0.5600000023841858,
+  "flagged": 121,
+  "poison_flagged": 5,
+  "recall": 0.05
+ }
+]

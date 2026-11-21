@@ -1,0 +1,42 @@
+{
+ "Thm1_binding": {
+  "instances_in_scope": 32768,
+  "mismatches": 0,
+  "examples": []
+ },
+ "Thm2_lineage_full": {
+  "instances_in_scope": 256,
+  "mismatches": 0,
+  "examples": []
+ },
+ "Thm3_influence": {
+  "instances_in_scope": 16384,
+  "mismatches": 0,
+  "examples": []
+ },
+ "Thm5_part1_zero_unreachable": {
+  "instances_in_scope": 16384,
+  "mismatches": 0,
+  "examples": []
+ },
+ "Thm5_part2_content_untrusted_exec": {
+  "instances_in_scope": 4096,
+  "mismatches": 0,
+  "examples": []
+ },
+ "Thm5_part3_content_trusted_exec": {
+  "instances_in_scope": 2048,
+  "mismatches": 0,
+  "examples": []
+ },
+ "Thm5_tee_broken": {
+  "instances_in_scope": 8192,
+  "mismatches": 0,
+  "examples": []
+ },
+ "Thm6_completeness": {
+  "instances_in_scope": 16384,
+  "mismatches": 0,
+  "examples": []
+ }
+}

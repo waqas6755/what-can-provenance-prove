@@ -1,0 +1,168 @@
+% ---------------------------------------------------------------
+\section{Systematisation: Provenance Mechanisms as Primitives}\label{sec:sok}
+% ---------------------------------------------------------------
+
+\begin{figure}[t]
+\centering
+\resizebox{\columnwidth}{!}{\input{fig/fig_pipeline}}
+\caption{The pipeline model. Grey: pipeline stages and the item sets of the model. Blue: where each mechanism primitive acts. Orange: what each adversary capability corrupts. Dashed: the record and the released model reach the auditor.}
+\label{fig:pipeline}
+\end{figure}
+
+We group the published mechanisms by \emph{what they let an auditor check} rather than by
+technology. Each group becomes one primitive of the model (Table~\ref{tab:sok}).
+
+\paragraph{Computation binding}
+Binding mechanisms let a verifier confirm that a model was produced by running a stated
+training procedure on a stated dataset. Proof-of-learning~\cite{jia2021pol} has the prover
+publish training checkpoints and the verifier re-execute selected segments. Its attacks
+show that tolerance-based verification admits spoofed trajectories~\cite{fang2023pol}.
+Zero-knowledge proofs of training give cryptographic soundness at substantial
+cost~\cite{abbaszadeh2024zkpot,tan2025zkpot}. VeriLoRA extends them to LoRA fine-tuning of
+LLMs with up to 13 billion parameters~\cite{liao2026verilora}. Exact re-execution is the
+simplest binding. It is available whenever training is deterministic and affordable to
+repeat, and we measure when it is (Section~\ref{sec:eval}). We separate binding that fixes
+the training randomness in advance (\textsf{BindFix}) from binding that accepts the
+prover's randomness (\textsf{BindGrind}), because the two differ in what they prove
+(Theorems~\ref{thm:noinf} and~\ref{thm:grind}).
+
+\paragraph{Source witnessing}
+Signed manifests and receipts bind data to its supplier. VAMP signs dataset manifests with
+the creator's key~\cite{stokes2021prevent}. Software supply-chain frameworks sign the steps
+and artefacts of a build~\cite{torresarias2019intoto,newman2022sigstore}. The auditor's
+check is that every recorded item is covered by a receipt (\textsf{WitSrc}). Receipts must
+bind \emph{content}, not names: Carlini et al.\ show that web-scale datasets distributed
+as URLs can be poisoned by changing what a URL serves between curation and
+download (\emph{split-view} poisoning)~\cite{carlini2024poisoning}.
+
+\paragraph{Input witnessing}
+An observer at the training input, for example an attested data loader or the
+external-input attestation of an enclave~\cite{huang2026exia}, reports what the executor
+received. The auditor rejects a record that omits a reported input (\textsf{WitIn}).
+
+\paragraph{Attested stages}
+Trusted execution environments sign measurements that bind a stage's code, inputs and
+outputs. Atlas runs attestation clients in TEEs and records every transformation in a
+transparency log~\cite{spoczynski2025atlas}. Laminator issues hardware-attested property
+cards for datasets, training and inference~\cite{duddu2025laminator}. We separate
+attestation of the capture stage (\textsf{AttCap}) from attestation of transforms
+(\textsf{AttTrans}), because they protect different relations.
+
+\paragraph{Content detection}
+Poisoning and backdoor detectors~\cite{goldblum2023dataset,tran2018spectral} inspect data
+or trained models. PoisonSpot uses fine-grained training provenance to locate clean-label
+backdoor samples~\cite{hailemariam2025poisonspot}. Data-use auditing tests whether given
+data was used in training~\cite{huang2024datause,chen2025anonymity}. In the model a
+detector is attested and examines the committed record (\textsf{Detector}). Its recall is
+the free parameter $M$.
+
+\paragraph{Record stores}
+Certificate Transparency-style logs with co-signing witnesses give tamper evidence and
+non-equivocation~\cite{rfc6962}. Hash chains give tamper evidence alone~\cite{li2025auditablellm}.
+Blockchains add replicated, censorship-resistant inclusion~\cite{geren2025blockchain,mehammed2025fl}.
+The model abstracts the store into properties $P_1$ (integrity), $P_2$ (non-equivocation)
+and $P_8$ (inclusion liveness), and treats $P_1$ and $P_2$ as given
+(Proposition~\ref{prop:ledger}).
+
+\begin{table}[t]
+\centering\scriptsize
+\caption{Mechanism primitives, what the auditor checks, the trust they rest on, and
+representative peer-reviewed work.}\label{tab:sok}
+\begin{tabular}{@{}p{1.2cm}p{2.4cm}p{1.6cm}p{2.1cm}@{}}
+\toprule
+Primitive & Auditor's check & Rests on & Examples\\
+\midrule
+Bind & released model = Train(record) & re-execution or proof soundness & \cite{jia2021pol,abbaszadeh2024zkpot,tan2025zkpot,liao2026verilora}\\
+WitSrc & every recorded item has a content receipt & sources' keys, non-collusion & \cite{stokes2021prevent,newman2022sigstore,torresarias2019intoto}\\
+WitIn & record contains every observed training input & complete mediation, non-collusion & \cite{huang2026exia}\\
+AttCap & record = capture input & TEE & \cite{spoczynski2025atlas,duddu2025laminator}\\
+AttTrans & transform output $\subseteq$ inputs; synthetic report true & TEE & \cite{spoczynski2025atlas,duddu2025laminator}\\
+Detector & no flagged poison in record & detector recall, TEE & \cite{tran2018spectral,hailemariam2025poisonspot,goldblum2023dataset}\\
+Store & same unaltered record for all & witnesses or consensus & \cite{rfc6962,li2025auditablellm,mehammed2025fl}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{The base survey and what it leaves open}
+Our starting point is the survey of Geren et al.~\cite{geren2025blockchain}, the most
+complete peer-reviewed treatment of blockchain for LLM security and safety. It maps four
+blockchain components (consensus, decentralised network, layer-2 zero-knowledge proofs and
+smart contracts, and the verifiable Merkle-tree ledger~\cite{merkle1988signature}) onto a
+taxonomy of LLM threats in training, prompting, data and supply chain. Its threat
+categorisation follows Yao et al.~\cite{yao2024llmsecurity}. It builds on earlier
+blockchain-for-AI reviews~\cite{salah2019blockchain,dinh2018ai} and on blockchain-enabled
+federated learning~\cite{qu2023bcfl}. For the training phase, the survey collects systems that
+use blockchain against poisoning and backdoors:
+\begin{itemize}
+\item a hash-chain-plus-proof-of-work framework presented as preventing data poisoning in
+  smart power networks~\cite{keshk2020privacy};
+\item a blockchain-based federated-learning framework that resists backdoors through robust
+  aggregation~\cite{li2023dbfl};
+\item DeepChain, which makes collaborative training auditable through a blockchain incentive
+  mechanism~\cite{weng2021deepchain}.
+\end{itemize}
+The survey itself concludes that blockchain-based defences for LLMs still need comprehensive
+integration and empirical validation. It also names data provenance as a direction in which
+simple data-tracking solutions have remained absent, citing calls for provenance in
+responsible AI~\cite{werder2022provenance}.
+
+This paper takes up exactly those two open points. It does not catalogue further systems.
+Instead, it asks what any combination of these mechanisms can \emph{prove}, and tests the
+answer empirically. The model gives a precise reading of the survey's training-phase entries.
+Hash chains and ledgers contribute record-store properties ($P_1$, $P_2$, $P_8$). They do not
+prevent poison delivered by an authorised party (Theorem~\ref{thm:content}). Robust
+aggregation is a content detector in our terms, so its guarantee is conditional on recall.
+Auditability supports model-level claims only when the computation is bound to the record
+(Theorem~\ref{thm:bind}). These readings rest on the survey's descriptions and the original
+abstracts, not on re-implementations.
+
+\begin{table*}[t]
+\centering\scriptsize
+\caption{Comparison with the closest prior work. ``Assurance claims'' and ``Adversary
+assumptions'' follow each work's own description. ``Limitation'' is relative to the auditor's
+question of this paper, not a judgement of the work's own aims.}\label{tab:compare}
+\begin{tabular}{@{}p{2.1cm}p{2.2cm}p{2.4cm}p{2.3cm}p{3.1cm}p{3.4cm}@{}}
+\toprule
+Prior work & Mechanisms addressed & Assurance claims & Adversary assumptions & Limitation for the auditor's question & What this paper adds\\
+\midrule
+Geren et al.~\cite{geren2025blockchain} (survey) & Blockchain components (consensus, ledger, ZKP, smart contracts) & Taxonomy of how blockchain may help LLM security and safety & Threat categories, not a formal adversary & No sufficiency or minimality results; calls for empirical validation & Exact sufficiency and minimality per adversary; ledger's role reduced to $P_8$ (Prop.~\ref{prop:ledger}); empirical test\\
+Lyu et al.~\cite{lyu2026survey}, Peng et al.~\cite{peng2026zkp} (surveys) & Verifiable / ZK ML techniques & Taxonomy of objectives, techniques and architectures; per-technique trust assumptions; Lyu: informal guidance on combining techniques & Per technique family, not a formal adversary & Combinations recommended informally, not decided against adversaries; Lyu leaves dataset completeness, label correctness and verifiable data poisoning open & Combinations decided exactly against six goals and 128 adversaries; $G_{\mathrm{compl}}$; content boundary (Thm.~\ref{thm:content})\\
+PoL~\cite{jia2021pol}, attacks~\cite{fang2023pol} & Binding by spot-check replay & Model came from stated training, up to tolerance & Untrusted trainer & Tolerance admits spoofing; randomness chosen by prover & Grinding bound in terms of accepted outputs (Thm.~\ref{thm:grind}); measured on LLMs\\
+zkPoT~\cite{abbaszadeh2024zkpot,tan2025zkpot}, VeriLoRA~\cite{liao2026verilora} & Cryptographic binding & Sound proof of training & Untrusted trainer & Lineage and content outside scope; Kaizen and VeriLoRA accept prover-chosen initialisation and randomness; Tan et al.\ show seed rejection sampling and remove randomness by optimum vicinity, for convex objectives only & Shows what binding needs beside it (Thms.~\ref{thm:auth},~\ref{thm:content}); BindFix vs BindGrind; influence bound for non-convex training (Thm.~\ref{thm:grind})\\
+Atlas~\cite{spoczynski2025atlas}, Laminator~\cite{duddu2025laminator} & TEE attestation, transparency logs & Tamper detection, attested lineage and properties & MLaaS providers untrusted; TEEs and verifiers trusted & Training on GPUs outside TEE (Atlas); content out of scope & Which goals survive without attested training or under TEE compromise\\
+VAMP~\cite{stokes2021prevent}, Sigstore~\cite{newman2022sigstore}, in-toto~\cite{torresarias2019intoto} & Signed manifests and supply-chain attestations & Authenticity and integrity of artefacts; VAMP: poisoning prevention & Infrastructure trusted; signers authorised & Authorised poison passes & Formal and empirical counterexample (Thm.~\ref{thm:content}, G3)\\
+CT logs~\cite{rfc6962}, ledgers~\cite{mehammed2025fl,li2025auditablellm} & Record stores & Integrity, non-equivocation, inclusion & Log operator untrusted, witnesses honest & Say nothing about what enters the record & Store properties separated from pipeline goals\\
+Detectors~\cite{tran2018spectral,hailemariam2025poisonspot}, data-use audit~\cite{huang2024datause} & Content inspection & Detect poisoned or used items & Varies & No transfer to the released model without binding & Conditional content claim (Thm.~\ref{thm:content}); recall and precision measured\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\paragraph{Worked example}
+VAMP~\cite{stokes2021prevent} binds datasets, training software and models to signed
+manifests, and its title presents this as \emph{preventing} poisoning. In our model its
+deployment corresponds to \textsf{WitSrc} under a trusted training infrastructure: the
+trans-only profile, filter-only pipeline. Table~\ref{tab:minimal} then gives lineage
+($G_{\mathrm{auth}}$), and the scheme is sound for that claim. The same table shows that no
+mechanism set achieves $G_{\mathrm{zero}}$. The proof of Theorem~\ref{thm:content} gives the
+counterexample in one line: a dataset creator holding a valid signing key signs a poisoned
+item. The taxonomies we reviewed record that VAMP uses signatures and provenance; they do not
+make this boundary explicit. Our experiment G3 (Section~\ref{sec:eval}) realises it on
+DistilBERT. Every poisoned example carried a valid receipt, and the backdoor raised attack
+success by 20 to 75 points.
+
+\paragraph{Other surveys}
+Lyu et al.~\cite{lyu2026survey} and Peng et al.~\cite{peng2026zkp} survey verifiable ML and
+zero-knowledge ML. Together with the base survey, these works classify techniques and their
+trust assumptions. Lyu et al.\ go further than a list of techniques: they tabulate the trust
+assumptions of each technique family and give practitioners informal guidance on which
+techniques to combine for a use case. They also state three gaps that bear on our question.
+No surveyed system gives model binding, update integrity and supply-chain provenance in one
+proof, and the cost of combining them is open. Label correctness, sampling fidelity and
+dataset completeness lie outside the data-integrity guarantees they survey. Verifiable data
+poisoning is listed as an open challenge. Our model addresses these gaps directly: combinations
+are decided against a formal adversary (Table~\ref{tab:minimal}), completeness is a goal of its
+own ($G_{\mathrm{compl}}$), and Theorem~\ref{thm:content} states what can and cannot be
+verified about poisoning. Our contribution is complementary: a model in which combinations of those
+techniques are compared against stated adversaries and goals, with exact sufficiency and
+minimality results, and an experimental test of the model. The structured search behind this
+section is described in Section~\ref{sec:lit}.

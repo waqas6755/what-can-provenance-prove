@@ -1,0 +1,1137 @@
+{
+ "environment": {
+  "python": "3.14.10 | packaged by conda-forge | (main, Oct 26 2026, 11:40:34) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "cuda_available": true,
+  "device": "NVIDIA GeForce GTX 1650",
+  "gpu_total_mem_mb": 4095,
+  "smoke": false,
+  "started": "2026-11-21 03:52:15",
+  "script_sha256": {
+   "p3gpu_g5.py": "0cd1e7ccc2be06296ba88c194cb0aa8167e8623be1aab6c3eb223d59cd5b35e1",
+   "p3gpu.py": "b8409d360e7c5344af3d676df89e77cacb5c8619dab8ddab309bbfa401f19688",
+   "prov.py": "b2bb58067a2b3658dcf2e943c6c446494abeb3b716b50307b7ed7bb29d6c9ec8"
+  },
+  "transformers": "5.22.1",
+  "peft": "0.21.2"
+ },
+ "validation": {
+  "passed": false,
+  "problems": [
+   "device is the RTX 3070 (NVIDIA GeForce GTX 1650)",
+   "G3 runs (0, 80, 160 x seeds 1-3) replayed exactly"
+  ],
+  "checks": [
+   {
+    "check": "all 12 runs present",
+    "ok": true
+   },
+   {
+    "check": "device is the RTX 3070 (NVIDIA GeForce GTX 1650)",
+    "ok": false
+   },
+   {
+    "check": "every run trained on CUDA",
+    "ok": true
+   },
+   {
+    "check": "deterministic kernels throughout",
+    "ok": true
+   },
+   {
+    "check": "every committed item has a valid receipt",
+    "ok": true
+   },
+   {
+    "check": "c0_s1: array lengths = 8000",
+    "ok": true
+   },
+   {
+    "check": "c0_s1: poison count",
+    "ok": true
+   },
+   {
+    "check": "c0_s1: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c0_s1: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c0_s1: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "c0_s2: array lengths = 8000",
+    "ok": true
+   },
+   {
+    "check": "c0_s2: poison count",
+    "ok": true
+   },
+   {
+    "check": "c0_s2: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c0_s2: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c0_s2: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "c0_s3: array lengths = 8000",
+    "ok": true
+   },
+   {
+    "check": "c0_s3: poison count",
+    "ok": true
+   },
+   {
+    "check": "c0_s3: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c0_s3: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c0_s3: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "c80_s1: array lengths = 8080",
+    "ok": true
+   },
+   {
+    "check": "c80_s1: poison count",
+    "ok": true
+   },
+   {
+    "check": "c80_s1: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c80_s1: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c80_s1: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "c80_s2: array lengths = 8080",
+    "ok": true
+   },
+   {
+    "check": "c80_s2: poison count",
+    "ok": true
+   },
+   {
+    "check": "c80_s2: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c80_s2: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c80_s2: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "c80_s3: array lengths = 8080",
+    "ok": true
+   },
+   {
+    "check": "c80_s3: poison count",
+    "ok": true
+   },
+   {
+    "check": "c80_s3: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c80_s3: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c80_s3: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "c160_s1: array lengths = 8160",
+    "ok": true
+   },
+   {
+    "check": "c160_s1: poison count",
+    "ok": true
+   },
+   {
+    "check": "c160_s1: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c160_s1: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c160_s1: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "c160_s2: array lengths = 8160",
+    "ok": true
+   },
+   {
+    "check": "c160_s2: poison count",
+    "ok": true
+   },
+   {
+    "check": "c160_s2: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c160_s2: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c160_s2: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "c160_s3: array lengths = 8160",
+    "ok": true
+   },
+   {
+    "check": "c160_s3: poison count",
+    "ok": true
+   },
+   {
+    "check": "c160_s3: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c160_s3: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c160_s3: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "c320_s1: array lengths = 8320",
+    "ok": true
+   },
+   {
+    "check": "c320_s1: poison count",
+    "ok": true
+   },
+   {
+    "check": "c320_s1: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c320_s1: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c320_s1: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "c320_s2: array lengths = 8320",
+    "ok": true
+   },
+   {
+    "check": "c320_s2: poison count",
+    "ok": true
+   },
+   {
+    "check": "c320_s2: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c320_s2: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c320_s2: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "c320_s3: array lengths = 8320",
+    "ok": true
+   },
+   {
+    "check": "c320_s3: poison count",
+    "ok": true
+   },
+   {
+    "check": "c320_s3: every poison item labelled positive",
+    "ok": true
+   },
+   {
+    "check": "c320_s3: finite scores",
+    "ok": true
+   },
+   {
+    "check": "c320_s3: cluster sizes match the log",
+    "ok": true
+   },
+   {
+    "check": "G3 runs (0, 80, 160 x seeds 1-3) replayed exactly",
+    "ok": false
+   }
+  ]
+ },
+ "rules": {
+  "eps": 0.05,
+  "act_clust_threshold": 0.35
+ },
+ "per_run": [
+  {
+   "poison": 0,
+   "seed": 1,
+   "committed": 8000,
+   "clean_acc": 0.8727064220183486,
+   "attack_success": 0.14953271028037382,
+   "train_s": 99.66165542602539,
+   "run_s": 253.9515438079834,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 601,
+    "tp": 0,
+    "fp": 601,
+    "fn": 0,
+    "recall": null,
+    "precision": 0.0,
+    "f1": null,
+    "fpr": 0.075125,
+    "fnr": null,
+    "auroc_target_class": null,
+    "auroc_all": null
+   },
+   "act_clust": {
+    "flagged": 1486,
+    "tp": 0,
+    "fp": 1486,
+    "fn": 0,
+    "recall": null,
+    "precision": 0.0,
+    "f1": null,
+    "fpr": 0.18575,
+    "fnr": null
+   },
+   "loss": {
+    "flagged": 601,
+    "tp": 0,
+    "fp": 601,
+    "fn": 0,
+    "recall": null,
+    "precision": 0.0,
+    "f1": null,
+    "fpr": 0.075125,
+    "fnr": null,
+    "auroc_target_class": null,
+    "auroc_all": null
+   }
+  },
+  {
+   "poison": 0,
+   "seed": 2,
+   "committed": 8000,
+   "clean_acc": 0.8761467889908257,
+   "attack_success": 0.11448598130841121,
+   "train_s": 104.33868145942688,
+   "run_s": 182.3057084083557,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 601,
+    "tp": 0,
+    "fp": 601,
+    "fn": 0,
+    "recall": null,
+    "precision": 0.0,
+    "f1": null,
+    "fpr": 0.075125,
+    "fnr": null,
+    "auroc_target_class": null,
+    "auroc_all": null
+   },
+   "act_clust": {
+    "flagged": 2570,
+    "tp": 0,
+    "fp": 2570,
+    "fn": 0,
+    "recall": null,
+    "precision": 0.0,
+    "f1": null,
+    "fpr": 0.32125,
+    "fnr": null
+   },
+   "loss": {
+    "flagged": 601,
+    "tp": 0,
+    "fp": 601,
+    "fn": 0,
+    "recall": null,
+    "precision": 0.0,
+    "f1": null,
+    "fpr": 0.075125,
+    "fnr": null,
+    "auroc_target_class": null,
+    "auroc_all": null
+   }
+  },
+  {
+   "poison": 0,
+   "seed": 3,
+   "committed": 8000,
+   "clean_acc": 0.8784403669724771,
+   "attack_success": 0.1261682242990654,
+   "train_s": 109.21966695785522,
+   "run_s": 187.62878489494324,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 601,
+    "tp": 0,
+    "fp": 601,
+    "fn": 0,
+    "recall": null,
+    "precision": 0.0,
+    "f1": null,
+    "fpr": 0.075125,
+    "fnr": null,
+    "auroc_target_class": null,
+    "auroc_all": null
+   },
+   "act_clust": {
+    "flagged": 2415,
+    "tp": 0,
+    "fp": 2415,
+    "fn": 0,
+    "recall": null,
+    "precision": 0.0,
+    "f1": null,
+    "fpr": 0.301875,
+    "fnr": null
+   },
+   "loss": {
+    "flagged": 601,
+    "tp": 0,
+    "fp": 601,
+    "fn": 0,
+    "recall": null,
+    "precision": 0.0,
+    "f1": null,
+    "fpr": 0.075125,
+    "fnr": null,
+    "auroc_target_class": null,
+    "auroc_all": null
+   }
+  },
+  {
+   "poison": 80,
+   "seed": 1,
+   "committed": 8080,
+   "clean_acc": 0.8784403669724771,
+   "attack_success": 0.14953271028037382,
+   "train_s": 109.27707481384277,
+   "run_s": 188.2283923625946,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 607,
+    "tp": 61,
+    "fp": 546,
+    "fn": 19,
+    "recall": 0.7625,
+    "precision": 0.10049423393739704,
+    "f1": 0.17758369723435227,
+    "fpr": 0.06825,
+    "fnr": 0.2375,
+    "auroc_target_class": 0.9085232375392905,
+    "auroc_all": 0.9136671875
+   },
+   "act_clust": {
+    "flagged": 2494,
+    "tp": 76,
+    "fp": 2418,
+    "fn": 4,
+    "recall": 0.95,
+    "precision": 0.030473135525260625,
+    "f1": 0.059052059052059055,
+    "fpr": 0.30225,
+    "fnr": 0.05
+   },
+   "loss": {
+    "flagged": 607,
+    "tp": 62,
+    "fp": 545,
+    "fn": 18,
+    "recall": 0.775,
+    "precision": 0.10214168039538715,
+    "f1": 0.18049490538573507,
+    "fpr": 0.068125,
+    "fnr": 0.225,
+    "auroc_target_class": 0.9502946789402784,
+    "auroc_all": 0.938809375
+   }
+  },
+  {
+   "poison": 80,
+   "seed": 2,
+   "committed": 8080,
+   "clean_acc": 0.8772935779816514,
+   "attack_success": 0.13551401869158877,
+   "train_s": 108.4227705001831,
+   "run_s": 186.01775670051575,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 607,
+    "tp": 57,
+    "fp": 550,
+    "fn": 23,
+    "recall": 0.7125,
+    "precision": 0.09390444810543658,
+    "f1": 0.16593886462882093,
+    "fpr": 0.06875,
+    "fnr": 0.2875,
+    "auroc_target_class": 0.9028485630893579,
+    "auroc_all": 0.9121265625
+   },
+   "act_clust": {
+    "flagged": 2481,
+    "tp": 76,
+    "fp": 2405,
+    "fn": 4,
+    "recall": 0.95,
+    "precision": 0.030632809351068116,
+    "f1": 0.059351815696993354,
+    "fpr": 0.300625,
+    "fnr": 0.05
+   },
+   "loss": {
+    "flagged": 607,
+    "tp": 59,
+    "fp": 548,
+    "fn": 21,
+    "recall": 0.7375,
+    "precision": 0.09719934102141681,
+    "f1": 0.1717612809315866,
+    "fpr": 0.0685,
+    "fnr": 0.2625,
+    "auroc_target_class": 0.9430231252806466,
+    "auroc_all": 0.9322375
+   }
+  },
+  {
+   "poison": 80,
+   "seed": 3,
+   "committed": 8080,
+   "clean_acc": 0.8692660550458715,
+   "attack_success": 0.21261682242990654,
+   "train_s": 103.52245688438416,
+   "run_s": 176.9891402721405,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 607,
+    "tp": 52,
+    "fp": 555,
+    "fn": 28,
+    "recall": 0.65,
+    "precision": 0.085667215815486,
+    "f1": 0.15138282387190685,
+    "fpr": 0.069375,
+    "fnr": 0.35,
+    "auroc_target_class": 0.8953103951504265,
+    "auroc_all": 0.9078546875
+   },
+   "act_clust": {
+    "flagged": 2545,
+    "tp": 79,
+    "fp": 2466,
+    "fn": 1,
+    "recall": 0.9875,
+    "precision": 0.031041257367387033,
+    "f1": 0.06019047619047619,
+    "fpr": 0.30825,
+    "fnr": 0.0125
+   },
+   "loss": {
+    "flagged": 607,
+    "tp": 51,
+    "fp": 556,
+    "fn": 29,
+    "recall": 0.6375,
+    "precision": 0.08401976935749589,
+    "f1": 0.14847161572052403,
+    "fpr": 0.0695,
+    "fnr": 0.3625,
+    "auroc_target_class": 0.9300488325101033,
+    "auroc_all": 0.9170421875
+   }
+  },
+  {
+   "poison": 160,
+   "seed": 1,
+   "committed": 8160,
+   "clean_acc": 0.8669724770642202,
+   "attack_success": 0.572429906542056,
+   "train_s": 101.11059761047363,
+   "run_s": 176.3499493598938,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 613,
+    "tp": 35,
+    "fp": 578,
+    "fn": 125,
+    "recall": 0.21875,
+    "precision": 0.057096247960848286,
+    "f1": 0.09055627425614489,
+    "fpr": 0.07225,
+    "fnr": 0.78125,
+    "auroc_target_class": 0.6469921699595869,
+    "auroc_all": 0.669267578125
+   },
+   "act_clust": {
+    "flagged": 2508,
+    "tp": 128,
+    "fp": 2380,
+    "fn": 32,
+    "recall": 0.8,
+    "precision": 0.051036682615629984,
+    "f1": 0.09595202398800601,
+    "fpr": 0.2975,
+    "fnr": 0.2
+   },
+   "loss": {
+    "flagged": 613,
+    "tp": 34,
+    "fp": 579,
+    "fn": 126,
+    "recall": 0.2125,
+    "precision": 0.05546492659053834,
+    "f1": 0.08796895213454076,
+    "fpr": 0.072375,
+    "fnr": 0.7875,
+    "auroc_target_class": 0.8125926133812303,
+    "auroc_all": 0.76100546875
+   }
+  },
+  {
+   "poison": 160,
+   "seed": 2,
+   "committed": 8160,
+   "clean_acc": 0.8704128440366973,
+   "attack_success": 0.2967289719626168,
+   "train_s": 100.93830704689026,
+   "run_s": 174.88076615333557,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 613,
+    "tp": 82,
+    "fp": 531,
+    "fn": 78,
+    "recall": 0.5125,
+    "precision": 0.13376835236541598,
+    "f1": 0.21216041397153945,
+    "fpr": 0.066375,
+    "fnr": 0.4875,
+    "auroc_target_class": 0.8482291198922317,
+    "auroc_all": 0.8654765625
+   },
+   "act_clust": {
+    "flagged": 2143,
+    "tp": 152,
+    "fp": 1991,
+    "fn": 8,
+    "recall": 0.95,
+    "precision": 0.07092860475968268,
+    "f1": 0.13200173686495875,
+    "fpr": 0.248875,
+    "fnr": 0.05
+   },
+   "loss": {
+    "flagged": 613,
+    "tp": 79,
+    "fp": 534,
+    "fn": 81,
+    "recall": 0.49375,
+    "precision": 0.12887438825448613,
+    "f1": 0.20439844760672704,
+    "fpr": 0.06675,
+    "fnr": 0.50625,
+    "auroc_target_class": 0.9123316120341266,
+    "auroc_all": 0.889578125
+   }
+  },
+  {
+   "poison": 160,
+   "seed": 3,
+   "committed": 8160,
+   "clean_acc": 0.8738532110091743,
+   "attack_success": 0.6915887850467289,
+   "train_s": 101.0081114768982,
+   "run_s": 174.97995710372925,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 613,
+    "tp": 23,
+    "fp": 590,
+    "fn": 137,
+    "recall": 0.14375,
+    "precision": 0.037520391517128875,
+    "f1": 0.059508408796895215,
+    "fpr": 0.07375,
+    "fnr": 0.85625,
+    "auroc_target_class": 0.4906530646609789,
+    "auroc_all": 0.51814609375
+   },
+   "act_clust": {
+    "flagged": 2444,
+    "tp": 99,
+    "fp": 2345,
+    "fn": 61,
+    "recall": 0.61875,
+    "precision": 0.04050736497545008,
+    "f1": 0.076036866359447,
+    "fpr": 0.293125,
+    "fnr": 0.38125
+   },
+   "loss": {
+    "flagged": 613,
+    "tp": 23,
+    "fp": 590,
+    "fn": 137,
+    "recall": 0.14375,
+    "precision": 0.037520391517128875,
+    "f1": 0.059508408796895215,
+    "fpr": 0.07375,
+    "fnr": 0.85625,
+    "auroc_target_class": 0.7294103614728334,
+    "auroc_all": 0.653331640625
+   }
+  },
+  {
+   "poison": 320,
+   "seed": 1,
+   "committed": 8320,
+   "clean_acc": 0.8589449541284404,
+   "attack_success": 0.9976635514018691,
+   "train_s": 102.9743127822876,
+   "run_s": 179.24577975273132,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 625,
+    "tp": 1,
+    "fp": 624,
+    "fn": 319,
+    "recall": 0.003125,
+    "precision": 0.0016,
+    "f1": 0.0021164021164021165,
+    "fpr": 0.078,
+    "fnr": 0.996875,
+    "auroc_target_class": 0.2763078132016165,
+    "auroc_all": 0.280302734375
+   },
+   "act_clust": {
+    "flagged": 2246,
+    "tp": 14,
+    "fp": 2232,
+    "fn": 306,
+    "recall": 0.04375,
+    "precision": 0.006233303650934996,
+    "f1": 0.010911925175370226,
+    "fpr": 0.279,
+    "fnr": 0.95625
+   },
+   "loss": {
+    "flagged": 625,
+    "tp": 1,
+    "fp": 624,
+    "fn": 319,
+    "recall": 0.003125,
+    "precision": 0.0016,
+    "f1": 0.0021164021164021165,
+    "fpr": 0.078,
+    "fnr": 0.996875,
+    "auroc_target_class": 0.44927452851369554,
+    "auroc_all": 0.2801533203125
+   }
+  },
+  {
+   "poison": 320,
+   "seed": 2,
+   "committed": 8320,
+   "clean_acc": 0.8738532110091743,
+   "attack_success": 1.0,
+   "train_s": 103.0267424583435,
+   "run_s": 178.155827999115,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 625,
+    "tp": 0,
+    "fp": 625,
+    "fn": 320,
+    "recall": 0.0,
+    "precision": 0.0,
+    "f1": 0.0,
+    "fpr": 0.078125,
+    "fnr": 1.0,
+    "auroc_target_class": 0.5266354681185451,
+    "auroc_all": 0.57337578125
+   },
+   "act_clust": {
+    "flagged": 2662,
+    "tp": 7,
+    "fp": 2655,
+    "fn": 313,
+    "recall": 0.021875,
+    "precision": 0.002629601803155522,
+    "f1": 0.004694835680751173,
+    "fpr": 0.331875,
+    "fnr": 0.978125
+   },
+   "loss": {
+    "flagged": 625,
+    "tp": 0,
+    "fp": 625,
+    "fn": 320,
+    "recall": 0.0,
+    "precision": 0.0,
+    "f1": 0.0,
+    "fpr": 0.078125,
+    "fnr": 1.0,
+    "auroc_target_class": 0.39445301975752134,
+    "auroc_all": 0.238296484375
+   }
+  },
+  {
+   "poison": 320,
+   "seed": 3,
+   "committed": 8320,
+   "clean_acc": 0.8807339449541285,
+   "attack_success": 0.9976635514018691,
+   "train_s": 102.99555993080139,
+   "run_s": 178.4179663658142,
+   "gpu_peak_mem_mb": 1483,
+   "spectral": {
+    "flagged": 625,
+    "tp": 0,
+    "fp": 625,
+    "fn": 320,
+    "recall": 0.0,
+    "precision": 0.0,
+    "f1": 0.0,
+    "fpr": 0.078125,
+    "fnr": 1.0,
+    "auroc_target_class": 0.5166030534351145,
+    "auroc_all": 0.581029296875
+   },
+   "act_clust": {
+    "flagged": 2464,
+    "tp": 4,
+    "fp": 2460,
+    "fn": 316,
+    "recall": 0.0125,
+    "precision": 0.0016233766233766235,
+    "f1": 0.002873563218390805,
+    "fpr": 0.3075,
+    "fnr": 0.9875
+   },
+   "loss": {
+    "flagged": 625,
+    "tp": 0,
+    "fp": 625,
+    "fn": 320,
+    "recall": 0.0,
+    "precision": 0.0,
+    "f1": 0.0,
+    "fpr": 0.078125,
+    "fnr": 1.0,
+    "auroc_target_class": 0.37129967444993267,
+    "auroc_all": 0.2158314453125
+   }
+  }
+ ],
+ "by_poison_level": [
+  {
+   "poison": 0,
+   "poison_rate": 0.0,
+   "runs": 3,
+   "clean_acc_mean": 0.8757645259938838,
+   "asr_mean": 0.13006230529595017,
+   "asr_min": 0.11448598130841121,
+   "asr_max": 0.14953271028037382,
+   "spectral": {
+    "tp_pooled": 0,
+    "poison_pooled": 0,
+    "recall_pooled": null,
+    "precision_pooled": 0.0,
+    "fp_mean": 601.0,
+    "fpr_mean": 0.075125,
+    "runs_flagging_anything": 3
+   },
+   "act_clust": {
+    "tp_pooled": 0,
+    "poison_pooled": 0,
+    "recall_pooled": null,
+    "precision_pooled": 0.0,
+    "fp_mean": 2157.0,
+    "fpr_mean": 0.269625,
+    "runs_flagging_anything": 3
+   },
+   "loss": {
+    "tp_pooled": 0,
+    "poison_pooled": 0,
+    "recall_pooled": null,
+    "precision_pooled": 0.0,
+    "fp_mean": 601.0,
+    "fpr_mean": 0.075125,
+    "runs_flagging_anything": 3
+   }
+  },
+  {
+   "poison": 80,
+   "poison_rate": 0.009900990099009901,
+   "runs": 3,
+   "clean_acc_mean": 0.875,
+   "asr_mean": 0.1658878504672897,
+   "asr_min": 0.13551401869158877,
+   "asr_max": 0.21261682242990654,
+   "spectral": {
+    "tp_pooled": 170,
+    "poison_pooled": 240,
+    "recall_pooled": 0.7083333333333334,
+    "precision_pooled": 0.09335529928610653,
+    "fp_mean": 550.3333333333334,
+    "fpr_mean": 0.06879166666666668,
+    "runs_flagging_anything": 3,
+    "auroc_target_class_mean": 0.902227398593025,
+    "auroc_target_class_range": [
+     0.8953103951504265,
+     0.9085232375392905
+    ]
+   },
+   "act_clust": {
+    "tp_pooled": 231,
+    "poison_pooled": 240,
+    "recall_pooled": 0.9625,
+    "precision_pooled": 0.030718085106382978,
+    "fp_mean": 2429.6666666666665,
+    "fpr_mean": 0.30370833333333336,
+    "runs_flagging_anything": 3
+   },
+   "loss": {
+    "tp_pooled": 172,
+    "poison_pooled": 240,
+    "recall_pooled": 0.7166666666666667,
+    "precision_pooled": 0.09445359692476661,
+    "fp_mean": 549.6666666666666,
+    "fpr_mean": 0.06870833333333333,
+    "runs_flagging_anything": 3,
+    "auroc_target_class_mean": 0.9411222122436761,
+    "auroc_target_class_range": [
+     0.9300488325101033,
+     0.9502946789402784
+    ]
+   }
+  },
+  {
+   "poison": 160,
+   "poison_rate": 0.0196078431372549,
+   "runs": 3,
+   "clean_acc_mean": 0.8704128440366974,
+   "asr_mean": 0.5202492211838007,
+   "asr_min": 0.2967289719626168,
+   "asr_max": 0.6915887850467289,
+   "spectral": {
+    "tp_pooled": 140,
+    "poison_pooled": 480,
+    "recall_pooled": 0.2916666666666667,
+    "precision_pooled": 0.07612833061446438,
+    "fp_mean": 566.3333333333334,
+    "fpr_mean": 0.07079166666666666,
+    "runs_flagging_anything": 3,
+    "auroc_target_class_mean": 0.6619581181709324,
+    "auroc_target_class_range": [
+     0.4906530646609789,
+     0.8482291198922317
+    ]
+   },
+   "act_clust": {
+    "tp_pooled": 379,
+    "poison_pooled": 480,
+    "recall_pooled": 0.7895833333333333,
+    "precision_pooled": 0.053417899929527835,
+    "fp_mean": 2238.6666666666665,
+    "fpr_mean": 0.2798333333333334,
+    "runs_flagging_anything": 3
+   },
+   "loss": {
+    "tp_pooled": 136,
+    "poison_pooled": 480,
+    "recall_pooled": 0.2833333333333333,
+    "precision_pooled": 0.07395323545405111,
+    "fp_mean": 567.6666666666666,
+    "fpr_mean": 0.07095833333333333,
+    "runs_flagging_anything": 3,
+    "auroc_target_class_mean": 0.8181115289627301,
+    "auroc_target_class_range": [
+     0.7294103614728334,
+     0.9123316120341266
+    ]
+   }
+  },
+  {
+   "poison": 320,
+   "poison_rate": 0.038461538461538464,
+   "runs": 3,
+   "clean_acc_mean": 0.871177370030581,
+   "asr_mean": 0.9984423676012462,
+   "asr_min": 0.9976635514018691,
+   "asr_max": 1.0,
+   "spectral": {
+    "tp_pooled": 1,
+    "poison_pooled": 960,
+    "recall_pooled": 0.0010416666666666667,
+    "precision_pooled": 0.0005333333333333334,
+    "fp_mean": 624.6666666666666,
+    "fpr_mean": 0.07808333333333334,
+    "runs_flagging_anything": 3,
+    "auroc_target_class_mean": 0.43984877825175867,
+    "auroc_target_class_range": [
+     0.2763078132016165,
+     0.5266354681185451
+    ]
+   },
+   "act_clust": {
+    "tp_pooled": 25,
+    "poison_pooled": 960,
+    "recall_pooled": 0.026041666666666668,
+    "precision_pooled": 0.003391209983722192,
+    "fp_mean": 2449.0,
+    "fpr_mean": 0.30612500000000004,
+    "runs_flagging_anything": 3
+   },
+   "loss": {
+    "tp_pooled": 1,
+    "poison_pooled": 960,
+    "recall_pooled": 0.0010416666666666667,
+    "precision_pooled": 0.0005333333333333334,
+    "fp_mean": 624.6666666666666,
+    "fpr_mean": 0.07808333333333334,
+    "runs_flagging_anything": 3,
+    "auroc_target_class_mean": 0.4050090742403832,
+    "auroc_target_class_range": [
+     0.37129967444993267,
+     0.44927452851369554
+    ]
+   }
+  }
+ ],
+ "replay_vs_g3": [
+  {
+   "poison": 0,
+   "seed": 1,
+   "clean_acc_equal": false,
+   "asr_equal": false,
+   "g3_asr": 0.13317757009345793,
+   "g5_asr": 0.14953271028037382
+  },
+  {
+   "poison": 0,
+   "seed": 2,
+   "clean_acc_equal": false,
+   "asr_equal": false,
+   "g3_asr": 0.1308411214953271,
+   "g5_asr": 0.11448598130841121
+  },
+  {
+   "poison": 0,
+   "seed": 3,
+   "clean_acc_equal": false,
+   "asr_equal": false,
+   "g3_asr": 0.11214953271028037,
+   "g5_asr": 0.1261682242990654
+  },
+  {
+   "poison": 80,
+   "seed": 1,
+   "clean_acc_equal": false,
+   "asr_equal": false,
+   "g3_asr": 0.1308411214953271,
+   "g5_asr": 0.14953271028037382,
+   "spectral_recall_equal": false,
+   "spectral_flagged_equal": true,
+   "g3_recall": 0.75,
+   "g5_recall": 0.7625
+  },
+  {
+   "poison": 80,
+   "seed": 2,
+   "clean_acc_equal": false,
+   "asr_equal": false,
+   "g3_asr": 0.14485981308411214,
+   "g5_asr": 0.13551401869158877,
+   "spectral_recall_equal": true,
+   "spectral_flagged_equal": true,
+   "g3_recall": 0.7125,
+   "g5_recall": 0.7125
+  },
+  {
+   "poison": 80,
+   "seed": 3,
+   "clean_acc_equal": false,
+   "asr_equal": false,
+   "g3_asr": 0.20327102803738317,
+   "g5_asr": 0.21261682242990654,
+   "spectral_recall_equal": false,
+   "spectral_flagged_equal": true,
+   "g3_recall": 0.575,
+   "g5_recall": 0.65
+  },
+  {
+   "poison": 160,
+   "seed": 1,
+   "clean_acc_equal": true,
+   "asr_equal": false,
+   "g3_asr": 0.7126168224299065,
+   "g5_asr": 0.572429906542056,
+   "spectral_recall_equal": false,
+   "spectral_flagged_equal": true,
+   "g3_recall": 0.15625,
+   "g5_recall": 0.21875
+  },
+  {
+   "poison": 160,
+   "seed": 2,
+   "clean_acc_equal": false,
+   "asr_equal": false,
+   "g3_asr": 0.3317757009345794,
+   "g5_asr": 0.2967289719626168,
+   "spectral_recall_equal": false,
+   "spectral_flagged_equal": true,
+   "g3_recall": 0.50625,
+   "g5_recall": 0.5125
+  },
+  {
+   "poison": 160,
+   "seed": 3,
+   "clean_acc_equal": false,
+   "asr_equal": false,
+   "g3_asr": 0.8574766355140186,
+   "g5_asr": 0.6915887850467289,
+   "spectral_recall_equal": false,
+   "spectral_flagged_equal": true,
+   "g3_recall": 0.075,
+   "g5_recall": 0.14375
+  }
+ ]
+}

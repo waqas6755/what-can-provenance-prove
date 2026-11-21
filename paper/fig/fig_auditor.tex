@@ -1,0 +1,25 @@
+% Fig.: what an auditor may conclude (Discussion), column width
+\begin{tikzpicture}[font=\sffamily\scriptsize, >={Stealth[length=1.6mm]},
+  q/.style={draw=black!55, fill=black!4, rounded corners=2pt, text width=24mm, align=center,
+            inner sep=2pt, minimum height=13mm,
+            execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  a/.style={draw=black!30, fill=white, rounded corners=2pt, text width=47mm, align=flush left,
+            inner sep=2.5pt, minimum height=13mm,
+            execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+  fl/.style={->, black!65, line width=0.6pt}]
+\newcommand{\Y}{\textcolor{okgreen}{\textbf{yes}}}
+\newcommand{\N}{\textcolor{advorange}{\textbf{no}}}
+\def\dy{1.65}
+\node[q] (q1) at (0,0)      {\textbf{1} Is the trainer trusted?};
+\node[q] (q2) at (0,-\dy)   {\textbf{2} Does the verifier fix the seed after the data commitment?};
+\node[q] (q3) at (0,-2*\dy) {\textbf{3} Is there an authenticated route from sources to training?};
+\node[q] (q4) at (0,-3*\dy) {\textbf{4} Is the model free of poison?};
+\node[a, right=3mm of q1] (a1) {\Y: attested capture binds the model to its record; no proof of training needed.\\
+  \N: binding (exact replay or a proof of training) is required. \hfill\textcolor{black!55}{Thm.~\ref{thm:bind}}};
+\node[a, right=3mm of q2] (a2) {\Y: no prover influence, if replay is exact on a pinned stack.\\
+  \N: up to $\log_2 T$ chosen bits for $T$ runs. \hfill\textcolor{black!55}{Thms.~\ref{thm:noinf},~\ref{thm:grind}; G2, G5}};
+\node[a, right=3mm of q3] (a3) {\Y, with binding: lineage holds via source witnesses or attested capture and transform; stage types must be declared. \N: no lineage claim. \hfill\textcolor{black!55}{Thm.~\ref{thm:auth}, Cor.~\ref{cor:launder}}};
+\node[a, right=3mm of q4, draw=advorange, fill=advorange!7] (a4) {Never certified. At best: every poisoned item used was missed by the detector, worth its recall, which collapsed once the backdoor worked. \hfill\textcolor{black!55}{Thm.~\ref{thm:content}; G3, G5}};
+\foreach \i [count=\j from 2] in {1,2,3} \draw[fl] (q\i) -- (q\j);
+\foreach \i in {1,...,4} \draw[fl] (q\i) -- (a\i);
+\end{tikzpicture}

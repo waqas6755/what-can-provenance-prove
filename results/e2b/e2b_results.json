@@ -1,0 +1,20 @@
+{
+ "split_view": {
+  "trials": 200,
+  "accepted_name_only_receipts": 200,
+  "accepted_content_receipts": 0
+ },
+ "equivocation": {
+  "heads_equal_size": true,
+  "roots_differ": true,
+  "evidence_if_views_compared": true,
+  "witness_cosigns_first": true,
+  "witness_cosigns_second": false
+ },
+ "censorship": {
+  "heads_cosigned": 20,
+  "heads": 20,
+  "dropped_entry_present": false,
+  "witness_detected": false
+ }
+}

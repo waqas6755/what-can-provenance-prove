@@ -1,0 +1,278 @@
+[
+ {
+  "poison": 0,
+  "seed": 1,
+  "committed": 8000,
+  "receipts_valid": 8000,
+  "clean_acc": 0.8727064220183486,
+  "attack_success": 0.14953271028037382,
+  "ac_cluster_sizes": {
+   "0": [
+    2031,
+    1515
+   ],
+   "1": [
+    1486,
+    2968
+   ]
+  },
+  "train_s": 99.66165542602539,
+  "run_s": 253.9515438079834,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ },
+ {
+  "poison": 0,
+  "seed": 2,
+  "committed": 8000,
+  "receipts_valid": 8000,
+  "clean_acc": 0.8761467889908257,
+  "attack_success": 0.11448598130841121,
+  "ac_cluster_sizes": {
+   "0": [
+    2382,
+    1164
+   ],
+   "1": [
+    3048,
+    1406
+   ]
+  },
+  "train_s": 104.33868145942688,
+  "run_s": 182.3057084083557,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ },
+ {
+  "poison": 0,
+  "seed": 3,
+  "committed": 8000,
+  "receipts_valid": 8000,
+  "clean_acc": 0.8784403669724771,
+  "attack_success": 0.1261682242990654,
+  "ac_cluster_sizes": {
+   "0": [
+    2434,
+    1112
+   ],
+   "1": [
+    3151,
+    1303
+   ]
+  },
+  "train_s": 109.21966695785522,
+  "run_s": 187.62878489494324,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ },
+ {
+  "poison": 80,
+  "seed": 1,
+  "committed": 8080,
+  "receipts_valid": 8080,
+  "clean_acc": 0.8784403669724771,
+  "attack_success": 0.14953271028037382,
+  "ac_cluster_sizes": {
+   "0": [
+    2354,
+    1192
+   ],
+   "1": [
+    1302,
+    3232
+   ]
+  },
+  "train_s": 109.27707481384277,
+  "run_s": 188.2283923625946,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ },
+ {
+  "poison": 80,
+  "seed": 2,
+  "committed": 8080,
+  "receipts_valid": 8080,
+  "clean_acc": 0.8772935779816514,
+  "attack_success": 0.13551401869158877,
+  "ac_cluster_sizes": {
+   "0": [
+    2369,
+    1177
+   ],
+   "1": [
+    1304,
+    3230
+   ]
+  },
+  "train_s": 108.4227705001831,
+  "run_s": 186.01775670051575,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ },
+ {
+  "poison": 80,
+  "seed": 3,
+  "committed": 8080,
+  "receipts_valid": 8080,
+  "clean_acc": 0.8692660550458715,
+  "attack_success": 0.21261682242990654,
+  "ac_cluster_sizes": {
+   "0": [
+    2343,
+    1203
+   ],
+   "1": [
+    1342,
+    3192
+   ]
+  },
+  "train_s": 103.52245688438416,
+  "run_s": 176.9891402721405,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ },
+ {
+  "poison": 160,
+  "seed": 1,
+  "committed": 8160,
+  "receipts_valid": 8160,
+  "clean_acc": 0.8669724770642202,
+  "attack_success": 0.572429906542056,
+  "ac_cluster_sizes": {
+   "0": [
+    2338,
+    1208
+   ],
+   "1": [
+    1300,
+    3314
+   ]
+  },
+  "train_s": 101.11059761047363,
+  "run_s": 176.3499493598938,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ },
+ {
+  "poison": 160,
+  "seed": 2,
+  "committed": 8160,
+  "receipts_valid": 8160,
+  "clean_acc": 0.8704128440366973,
+  "attack_success": 0.2967289719626168,
+  "ac_cluster_sizes": {
+   "0": [
+    2622,
+    924
+   ],
+   "1": [
+    3395,
+    1219
+   ]
+  },
+  "train_s": 100.93830704689026,
+  "run_s": 174.88076615333557,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ },
+ {
+  "poison": 160,
+  "seed": 3,
+  "committed": 8160,
+  "receipts_valid": 8160,
+  "clean_acc": 0.8738532110091743,
+  "attack_success": 0.6915887850467289,
+  "ac_cluster_sizes": {
+   "0": [
+    2546,
+    1000
+   ],
+   "1": [
+    1444,
+    3170
+   ]
+  },
+  "train_s": 101.0081114768982,
+  "run_s": 174.97995710372925,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ },
+ {
+  "poison": 320,
+  "seed": 1,
+  "committed": 8320,
+  "receipts_valid": 8320,
+  "clean_acc": 0.8589449541284404,
+  "attack_success": 0.9976635514018691,
+  "ac_cluster_sizes": {
+   "0": [
+    2384,
+    1162
+   ],
+   "1": [
+    1084,
+    3690
+   ]
+  },
+  "train_s": 102.9743127822876,
+  "run_s": 179.24577975273132,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ },
+ {
+  "poison": 320,
+  "seed": 2,
+  "committed": 8320,
+  "receipts_valid": 8320,
+  "clean_acc": 0.8738532110091743,
+  "attack_success": 1.0,
+  "ac_cluster_sizes": {
+   "0": [
+    2424,
+    1122
+   ],
+   "1": [
+    1540,
+    3234
+   ]
+  },
+  "train_s": 103.0267424583435,
+  "run_s": 178.155827999115,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ },
+ {
+  "poison": 320,
+  "seed": 3,
+  "committed": 8320,
+  "receipts_valid": 8320,
+  "clean_acc": 0.8807339449541285,
+  "attack_success": 0.9976635514018691,
+  "ac_cluster_sizes": {
+   "0": [
+    2585,
+    961
+   ],
+   "1": [
+    3271,
+    1503
+   ]
+  },
+  "train_s": 102.99555993080139,
+  "run_s": 178.4179663658142,
+  "device": "cuda",
+  "gpu_peak_mem_mb": 1483,
+  "deterministic_warn_only": false
+ }
+]

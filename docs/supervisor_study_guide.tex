@@ -1,0 +1,255 @@
+\input{guide_preamble}
+\title{\sffamily\bfseries What Can Provenance Prove?\\[3pt]
+\large\mdseries A plain-language study guide to the paper (manuscript v12)}
+\author{Waqas Ahmed \and Ammar Hassan \and Attiq Ahmed \and Waseem Iqbal}
+\date{21 November 2026}
+\begin{document}
+\sloppy
+\maketitle
+
+\begin{keypoint}{How to read this guide}
+No background in machine learning security is assumed. Each idea is given in plain words,
+then as an everyday comparison (green boxes), then with the paper's own term so it can be
+found in the manuscript. Orange boxes mark what the paper does \emph{not} claim. Reading time:
+about 30 minutes.
+\end{keypoint}
+
+\tableofcontents
+\newpage
+
+\section{The paper in one minute}
+Large language models (LLMs) learn from huge collections of text. If someone slips bad
+examples into that text (\emph{data poisoning}), the model can learn hidden bad behaviour,
+such as a \emph{backdoor}: it behaves normally until it sees a secret trigger word.
+
+Many researchers propose \emph{provenance} as a defence: keep signed, tamper-evident records
+of where every piece of training data came from and what happened to it, sometimes on a
+blockchain. Our paper asks a simple question that is rarely answered precisely:
+
+\begin{center}\sffamily\large
+When all the provenance checks pass, what has actually been proved?
+\end{center}
+
+We answer it exactly, with mathematics checked by computer, and then test the answer with
+real software and real GPU training. The short answer: provenance can prove \emph{who}
+supplied the data and \emph{that} the model was trained on it, under stated conditions. It can
+never prove the data was \emph{harmless}.
+
+\begin{analogy}
+Think of a restaurant. Training data are the ingredients, the model is the dish, and the
+auditor is a food inspector. Provenance is the paperwork: delivery notes, supplier
+certificates, kitchen logs. Paperwork can prove which approved supplier delivered which
+ingredient and that the dish was cooked from those ingredients. It cannot prove that an
+approved supplier did not deliver spoiled food with perfectly valid paperwork.
+\end{analogy}
+
+\section{Key words}
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+Term & Meaning\\
+\midrule
+Training data & The examples a model learns from.\\
+Pipeline & The steps data pass through: sources $\to$ (generator) $\to$ transform (filtering) $\to$ capture (writing the record) $\to$ executor (training).\\
+Provenance & Records of where data came from and what was done to it.\\
+Poisoning, backdoor & Deliberately harmful training examples; a backdoor is a hidden behaviour switched on by a trigger.\\
+Auditor & Whoever checks the records before trusting a model (a regulator, customer, or internal team).\\
+Mechanism & A technical safeguard, e.g.\ signed receipts or trusted hardware. We use seven.\\
+Adversary & The attacker: which parts of the pipeline are dishonest. We use seven ``capabilities''.\\
+Assurance goal & What the auditor wants to be sure of. We use six.\\
+Binding & Proof that the released model really came from training on the recorded data.\\
+Seed & A number that controls the random choices made during training.\\
+Grinding & Training many times with different seeds and keeping the result you like.\\
+Detector & A tool that looks for poisoned examples.\\
+Recall, precision & Recall: share of poison the detector finds. Precision: share of flagged items that really are poison.\\
+AUROC & One number for how well a detector separates poison from clean data: 1 = perfect, 0.5 = guessing.\\
+TEE / enclave & Trusted hardware that runs code so even the machine's owner cannot tamper with it.\\
+Model checking (Alloy) & A computer tool that checks a mathematical model against every possible case up to a size.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{The setting}
+Figure~\ref{fig:sg-pipe} shows the pipeline we study. Grey boxes are the stages. Blue labels
+show where each safeguard (mechanism) acts; orange labels show what each kind of attacker can
+corrupt.
+
+\begin{figure}[h]
+\centering
+\resizebox{0.82\textwidth}{!}{\input{../manuscript/fig/fig_pipeline}}
+\caption{The pipeline, the seven mechanisms (blue) and the seven adversary capabilities
+(orange). Same figure as Fig.~\ref{fig:pipeline} of the paper.}\label{fig:sg-pipe}
+\end{figure}
+
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+Mechanism & What it does & Restaurant version\\
+\midrule
+\mech{WitSrc} & each supplier signs a receipt for each item & supplier's signed delivery note\\
+\mech{WitIn} & an independent observer records what was fed to training & an inspector watching what goes into the pot\\
+\mech{AttTrans}, \mech{AttCap} & trusted hardware runs the filtering and the record-keeping & sealed, tamper-proof prep station and weighing scale\\
+\mech{BindFix}, \mech{BindGrind} & proof the model came from the recorded data, with the seed fixed by the checker (Fix) or chosen by the trainer (Grind) & re-cooking the recipe to check you get the same dish\\
+\mech{Detector} & looks for poisoned items & a taster\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{How we did it}
+\begin{figure}[h]
+\centering
+\resizebox{\textwidth}{!}{\input{../manuscript/fig/fig_overview}}
+\caption{The six steps of the work (Fig.~\ref{fig:overview} of the paper).}
+\end{figure}
+
+\begin{enumerate}
+\item \textbf{Systematise.} We read the literature and reduced published systems to seven basic
+  mechanisms.
+\item \textbf{Model.} We wrote the pipeline, attacker and goals as a precise mathematical model.
+\item \textbf{Decide.} A computer checked every combination: 6 attacker types $\times$ 2 pipeline
+  types $\times$ 128 mechanism combinations $\times$ 6 goals = 9,216 cases, by two independent
+  methods that agree on every case; then all 128 possible attacker types.
+\item \textbf{Prove.} We turned the patterns into six theorems and proved them.
+\item \textbf{Validate.} We built a working prototype and attacked it 3.5 million times, then
+  repeated key experiments with real language models on GPUs.
+\item \textbf{Advise.} We turned the results into a checklist for auditors.
+\end{enumerate}
+
+\begin{analogy}[: why checking one item is enough]
+The \emph{separability lemma} says that if a rule can be broken at all, it can be broken by a
+single item. So instead of checking every possible dataset (infinitely many), it is enough to
+check every possible single item, which is a small, finite job. This is why the results are
+exact rather than estimates.
+\end{analogy}
+
+\section{The six results in plain words}
+
+\subsection*{1. Binding is needed exactly when the trainer is not trusted}
+If the organisation that trains the model might cheat, nothing else (signatures, witnesses,
+trusted hardware earlier in the pipeline) can replace a proof that the model came from the
+recorded data. If the trainer is trusted, that expensive proof is unnecessary.
+\begin{analogy}
+If you do not trust the cook, delivery notes do not tell you what went into the dish; you need
+to watch the cooking or re-cook it yourself. If the cook is trusted, the notes are enough.
+\end{analogy}
+
+\subsection*{2. Two independent routes to tracing data back to approved sources}
+Data can be traced to approved sources either through signed supplier receipts or through
+trusted hardware at the filtering and recording stages. Each route fails when its own trust
+anchor fails. A related finding (Corollary~1): the pipeline must declare honestly which steps
+create synthetic data; otherwise smuggled data can be labelled ``synthetic'' and escape the
+supplier checks.
+\begin{analogy}
+Smuggled ingredients labelled ``made in-house'' are never checked against supplier notes. So
+the kitchen must declare in advance what it actually makes in-house.
+\end{analogy}
+
+\subsection*{3 and 4. Choosing among training runs leaks control (``grinding'')}
+Training involves random choices. If the trainer may pick the random seed, it can train many
+times and release the run that behaves as it wants, and the checks still pass. With $T$ runs it
+can set about $\log_2 T$ yes/no behaviours of its choice: 128 runs give 7, 512 runs give 9.
+The fix is to let the checker fix the seed \emph{after} the data are committed.
+\begin{analogy}
+A cook who may roll the dice himself can roll 128 times and keep the result he likes; your
+re-cooking with his dice result will match perfectly. If you roll the dice after the
+ingredients are sealed, he cannot choose.
+\end{analogy}
+
+\subsection*{5. Provenance can never prove the model is poison-free}
+An approved source can supply poison with perfectly valid paperwork. The strongest honest claim
+is conditional: ``every poisoned item that was used was examined by the detector and missed''.
+That is only as good as the detector.
+\begin{analogy}
+Valid paperwork for spoiled food is still valid paperwork. Only a taster can catch spoiled
+food, and tasters miss some.
+\end{analogy}
+
+\subsection*{6. Use two independent ways to make the record complete}
+Trusted hardware at the recording step and an independent observer of the training input
+each make sure nothing is left out of the record. They fail for different reasons, so using
+both protects against the failure of either.
+
+\begin{keypoint}{Where a blockchain fits}
+A blockchain or public log stops anyone from secretly rewriting or suppressing entries. It
+does \emph{not} make the entries true, complete or poison-free. It is useful only when
+suppression (censorship) is a real risk.
+\end{keypoint}
+
+\section{What the experiments showed}
+\begin{description}[leftmargin=0pt]
+\item[The model matches reality.] In 3.5 million attacked runs of the prototype, no accepted run
+  broke a guarantee the model gives, and every failure the model predicted was demonstrated by
+  a real attack.
+\item[Grinding works exactly as predicted,] on a small model (9 chosen behaviours with 512 runs)
+  and on real language models (7 with 128 DistilBERT runs; 5 with 32 Qwen runs).
+\item[Re-training reproduces the model] bit for bit on the same machine (G2) but not on a
+  different GPU with newer software (G5). Checking by re-training needs the same hardware and
+  software.
+\item[Poison passes provenance.] Poisoned examples from an approved source carried valid
+  signatures. At 2\% poison the backdoor worked, while the detector found only about a quarter
+  of the poison (G3).
+\item[Detectors fail when it matters most (G5).] Figure~\ref{fig:sg-g5} shows each training run:
+  detectors separate poison well when the attack is not working, and are no better than
+  guessing once the backdoor works every time.
+\end{description}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.62\textwidth]{../manuscript/fig/g5_detection.pdf}
+\caption{G5: how well two detectors separate poisoned from clean examples (up = better;
+dashed line = guessing) against how well the backdoor works (right = attack succeeds). One
+point per training run.}\label{fig:sg-g5}
+\end{figure}
+
+\begin{analogy}
+The taster notices a little spoiled food that has not yet changed the dish. Once there is
+enough to really change the dish, the spoiled food tastes ``normal'' to the taster.
+\end{analogy}
+
+\section{The auditor's checklist}
+\begin{figure}[h]
+\centering
+\resizebox{0.75\textwidth}{!}{\input{../manuscript/fig/fig_auditor}}
+\caption{Four questions an auditor should ask (Fig.~\ref{fig:auditor} of the paper).}
+\end{figure}
+
+\section{What the paper does not claim}
+\begin{caution}{Limits}
+\begin{itemize}
+\item It does not claim provenance or blockchain prevents poisoning.
+\item The trusted hardware in the prototype is simulated, not real.
+\item Computer checking is exact for the model at the stated size; the model is a simplified
+  picture of real pipelines.
+\item Poisoning was tested on one model family, one dataset and one trigger.
+\item The experiments cover fine-tuning, not training a large model from scratch.
+\item The literature screening was done by an AI assistant and still needs human screening.
+\end{itemize}
+\end{caution}
+
+\section{Questions you may be asked}
+\begin{description}[leftmargin=0pt]
+\item[What is new compared with existing surveys?] Surveys list techniques. We decide exactly which
+  combinations guarantee which goals against which attackers, prove it, and test it.
+\item[Isn't the grinding attack known?] Tan et al.\ (CCS 2025) showed it for zero-knowledge proofs
+  of training. We give a general limit ($\log_2 T$ bits) that also covers non-convex training
+  such as LLM fine-tuning, and measure it on real models.
+\item[Why trust the computer checks?] Two independent methods agree on all 9,216 cases, all
+  128 attacker types were also checked, and the prototype matched the model in 3.5 million runs.
+\item[Why did G5 use a different GPU?] The original laptop was unavailable. The paper says so,
+  and this produced a useful finding: re-training on a different machine does not reproduce the
+  model exactly.
+\item[Does a blockchain help?] Only against suppression of records, not against false or
+  poisoned data (Proposition~2).
+\end{description}
+
+\section{What remains before submission}
+\begin{itemize}
+\item Database searches (Scopus, Web of Science, IEEE Xplore, ACM), full-text screening and a
+  second human screener.
+\item The supervisor's check of the proofs of Theorems~1 and~4.
+\item A short statement of what the authors verified themselves, and a check of the AI-use
+  statement against IEEE policy.
+\item Departments, postal addresses and e-mail addresses.
+\item Optional: a poisoning experiment on a second model family (Qwen2.5-0.5B with LoRA).
+\end{itemize}
+\end{document}

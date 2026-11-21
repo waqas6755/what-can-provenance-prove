@@ -1,0 +1,200 @@
+\documentclass[journal,10pt]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,multirow,array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc,fit,backgrounds,shapes.geometric}
+\definecolor{mechblue}{HTML}{2A78D6}
+\definecolor{advorange}{HTML}{C9541F}
+\definecolor{okgreen}{HTML}{0E7C4F}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cite}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+% Marks work that is not yet done. Every \pending must be resolved before submission.
+% Proof placement: default = supplementary material (keeps the paper within the page cap).
+% Build with the proofs as an appendix:  pdflatex "\def\withproofs{1}\input{main}"
+\newif\ifproofsinpaper\ifdefined\withproofs\proofsinpapertrue\fi
+\newcommand{\proofsloc}{\ifproofsinpaper Appendix~\ref{app:proofs}\else Supplementary Section~S10\fi}
+\newcommand{\pending}[1]{{\color{red!70!black}[\textbf{PENDING:} #1]}}
+
+\input{gen/numbers}
+\input{gen/numbers_revision}
+\input{gen/numbers_g5}
+\begin{document}
+\title{What Can Provenance Prove?\\ A Systematisation of Assurance for\\ Adversarially Exposed LLM Training Pipelines}
+\author{Waqas Ahmed, Ammar Hassan, Attiq Ahmed, and Waseem Iqbal%
+\thanks{W.~Ahmed, A.~Hassan and A.~Ahmed are the first, second and third authors. W.~Iqbal is the supervisor and corresponding author. W.~Ahmed, A.~Hassan and A.~Ahmed are with the National University of Sciences and Technology (NUST), Islamabad, Pakistan. W.~Iqbal is with Sultan Qaboos University, Muscat, Oman. \pending{Departments, postal addresses and e-mail addresses.}}}
+\markboth{Revised draft (major revision), 21 November 2026 --- not submitted}{Ahmed \MakeLowercase{\textit{et al.}}: What Can Provenance Prove?}
+\maketitle
+
+\begin{abstract}
+Provenance mechanisms for machine learning (signed data manifests, attested pipelines,
+transparency logs, ledgers and proofs of training) are widely proposed as defences for the
+integrity of training data. What an auditor may conclude when their checks pass is rarely
+stated. We give a precise answer for training-data pipelines of large language models.
+We abstract deployed techniques into seven mechanism primitives. We model an adversary
+that can corrupt any pipeline stage, collude with witnesses or break trusted hardware, and
+we define six assurance goals, from binding a model to its record to excluding poisoned
+data. A separability lemma makes the model exactly decidable. We decide all 9,216
+(adversary, mechanism set, pipeline type, goal) instances, and two independent procedures
+agree on every one. Six theorems follow:
+\begin{itemize}
+\item Computation binding is necessary exactly when the trainer is untrusted.
+\item Lineage has two routes that rest on disjoint trust anchors.
+\item Generative pipelines need authenticated stage types.
+\item A binding check that accepts a prover-chosen seed leaks up to $\log_2T$ bits of
+  influence for $T$ training runs.
+\item No mechanism set certifies the absence of poison. The strongest available claim is
+  conditional on detector recall.
+\item Attested capture and input witnessing are interchangeable for completeness and fail
+  under disjoint assumptions.
+\end{itemize}
+All theorems also hold over every one of the 128 subsets of adversary capabilities. A ledger
+adds censorship-resistant inclusion to a witnessed log and nothing else that these goals
+need. We test the model on a prototype with real cryptography, simulated trusted execution,
+exact training re-execution and an exhaustive adaptive adversary. Across 3.5 million
+executions, no accepted execution violated a goal that the model guarantees, and the attacks
+realised all 4,440 predicted failures. In a 1,024-run grinding experiment, a prover set
+$\log_2T$ chosen bits of model behaviour while passing re-execution, within one bit of our
+bound. The same curve holds for DistilBERT and Qwen2.5-0.5B~+~LoRA fine-tuning on a consumer
+GPU, where fine-tuning replayed bit for bit on one machine but not on a second one. In the same setting, an
+authorised-source backdoor at 2\% poison passed every provenance check and raised attack
+success by 20--75 points, while spectral-signature recall averaged 25\% at 6\% precision. With
+three detectors, detection fell to chance once the backdoor succeeded in every run. The
+results are exact for an abstract single-run model. The experiments cover fine-tuning with one
+model family per experiment, not pre-training.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Data provenance, machine learning security, large language models, data poisoning,
+proof of learning, transparency logs, trusted execution, formal methods.
+\end{IEEEkeywords}
+
+\input{sec_intro}
+\input{sec_sok}
+\input{sec_model}
+\input{sec_results}
+\input{sec_eval}
+\input{sec_lit}
+\input{sec_discussion}
+
+\section{Artefact, Data, Ethics and AI-Use Statement}\label{sec:artefact}
+\paragraph{Artefact}
+The artefact contains:
+\begin{itemize}
+\item the Alloy models, the sweep, the independent checker, the adversary-lattice checker and
+  their raw outputs;
+\item the prototype and every experiment script with raw and processed results;
+\item the GPU kit with its logs;
+\item the G5 kit, its logs and per-item detector scores (supplied with this revision; not in archive version~1.0);
+\item the literature-search queries, raw result pages and screening log;
+\item SHA-256 manifests and a reproducibility guide that regenerates every table and figure.
+\end{itemize}
+The artefact is archived on Zenodo under the CC~BY~4.0 licence:
+\url{https://doi.org/10.5281/zenodo.24317967} (version~1.0). The archive holds a reproducibility
+guide that maps each table and figure to the script and raw file that produce it, and SHA-256
+checksums of its files.
+
+\paragraph{Data, models and licences}
+The prototype uses the polarity dataset v2.0~\cite{pang2004sentimental}, as distributed by
+NLTK. The GPU experiments use SST-2~\cite{socher2013sst} from the GLUE distribution, with
+\texttt{distilbert-base-uncased} and \texttt{Qwen/Qwen2.5-0.5B} from the Hugging Face Hub. No
+personal data is processed. Both models are released under the Apache~2.0 licence. Neither the
+polarity dataset nor the Stanford Sentiment Treebank states a licence: the polarity dataset's
+distribution page asks users to cite its version number, and the GLUE distribution refers users to
+the licence of each source dataset. We use both datasets unmodified, for research only, and do not
+redistribute them; the artefact gives download instructions instead.
+
+\paragraph{Dual use and disclosure}
+The attacks we implement (split-view delivery, laundering, seed grinding, authorised-source
+backdoors) are either already published or follow directly from the model. They are run only
+against our own prototype and public models. The grinding result points to a simple
+mitigation, a beacon-fixed seed, which we recommend to builders of proof-of-training systems.
+No third-party system was attacked.
+
+\paragraph{AI assistance}
+An AI assistant (Claude, Anthropic) was used to:
+\begin{itemize}
+\item write experiment and analysis code;
+\item run the model checker and the experiments in the cloud environment;
+\item draft and revise text;
+\item perform title-and-abstract screening.
+\end{itemize}
+The AI screening decisions are labelled as such in the released log. They have not been
+verified by a human screener, and they are not reported as independent human screening. The
+authors are responsible for verifying the code, results and proofs, and for all claims.
+\pending{State which verification the authors have personally carried out.} \pending{Check this statement against the journal's current AI-use policy before
+submission.}
+
+\section{Conclusion}
+We separate the conclusions by the kind of evidence behind them.
+
+\paragraph{Proved within the model}
+\begin{itemize}
+\item Computation binding is necessary exactly when the trainer is untrusted.
+\item Lineage has two routes with disjoint trust anchors.
+\item Generative pipelines need authenticated stage types.
+\item A seed-accepting binding check leaks at most $\log_2T$ bits for $T$ evaluated accepted
+  outputs.
+\item No mechanism set certifies the absence of poison; the strongest claim is conditional on
+  a detector.
+\item Attested capture and input witnessing are interchangeable for record completeness.
+\end{itemize}
+These statements hold for every subset of adversary capabilities. They are exact for the
+abstract single-run model of Section~\ref{sec:model}, within the scope of
+Table~\ref{tab:scope}.
+
+\paragraph{Observed in our experiments}
+\begin{itemize}
+\item A prototype with real cryptography and simulated trusted execution matched the model
+  on all 9,216 instances.
+\item Seed grinding reached $\log_2T$ bits on a small model, on DistilBERT and on Qwen
+  2.5-0.5B~+~LoRA.
+\item Fine-tuning replayed bit for bit on one machine, but not on a second machine with a
+  different GPU and newer libraries.
+\item One spectral-signature detector lost most of its recall exactly where an
+  authorised-source backdoor became effective, at low precision.
+\item On the prototype, three detectors, including a loss score and activation clustering,
+  showed the same pattern or found nothing.
+\item At GPU scale, spectral and loss detectors separated poison well at 1\% poison and fell
+  to chance at 3.8\%, where the backdoor always worked; activation clustering flagged about a
+  quarter of clean data even with no poison.
+\end{itemize}
+
+\paragraph{From the literature}
+The surveyed systems make claims that hold within their own trust assumptions. Claims of
+poisoning prevention, or of verifiable integrity of training, hold only for the narrower
+properties identified in Table~\ref{tab:e1}. This conclusion rests on a structured mapping,
+not yet a systematic review (Section~\ref{sec:lit}).
+
+\paragraph{Design rules and future work}
+\begin{itemize}
+\item Bind the computation whenever the trainer is untrusted, with randomness fixed after
+  commitment.
+\item Use content-addressed receipts and authenticated stage types.
+\item Diversify trust anchors.
+\item Report detector recall and precision alongside any content claim.
+\item Use a ledger only where censorship-resistant inclusion is itself a requirement.
+\end{itemize}
+Future work includes binding at pre-training scale, replay across hardware stacks (which
+failed in our one cross-machine test), multi-stage and
+multi-parent model lineages, real enclave deployments, and detectors with guaranteed recall.
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\ifproofsinpaper
+\appendices
+\input{app_proofs}
+\fi
+
+\end{document}

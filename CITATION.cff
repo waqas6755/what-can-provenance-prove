@@ -2,15 +2,16 @@ cff-version: 1.2.0
 message: "If you use this artefact, please cite it as below."
 type: software
 title: "What Can Provenance Prove? A Systematisation of Assurance for Adversarially Exposed LLM Training Pipelines — Research Artefact"
-version: "1.0"
-date-released: "2026-11-17"
+version: "1.1"
+date-released: "2026-11-21"
 doi: "10.5281/zenodo.24317967"
 url: "https://doi.org/10.5281/zenodo.24317967"
+repository-code: "https://github.com/waqas6755/what-can-provenance-prove"
 license: CC-BY-4.0
 authors:
   - family-names: Ahmed
     given-names: Waqas
-    affiliation: "Murdoch University"
+    affiliation: "National University of Sciences and Technology"
     orcid: "https://orcid.org/0009-0000-9744-414X"
   - family-names: Hassan
     given-names: Ammar
@@ -18,6 +19,9 @@ authors:
   - family-names: Ahmed
     given-names: Attiq
     affiliation: "National University of Sciences and Technology"
+  - family-names: Iqbal
+    given-names: Waseem
+    affiliation: "Sultan Qaboos University"
 keywords:
   - provenance
   - LLM training data

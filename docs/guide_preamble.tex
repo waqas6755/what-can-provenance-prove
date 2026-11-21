@@ -1,0 +1,20 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern}\usepackage[scaled=0.92]{helvet}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,tabularx,graphicx,xcolor,enumitem,tikz}
+\usetikzlibrary{positioning,arrows.meta,calc,fit,backgrounds,shapes.geometric}
+\definecolor{mechblue}{HTML}{2A78D6}\definecolor{advorange}{HTML}{C9541F}\definecolor{okgreen}{HTML}{0E7C4F}
+\usepackage{xr-hyper}\externaldocument{../manuscript/main}
+\usepackage[hidelinks]{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{titlesec}
+\titleformat{\section}{\sffamily\Large\bfseries\color{mechblue!80!black}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{0.5em}{}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0.55em}
+\setlist{itemsep=0.15em,topsep=0.3em}
+\newtcolorbox{analogy}[1][]{colback=okgreen!6,colframe=okgreen!70!black,fonttitle=\sffamily\bfseries,title={In everyday terms#1},boxrule=0.6pt,arc=2pt}
+\newtcolorbox{keypoint}[1][]{colback=mechblue!6,colframe=mechblue!80!black,fonttitle=\sffamily\bfseries,title={#1},boxrule=0.6pt,arc=2pt}
+\newtcolorbox{caution}[1][]{colback=advorange!6,colframe=advorange!80!black,fonttitle=\sffamily\bfseries,title={#1},boxrule=0.6pt,arc=2pt}
+\newcommand{\mech}[1]{\textsf{\textcolor{mechblue!80!black}{#1}}}
+\newcommand{\adv}[1]{\textsf{\textcolor{advorange!85!black}{#1}}}
+\newcommand{\cmd}[1]{\texttt{\small #1}}

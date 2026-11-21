@@ -1,0 +1,232 @@
+10:48:48 environment {"python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]", "torch": "2.6.0+cu124", "cuda_available": true, "device": "NVIDIA GeForce RTX 3070 Laptop GPU", "cuda": "12.4", "platform": "Windows-10-10.0.26200-SP0", "smoke": false, "transformers": "5.22.1", "peft": "0.21.2"}
+10:50:55 G2 distilbert_deterministic {"runs": 3, "identical_hashes": true, "distinct_hashes": 1, "max_abs_param_diff_vs_run0": [0.0, 0.0], "pred_disagreement_vs_run0": [0.0, 0.0], "train_s": [3.495089530944824, 3.0902583599090576, 3.3059632778167725], "trainable_params": 66955010}
+10:51:14 G2 distilbert_default {"runs": 3, "identical_hashes": true, "distinct_hashes": 1, "max_abs_param_diff_vs_run0": [0.0, 0.0], "pred_disagreement_vs_run0": [0.0, 0.0], "train_s": [2.7741518020629883, 2.753431797027588, 2.6804099082946777], "trainable_params": 66955010}
+10:52:23 G2 qwen_deterministic {"runs": 3, "identical_hashes": true, "distinct_hashes": 1, "max_abs_param_diff_vs_run0": [0.0, 0.0], "pred_disagreement_vs_run0": [0.0, 0.0], "train_s": [13.637324094772339, 13.36616063117981, 13.575957775115967], "trainable_params": 542464}
+10:53:25 G2 qwen_default {"runs": 3, "identical_hashes": true, "distinct_hashes": 1, "max_abs_param_diff_vs_run0": [0.0, 0.0], "pred_disagreement_vs_run0": [0.0, 0.0], "train_s": [11.577612400054932, 13.470249891281128, 11.631506443023682], "trainable_params": 542464}
+10:53:25 g2 done in 258s
+10:53:44 G3 {"poison": 0, "poison_rate": 0.0, "seed": 1, "receipts_valid": 8000, "committed": 8000, "clean_acc": 0.8761467889908257, "attack_success": 0.13317757009345793, "detector_recall": null, "flagged": null, "train_s": 14.44100022315979}
+10:54:03 G3 {"poison": 0, "poison_rate": 0.0, "seed": 2, "receipts_valid": 8000, "committed": 8000, "clean_acc": 0.8784403669724771, "attack_success": 0.1308411214953271, "detector_recall": null, "flagged": null, "train_s": 14.665148973464966}
+10:54:22 G3 {"poison": 0, "poison_rate": 0.0, "seed": 3, "receipts_valid": 8000, "committed": 8000, "clean_acc": 0.8795871559633027, "attack_success": 0.11214953271028037, "detector_recall": null, "flagged": null, "train_s": 14.49660325050354}
+10:54:51 G3 {"poison": 20, "poison_rate": 0.0024937655860349127, "seed": 1, "receipts_valid": 8020, "committed": 8020, "clean_acc": 0.8864678899082569, "attack_success": 0.10747663551401869, "detector_recall": 0.85, "flagged": 602, "train_s": 14.650638103485107}
+10:55:18 G3 {"poison": 20, "poison_rate": 0.0024937655860349127, "seed": 2, "receipts_valid": 8020, "committed": 8020, "clean_acc": 0.8761467889908257, "attack_success": 0.14018691588785046, "detector_recall": 0.75, "flagged": 602, "train_s": 14.71212124824524}
+10:55:45 G3 {"poison": 20, "poison_rate": 0.0024937655860349127, "seed": 3, "receipts_valid": 8020, "committed": 8020, "clean_acc": 0.8784403669724771, "attack_success": 0.10514018691588785, "detector_recall": 0.85, "flagged": 602, "train_s": 14.832171201705933}
+10:56:14 G3 {"poison": 40, "poison_rate": 0.004975124378109453, "seed": 1, "receipts_valid": 8040, "committed": 8040, "clean_acc": 0.8681192660550459, "attack_success": 0.16355140186915887, "detector_recall": 0.875, "flagged": 604, "train_s": 14.88514494895935}
+10:56:41 G3 {"poison": 40, "poison_rate": 0.004975124378109453, "seed": 2, "receipts_valid": 8040, "committed": 8040, "clean_acc": 0.8818807339449541, "attack_success": 0.10514018691588785, "detector_recall": 0.75, "flagged": 604, "train_s": 14.60036826133728}
+10:57:08 G3 {"poison": 40, "poison_rate": 0.004975124378109453, "seed": 3, "receipts_valid": 8040, "committed": 8040, "clean_acc": 0.8841743119266054, "attack_success": 0.10747663551401869, "detector_recall": 0.875, "flagged": 604, "train_s": 14.75144910812378}
+10:57:38 G3 {"poison": 80, "poison_rate": 0.009900990099009901, "seed": 1, "receipts_valid": 8080, "committed": 8080, "clean_acc": 0.8761467889908257, "attack_success": 0.1308411214953271, "detector_recall": 0.75, "flagged": 607, "train_s": 15.048623085021973}
+10:58:08 G3 {"poison": 80, "poison_rate": 0.009900990099009901, "seed": 2, "receipts_valid": 8080, "committed": 8080, "clean_acc": 0.8738532110091743, "attack_success": 0.14485981308411214, "detector_recall": 0.7125, "flagged": 607, "train_s": 15.492364406585693}
+10:58:38 G3 {"poison": 80, "poison_rate": 0.009900990099009901, "seed": 3, "receipts_valid": 8080, "committed": 8080, "clean_acc": 0.875, "attack_success": 0.20327102803738317, "detector_recall": 0.575, "flagged": 607, "train_s": 15.215200662612915}
+10:59:10 G3 {"poison": 160, "poison_rate": 0.0196078431372549, "seed": 1, "receipts_valid": 8160, "committed": 8160, "clean_acc": 0.8669724770642202, "attack_success": 0.7126168224299065, "detector_recall": 0.15625, "flagged": 613, "train_s": 14.875681161880493}
+10:59:40 G3 {"poison": 160, "poison_rate": 0.0196078431372549, "seed": 2, "receipts_valid": 8160, "committed": 8160, "clean_acc": 0.8727064220183486, "attack_success": 0.3317757009345794, "detector_recall": 0.50625, "flagged": 613, "train_s": 15.312453985214233}
+11:00:10 G3 {"poison": 160, "poison_rate": 0.0196078431372549, "seed": 3, "receipts_valid": 8160, "committed": 8160, "clean_acc": 0.8772935779816514, "attack_success": 0.8574766355140186, "detector_recall": 0.075, "flagged": 613, "train_s": 15.08227276802063}
+11:00:10 g3 done in 405s
+11:00:30 G1 seed 1/160 acc=0.8761 train_s=15.2
+11:00:49 G1 seed 2/160 acc=0.8784 train_s=14.8
+11:01:08 G1 seed 3/160 acc=0.8796 train_s=15.2
+11:01:27 G1 seed 4/160 acc=0.8842 train_s=15.1
+11:01:47 G1 seed 5/160 acc=0.8681 train_s=15.6
+11:02:06 G1 seed 6/160 acc=0.8693 train_s=15.6
+11:02:26 G1 seed 7/160 acc=0.8796 train_s=15.7
+11:02:45 G1 seed 8/160 acc=0.8784 train_s=15.3
+11:03:05 G1 seed 9/160 acc=0.8727 train_s=15.8
+11:03:24 G1 seed 10/160 acc=0.8727 train_s=15.2
+11:03:46 G1 seed 11/160 acc=0.8784 train_s=15.1
+11:04:06 G1 seed 12/160 acc=0.8716 train_s=15.7
+11:04:26 G1 seed 13/160 acc=0.8807 train_s=16.0
+11:04:45 G1 seed 14/160 acc=0.8716 train_s=15.6
+11:05:05 G1 seed 15/160 acc=0.8842 train_s=16.0
+11:05:25 G1 seed 16/160 acc=0.8635 train_s=15.2
+11:05:44 G1 seed 17/160 acc=0.8704 train_s=15.3
+11:06:04 G1 seed 18/160 acc=0.8761 train_s=15.4
+11:06:24 G1 seed 19/160 acc=0.8635 train_s=15.0
+11:06:43 G1 seed 20/160 acc=0.8716 train_s=15.3
+11:07:02 G1 seed 21/160 acc=0.8750 train_s=15.2
+11:07:22 G1 seed 22/160 acc=0.8888 train_s=15.5
+11:07:42 G1 seed 23/160 acc=0.8647 train_s=15.8
+11:08:01 G1 seed 24/160 acc=0.8750 train_s=15.3
+11:08:20 G1 seed 25/160 acc=0.8739 train_s=15.2
+11:08:39 G1 seed 26/160 acc=0.8842 train_s=14.7
+11:08:58 G1 seed 27/160 acc=0.8739 train_s=14.7
+11:09:17 G1 seed 28/160 acc=0.8761 train_s=14.7
+11:09:36 G1 seed 29/160 acc=0.8853 train_s=14.9
+11:09:56 G1 seed 30/160 acc=0.8773 train_s=14.8
+11:10:15 G1 seed 31/160 acc=0.8670 train_s=14.8
+11:10:34 G1 seed 32/160 acc=0.8784 train_s=14.8
+11:10:53 G1 seed 33/160 acc=0.8761 train_s=15.0
+11:11:12 G1 seed 34/160 acc=0.8670 train_s=15.2
+11:11:32 G1 seed 35/160 acc=0.8727 train_s=15.4
+11:11:52 G1 seed 36/160 acc=0.8739 train_s=15.5
+11:12:12 G1 seed 37/160 acc=0.8727 train_s=15.4
+11:12:31 G1 seed 38/160 acc=0.8658 train_s=15.4
+11:12:50 G1 seed 39/160 acc=0.8716 train_s=15.4
+11:13:10 G1 seed 40/160 acc=0.8693 train_s=15.4
+11:13:29 G1 seed 41/160 acc=0.8670 train_s=15.6
+11:13:49 G1 seed 42/160 acc=0.8876 train_s=15.6
+11:14:08 G1 seed 43/160 acc=0.8670 train_s=15.5
+11:14:28 G1 seed 44/160 acc=0.8784 train_s=15.6
+11:14:47 G1 seed 45/160 acc=0.8716 train_s=15.3
+11:15:07 G1 seed 46/160 acc=0.8807 train_s=16.0
+11:15:27 G1 seed 47/160 acc=0.8704 train_s=16.0
+11:15:47 G1 seed 48/160 acc=0.8807 train_s=15.4
+11:16:07 G1 seed 49/160 acc=0.8773 train_s=15.3
+11:16:27 G1 seed 50/160 acc=0.8704 train_s=15.5
+11:16:47 G1 seed 51/160 acc=0.8750 train_s=15.3
+11:17:06 G1 seed 52/160 acc=0.8681 train_s=15.4
+11:17:25 G1 seed 53/160 acc=0.8681 train_s=15.3
+11:17:46 G1 seed 54/160 acc=0.8796 train_s=15.9
+11:18:05 G1 seed 55/160 acc=0.8693 train_s=15.1
+11:18:25 G1 seed 56/160 acc=0.8819 train_s=15.5
+11:18:45 G1 seed 57/160 acc=0.8739 train_s=15.6
+11:19:06 G1 seed 58/160 acc=0.8704 train_s=15.2
+11:19:25 G1 seed 59/160 acc=0.8761 train_s=15.5
+11:19:45 G1 seed 60/160 acc=0.8727 train_s=15.6
+11:20:04 G1 seed 61/160 acc=0.8716 train_s=15.3
+11:20:24 G1 seed 62/160 acc=0.8681 train_s=15.6
+11:20:44 G1 seed 63/160 acc=0.8784 train_s=15.2
+11:21:03 G1 seed 64/160 acc=0.8658 train_s=15.2
+11:21:22 G1 seed 65/160 acc=0.8761 train_s=15.7
+11:21:42 G1 seed 66/160 acc=0.8681 train_s=15.5
+11:22:02 G1 seed 67/160 acc=0.8739 train_s=15.6
+11:22:22 G1 seed 68/160 acc=0.8750 train_s=15.5
+11:22:41 G1 seed 69/160 acc=0.8773 train_s=15.0
+11:23:01 G1 seed 70/160 acc=0.8716 train_s=15.6
+11:23:20 G1 seed 71/160 acc=0.8750 train_s=15.4
+11:23:40 G1 seed 72/160 acc=0.8750 train_s=15.2
+11:23:59 G1 seed 73/160 acc=0.8773 train_s=15.4
+11:24:19 G1 seed 74/160 acc=0.8761 train_s=15.2
+11:24:38 G1 seed 75/160 acc=0.8784 train_s=15.7
+11:24:58 G1 seed 76/160 acc=0.8612 train_s=15.1
+11:25:17 G1 seed 77/160 acc=0.8842 train_s=15.2
+11:25:37 G1 seed 78/160 acc=0.8716 train_s=15.3
+11:25:57 G1 seed 79/160 acc=0.8761 train_s=15.6
+11:26:17 G1 seed 80/160 acc=0.8830 train_s=15.0
+11:26:37 G1 seed 81/160 acc=0.8784 train_s=15.6
+11:26:56 G1 seed 82/160 acc=0.8773 train_s=15.1
+11:27:16 G1 seed 83/160 acc=0.8658 train_s=15.4
+11:27:35 G1 seed 84/160 acc=0.8842 train_s=15.6
+11:27:55 G1 seed 85/160 acc=0.8612 train_s=15.7
+11:28:14 G1 seed 86/160 acc=0.8681 train_s=15.3
+11:28:34 G1 seed 87/160 acc=0.8807 train_s=15.5
+11:28:54 G1 seed 88/160 acc=0.8750 train_s=15.6
+11:29:14 G1 seed 89/160 acc=0.8819 train_s=15.7
+11:29:34 G1 seed 90/160 acc=0.8773 train_s=15.4
+11:29:54 G1 seed 91/160 acc=0.8784 train_s=15.2
+11:30:13 G1 seed 92/160 acc=0.8761 train_s=15.3
+11:30:33 G1 seed 93/160 acc=0.8750 train_s=15.3
+11:30:53 G1 seed 94/160 acc=0.8865 train_s=15.6
+11:31:13 G1 seed 95/160 acc=0.8853 train_s=15.4
+11:31:33 G1 seed 96/160 acc=0.8739 train_s=15.3
+11:31:52 G1 seed 97/160 acc=0.8647 train_s=15.1
+11:32:12 G1 seed 98/160 acc=0.8784 train_s=15.5
+11:32:32 G1 seed 99/160 acc=0.8842 train_s=15.1
+11:32:51 G1 seed 100/160 acc=0.8739 train_s=15.1
+11:33:11 G1 seed 101/160 acc=0.8739 train_s=15.6
+11:33:31 G1 seed 102/160 acc=0.8796 train_s=15.8
+11:33:50 G1 seed 103/160 acc=0.8704 train_s=15.2
+11:34:10 G1 seed 104/160 acc=0.8761 train_s=15.4
+11:34:29 G1 seed 105/160 acc=0.8796 train_s=15.6
+11:34:48 G1 seed 106/160 acc=0.8704 train_s=15.2
+11:35:08 G1 seed 107/160 acc=0.8796 train_s=15.2
+11:35:27 G1 seed 108/160 acc=0.8750 train_s=15.2
+11:35:47 G1 seed 109/160 acc=0.8704 train_s=15.4
+11:36:08 G1 seed 110/160 acc=0.8635 train_s=15.1
+11:36:28 G1 seed 111/160 acc=0.8796 train_s=15.2
+11:36:48 G1 seed 112/160 acc=0.8647 train_s=15.7
+11:37:08 G1 seed 113/160 acc=0.8773 train_s=15.5
+11:37:27 G1 seed 114/160 acc=0.8761 train_s=15.1
+11:37:47 G1 seed 115/160 acc=0.8830 train_s=15.3
+11:38:06 G1 seed 116/160 acc=0.8761 train_s=15.1
+11:38:26 G1 seed 117/160 acc=0.8773 train_s=15.2
+11:38:45 G1 seed 118/160 acc=0.8716 train_s=15.4
+11:39:05 G1 seed 119/160 acc=0.8704 train_s=15.4
+11:39:24 G1 seed 120/160 acc=0.8681 train_s=15.4
+11:39:44 G1 seed 121/160 acc=0.8819 train_s=15.3
+11:40:04 G1 seed 122/160 acc=0.8807 train_s=15.3
+11:40:23 G1 seed 123/160 acc=0.8670 train_s=15.2
+11:40:44 G1 seed 124/160 acc=0.8807 train_s=15.7
+11:41:03 G1 seed 125/160 acc=0.8739 train_s=15.2
+11:41:23 G1 seed 126/160 acc=0.8727 train_s=15.3
+11:41:42 G1 seed 127/160 acc=0.8773 train_s=15.3
+11:42:02 G1 seed 128/160 acc=0.8796 train_s=15.5
+11:42:22 G1 seed 129/160 acc=0.8807 train_s=15.3
+11:42:42 G1 seed 130/160 acc=0.8716 train_s=15.3
+11:43:01 G1 seed 131/160 acc=0.8681 train_s=15.2
+11:43:21 G1 seed 132/160 acc=0.8681 train_s=15.6
+11:43:40 G1 seed 133/160 acc=0.8796 train_s=15.7
+11:44:00 G1 seed 134/160 acc=0.8761 train_s=15.3
+11:44:20 G1 seed 135/160 acc=0.8796 train_s=15.3
+11:44:40 G1 seed 136/160 acc=0.8819 train_s=15.7
+11:44:59 G1 seed 137/160 acc=0.8727 train_s=15.5
+11:45:19 G1 seed 138/160 acc=0.8796 train_s=15.4
+11:45:38 G1 seed 139/160 acc=0.8761 train_s=15.6
+11:45:58 G1 seed 140/160 acc=0.8693 train_s=15.4
+11:46:17 G1 seed 141/160 acc=0.8681 train_s=15.4
+11:46:37 G1 seed 142/160 acc=0.8693 train_s=15.6
+11:46:57 G1 seed 143/160 acc=0.8773 train_s=15.1
+11:47:16 G1 seed 144/160 acc=0.8796 train_s=15.8
+11:47:36 G1 seed 145/160 acc=0.8716 train_s=15.3
+11:47:56 G1 seed 146/160 acc=0.8830 train_s=15.5
+11:48:16 G1 seed 147/160 acc=0.8739 train_s=15.3
+11:48:37 G1 seed 148/160 acc=0.8750 train_s=15.2
+11:48:56 G1 seed 149/160 acc=0.8716 train_s=15.4
+11:49:16 G1 seed 150/160 acc=0.8784 train_s=15.3
+11:49:35 G1 seed 151/160 acc=0.8842 train_s=15.6
+11:49:55 G1 seed 152/160 acc=0.8773 train_s=15.7
+11:50:14 G1 seed 153/160 acc=0.8727 train_s=15.3
+11:50:34 G1 seed 154/160 acc=0.8796 train_s=15.5
+11:50:53 G1 seed 155/160 acc=0.8647 train_s=15.4
+11:51:12 G1 seed 156/160 acc=0.8807 train_s=15.3
+11:51:32 G1 seed 157/160 acc=0.8842 train_s=15.2
+11:51:52 G1 seed 158/160 acc=0.8853 train_s=15.9
+11:52:13 G1 seed 159/160 acc=0.8681 train_s=15.1
+11:52:32 G1 seed 160/160 acc=0.8761 train_s=15.4
+11:52:33 g1 done in 3143s
+11:53:08 G4 seed 1/48 acc=0.8612 train_s=26.9
+11:53:42 G4 seed 2/48 acc=0.8154 train_s=26.2
+11:54:16 G4 seed 3/48 acc=0.8314 train_s=26.8
+11:54:51 G4 seed 4/48 acc=0.8704 train_s=26.8
+11:55:26 G4 seed 5/48 acc=0.8096 train_s=26.9
+11:56:00 G4 seed 6/48 acc=0.7362 train_s=26.2
+11:56:34 G4 seed 7/48 acc=0.7271 train_s=26.3
+11:57:08 G4 seed 8/48 acc=0.6640 train_s=26.6
+11:57:43 G4 seed 9/48 acc=0.7236 train_s=26.4
+11:58:17 G4 seed 10/48 acc=0.7695 train_s=26.6
+11:58:52 G4 seed 11/48 acc=0.7374 train_s=26.6
+11:59:27 G4 seed 12/48 acc=0.7523 train_s=26.6
+12:00:01 G4 seed 13/48 acc=0.6709 train_s=26.7
+12:00:37 G4 seed 14/48 acc=0.7557 train_s=27.5
+12:01:12 G4 seed 15/48 acc=0.8142 train_s=26.8
+12:01:47 G4 seed 16/48 acc=0.7190 train_s=26.9
+12:02:23 G4 seed 17/48 acc=0.8085 train_s=27.1
+12:02:58 G4 seed 18/48 acc=0.7523 train_s=26.6
+12:03:33 G4 seed 19/48 acc=0.7534 train_s=26.6
+12:04:10 G4 seed 20/48 acc=0.8303 train_s=28.7
+12:04:46 G4 seed 21/48 acc=0.7649 train_s=26.8
+12:05:21 G4 seed 22/48 acc=0.8303 train_s=26.8
+12:05:56 G4 seed 23/48 acc=0.7053 train_s=27.0
+12:06:31 G4 seed 24/48 acc=0.7890 train_s=26.9
+12:07:06 G4 seed 25/48 acc=0.8200 train_s=26.6
+12:07:41 G4 seed 26/48 acc=0.8005 train_s=26.4
+12:08:16 G4 seed 27/48 acc=0.7374 train_s=26.4
+12:08:50 G4 seed 28/48 acc=0.7500 train_s=26.5
+12:09:26 G4 seed 29/48 acc=0.6858 train_s=26.8
+12:10:00 G4 seed 30/48 acc=0.8222 train_s=26.3
+12:10:35 G4 seed 31/48 acc=0.7752 train_s=26.5
+12:11:10 G4 seed 32/48 acc=0.6755 train_s=26.6
+12:11:45 G4 seed 33/48 acc=0.6433 train_s=26.5
+12:12:20 G4 seed 34/48 acc=0.7282 train_s=26.8
+12:12:56 G4 seed 35/48 acc=0.8532 train_s=26.9
+12:13:31 G4 seed 36/48 acc=0.7890 train_s=26.8
+12:14:06 G4 seed 37/48 acc=0.8028 train_s=26.8
+12:14:41 G4 seed 38/48 acc=0.8028 train_s=26.9
+12:15:17 G4 seed 39/48 acc=0.7592 train_s=26.9
+12:15:52 G4 seed 40/48 acc=0.8360 train_s=26.7
+12:16:27 G4 seed 41/48 acc=0.7913 train_s=26.8
+12:17:02 G4 seed 42/48 acc=0.7615 train_s=26.3
+12:17:37 G4 seed 43/48 acc=0.7741 train_s=26.5
+12:18:12 G4 seed 44/48 acc=0.6456 train_s=26.9
+12:18:47 G4 seed 45/48 acc=0.7856 train_s=26.7
+12:19:22 G4 seed 46/48 acc=0.7672 train_s=26.5
+12:19:56 G4 seed 47/48 acc=0.7638 train_s=26.4
+12:20:31 G4 seed 48/48 acc=0.7821 train_s=26.4
+12:20:32 g4 done in 1679s

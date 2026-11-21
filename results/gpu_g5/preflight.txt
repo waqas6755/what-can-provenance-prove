@@ -1,0 +1,22 @@
+W1121 03:52:06.496000 13592 .venv\Lib\site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+PASS  running inside the kit's .venv (C:\Users\HP\Desktop\PAPER 3\Paper3_G5\.venv\Scripts\python.exe)
+PASS  file present: p3gpu.py
+PASS  file present: p3gpu_g5.py
+PASS  file present: prov.py
+PASS  file present: g5_analyse.py
+PASS  PyTorch 2.11.0+cu128 sees CUDA 12.8
+PASS  GPU: NVIDIA GeForce GTX 1650, 4.0 GB total, 3.2 GB free
+PASS  at least 3 GB of GPU memory free
+PASS  bf16 supported (same precision as G3)
+WARN  torch build 2.11.0+cu128 (G1-G4 used 2.6.0+cu124)
+      -> G5 is still valid, but G3 runs may not replay bit for bit; the analysis will say so
+PASS  a test matrix multiply ran on the GPU
+PASS  transformers 5.22.1 (G1-G4 used 5.22.1)
+PASS  peft 0.21.2 (G1-G4 used 0.21.2)
+PASS  datasets 5.1.0
+PASS  numpy 2.5.5
+PASS  cryptography 50.0.2
+PASS  at least 2 GB free disk
+PASS  results_gpu\g3_results.json present (used for the replay check)
+
+READY: run run_g5.bat
