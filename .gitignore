@@ -10,3 +10,6 @@ nltk_data/
 gpu_kit/results_gpu/
 gpu_kit/results_gpu.zip
 .venv/
+
+# keep the raw Alloy sweep log (part of the artefact)
+!model_v3/sweep_s5.log
